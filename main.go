@@ -36,5 +36,6 @@ func main() {
 	fmt.Println("DB Conectado!")
 	CriarTabelas(db)
 	InserirDadosTibia(db)
+	//ListarTasksELeads(db)
 
 }

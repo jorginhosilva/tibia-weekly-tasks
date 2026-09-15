@@ -61,3 +61,7 @@ func CadastrarCriaturaComDrop(db *sql.DB, nomeMonstro string, nomeItem string) {
 
 	fmt.Printf("Criatura: [%s] dropa [%s]\n", nomeMonstro, nomeItem)
 }
+
+func ListarTasksELeads() {
+	
+}
