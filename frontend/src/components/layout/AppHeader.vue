@@ -1,0 +1,68 @@
+<script setup>
+import { ref } from 'vue'
+import { SITE, PARTNER } from '@/config'
+
+// Links do menu. Adicionar uma página = adicionar uma linha aqui.
+const links = [
+  { to: '/buscar', label: 'Buscar' },
+  { to: '/analisador-de-log', label: 'Analisador de Log' },
+  { to: '/#faq', label: 'Dúvidas' },
+]
+const open = ref(false) // menu mobile aberto?
+</script>
+
+<template>
+  <header class="sticky top-0 z-40 border-b border-line bg-bg/90 backdrop-blur">
+    <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+      <RouterLink to="/" class="flex items-center gap-2 text-lg font-bold" @click="open = false">
+        <img src="/favicon.svg" alt="" width="32" height="32" />
+        <!-- No celular só o ícone aparece, para sobrar espaço ao botão de parceria. -->
+        <span class="sr-only sm:not-sr-only">{{ SITE.name }}</span>
+      </RouterLink>
+
+      <!-- Botão de parceria. rel="sponsored" avisa o Google que é link comercial/afiliado.
+           Sem "noreferrer" de propósito: alguns programas de afiliados conferem de qual site veio a visita. -->
+      <a
+        :href="PARTNER.url" target="_blank" rel="sponsored noopener"
+        :title="`Link de afiliado: ${PARTNER.name}`"
+        class="btn btn-primary rounded-full px-6 shadow-lg shadow-gold/20 sm:min-w-72 sm:px-10"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+          <path d="M12 7v10M9.5 9.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+        </svg>
+        {{ PARTNER.label }}
+        <span class="sr-only">(link de afiliado do {{ PARTNER.name }}, abre em nova aba)</span>
+      </a>
+
+      <!-- Menu desktop -->
+      <nav aria-label="Principal" class="hidden gap-6 md:flex">
+        <RouterLink
+          v-for="l in links" :key="l.to" :to="l.to"
+          class="text-sm text-muted transition-colors hover:text-gold"
+          :active-class="l.to.includes('#') ? '' : '!text-gold'"
+        >{{ l.label }}</RouterLink>
+      </nav>
+
+      <!-- Botão hambúrguer (só no mobile). aria-expanded informa o estado a leitores de tela. -->
+      <button
+        class="btn btn-ghost md:hidden" type="button"
+        :aria-expanded="open" aria-controls="menu-mobile"
+        @click="open = !open"
+      >
+        <span class="sr-only">Abrir menu</span>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path :d="open ? 'M6 6l12 12M18 6 6 18' : 'M4 6h16M4 12h16M4 18h16'" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+
+    <nav v-if="open" id="menu-mobile" aria-label="Principal (mobile)" class="border-t border-line md:hidden">
+      <RouterLink
+        v-for="l in links" :key="l.to" :to="l.to"
+        class="block px-4 py-3 text-muted hover:bg-surface hover:text-gold"
+        @click="open = false"
+      >{{ l.label }}</RouterLink>
+    </nav>
+  </header>
+</template>

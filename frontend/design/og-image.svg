@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Imagem de compartilhamento (og:image) do Tibia Weekly Tasks: 1200x630.
+       Cores do site: fundo #0f1115, dourado #f5b83d. Editável no Figma, Canva ou Inkscape.
+       O PNG usado pelo site fica em frontend/public/og-image.png. -->
+  <defs>
+    <radialGradient id="brilho" cx="78%" cy="18%" r="65%">
+      <stop offset="0" stop-color="#f5b83d" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#f5b83d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="faixa" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f5b83d"/>
+      <stop offset="1" stop-color="#c98f14"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="#0f1115"/>
+  <rect width="1200" height="630" fill="url(#brilho)"/>
+  <!-- moldura fina -->
+  <rect x="24" y="24" width="1152" height="582" rx="28" fill="none" stroke="#2a2f3a" stroke-width="2"/>
+
+  <!-- ícone: o mesmo hexágono do favicon, ampliado -->
+  <g transform="translate(96 88) scale(2.5)" fill="none" stroke="#f5b83d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32 8 52 20v24L32 56 12 44V20z"/>
+    <path d="M22 28h20M32 28v18"/>
+  </g>
+
+  <!-- etiqueta -->
+  <text x="276" y="150" font-family="'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="4" fill="#9aa3b2">FERRAMENTA GRATUITA PARA TIBIA</text>
+  <text x="276" y="196" font-family="'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="26" font-weight="600" letter-spacing="4" fill="#9aa3b2">EM PORTUGUÊS</text>
+
+  <!-- título -->
+  <text x="96" y="372" font-family="'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="104" font-weight="800" fill="#e8eaf0">Tibia <tspan fill="#f5b83d">Weekly Tasks</tspan></text>
+  <rect x="96" y="402" width="220" height="8" rx="4" fill="url(#faixa)"/>
+
+  <!-- frase -->
+  <text x="96" y="474" font-family="'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="40" font-weight="500" fill="#e8eaf0">Descubra qual criatura dropa cada item da task</text>
+  <text x="96" y="526" font-family="'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="30" font-weight="400" fill="#9aa3b2">e analise o log do Hunt Analyser em segundos.</text>
+
+  <!-- endereço -->
+  <rect x="808" y="504" width="296" height="62" rx="31" fill="#f5b83d"/>
+  <text x="956" y="545" text-anchor="middle" font-family="'Segoe UI', 'DejaVu Sans', Arial, sans-serif" font-size="30" font-weight="700" fill="#0f1115">tibiatask.com.br</text>
+</svg>
