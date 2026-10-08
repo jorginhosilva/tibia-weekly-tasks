@@ -1,2343 +1,2412 @@
 package main
 
-import "database/sql"
+import (
+	"context"
+	"database/sql"
+	"fmt"
+	"strings"
+)
 
-func InserirDadosTibia(db *sql.DB) {
-	CadastrarCriaturaComDrop(db, "Afflicted Strider", "Afflicted Strider Head")
-	CadastrarCriaturaComDrop(db, "Afflicted Strider", "Afflicted Strider Worms")
-	CadastrarCriaturaComDrop(db, "Brachiodemon", "Alloy Legs")
-	CadastrarCriaturaComDrop(db, "Bulltaurm Alchemist", "Alloy Legs")
-	CadastrarCriaturaComDrop(db, "Control Tower", "Alloy Legs")
-	CadastrarCriaturaComDrop(db, "Metal Gargoyle", "Aloy Legs")
-	CadastrarCriaturaComDrop(db, "Yirkas Blue Scales", "Alloy Legs")
-	CadastrarCriaturaComDrop(db, "Quara Looter", "Amber Souvenir")
-	CadastrarCriaturaComDrop(db, "Quara Raider", "Amber Souvenir")
-	CadastrarCriaturaComDrop(db, "Quara Plunderer", "Amber Souvenir")
-	CadastrarCriaturaComDrop(db, "Broken Shaper", "Ancient Belt Buckle")
-	CadastrarCriaturaComDrop(db, "Twisted Shaper", "Ancient Belt Buckle")
-	CadastrarCriaturaComDrop(db, "Ancient Spaw of Morgathla", "Ancient Stone")
-	CadastrarCriaturaComDrop(db, "Eternal Guardian", "Ancient Stone")
-	CadastrarCriaturaComDrop(db, "Ogre Brute", "Ancient Stone")
-	CadastrarCriaturaComDrop(db, "Stone Devourer", "Ancient Stone")
-	CadastrarCriaturaComDrop(db, "Stone Golem", "Ancient Stone")
-	CadastrarCriaturaComDrop(db, "The Last Lore Keeper", "Ancient Stone")
-	CadastrarCriaturaComDrop(db, "The Source Of Corruption", "Ancient Stone")
-	CadastrarCriaturaComDrop(db, "Humongous Fungus", "Angelic Axe")
-	CadastrarCriaturaComDrop(db, "Mutated Tiger", "Angelic Axe")
-	CadastrarCriaturaComDrop(db, "Weretiger", "Angelic Axe")
-	CadastrarCriaturaComDrop(db, "Feroxa", "Angelic Axe")
-	CadastrarCriaturaComDrop(db, "Many Faces", "Apron")
-	CadastrarCriaturaComDrop(db, "Sharpclaw", "Badger Boots")
-	CadastrarCriaturaComDrop(db, "The Baron From Below", "Badger Boots")
-	CadastrarCriaturaComDrop(db, "Werebadger", "Badger Boots")
-	CadastrarCriaturaComDrop(db, "Feroxa", "Badgeer Boots")
-	CadastrarCriaturaComDrop(db, "Sibang", "Banana Sash")
-	CadastrarCriaturaComDrop(db, "Merlkin", "Banana Sash")
-	CadastrarCriaturaComDrop(db, "Wandering Pillar", "Basalt Core")
-	CadastrarCriaturaComDrop(db, "Darklight Emitter", "Basalt Crumbs")
-	CadastrarCriaturaComDrop(db, "Wandering Pillar", "Basalt Crumbs")
-	CadastrarCriaturaComDrop(db, "Lost Basher", "Basalt Fetish")
-	CadastrarCriaturaComDrop(db, "Lost Exile", "Basalt Fetish")
-	CadastrarCriaturaComDrop(db, "Lost Husher", "Basalt Fetish")
-	CadastrarCriaturaComDrop(db, "Lost Thrower", "Basalt Fetish")
-	CadastrarCriaturaComDrop(db, "Lost Basher", "Basalt Figurine")
-	CadastrarCriaturaComDrop(db, "Lost Exile", "Basalt Figurine")
-	CadastrarCriaturaComDrop(db, "Lost Husher", "Basalt Figurine")
-	CadastrarCriaturaComDrop(db, "Lost Thrower", "Basalt Figurine")
-	CadastrarCriaturaComDrop(db, "Bashmu", "Bashmu Fang")
-	CadastrarCriaturaComDrop(db, "Juvenile Bashmu", "Bashmu Fang")
-	CadastrarCriaturaComDrop(db, "Bashmu", "Bashmu Feather")
-	CadastrarCriaturaComDrop(db, "Juvenile Bashmu", "Bashmu Feather")
-	CadastrarCriaturaComDrop(db, "Bashmu", "Bashmu Tongue")
-	CadastrarCriaturaComDrop(db, "Juvenile Bashmu", "Bashmu Tongue")
-	CadastrarCriaturaComDrop(db, "Assassin", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Cyclops", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Cyclops Drone", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Cyclops Smith", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Demon Skeleton", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Dwarf Guard", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Elf Overseer", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Foreman Kneebiter", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Frost Giant", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Frost Giantess", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Gargoyle", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Hellspaw", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Minotaur Guardian", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Mutated Bat", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Orc Rider", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Pirate Buccaneer", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "The Horned Fox", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "War Golem", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "General Murius", "Battle Shield")
-	CadastrarCriaturaComDrop(db, "Bruise Payne", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Candy Horror", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Gloom Maw", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Lost Basher", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Lost Berserk", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Magma Crawler", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Mummy", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Mutated Bat", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Priestess", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Sandstone Scorpion", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Thanatursus", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Werehyaena Shaman", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Wiggler", "Black Shield")
-	CadastrarCriaturaComDrop(db, "Blemished Spawn", "Blemished Spawn Abdomen")
-	CadastrarCriaturaComDrop(db, "Blemished Spawn", "Blemished Spawn Head")
-	CadastrarCriaturaComDrop(db, "Blemished Spawn", "Blemished Tail")
-	CadastrarCriaturaComDrop(db, "Bloated Man-Maggot", "Bloated Maggot")
-	CadastrarCriaturaComDrop(db, "Dworc Shadowstalker", "Blood Amulet")
-	CadastrarCriaturaComDrop(db, "Norceferatu Nightweaver", "Blood Hood")
-	CadastrarCriaturaComDrop(db, "Arthei", "Blood Preservation")
-	CadastrarCriaturaComDrop(db, "Boreth", "Blood Preservation")
-	CadastrarCriaturaComDrop(db, "Lersatio", "Blood Preservation")
-	CadastrarCriaturaComDrop(db, "Nightfiend", "Blood Preservation")
-	CadastrarCriaturaComDrop(db, "Vampire", "Blood Preservation")
-	CadastrarCriaturaComDrop(db, "Vampire Bride", "Blood Preservation")
-	CadastrarCriaturaComDrop(db, "Vampire Viscount", "Blood Preservation")
-	CadastrarCriaturaComDrop(db, "Arachir The Ancient One", "Blood Preservation")
-	CadastrarCriaturaComDrop(db, "Diblis The Fair", "Blood Preservation")
-	CadastrarCriaturaComDrop(db, "Vicious Manbat", "Blood Preservation")
-	CadastrarCriaturaComDrop(db, "Blood Hand", "Blood Tincture in a Vial")
-	CadastrarCriaturaComDrop(db, "Blood Priest", "Blood Tincture in a Vial")
-	CadastrarCriaturaComDrop(db, "Rotten Man-Maggot", "Blooded Worm")
-	CadastrarCriaturaComDrop(db, "Orclops Bloodbreaker", "Bloodshot Giant Eye")
-	CadastrarCriaturaComDrop(db, "Young Goanna", "Blue Goanna Scale")
-	CadastrarCriaturaComDrop(db, "Yirkas Blue Scales", "Blue Goanna Scale")
-	CadastrarCriaturaComDrop(db, "Boar Man", "Boar Man Hoof")
-	CadastrarCriaturaComDrop(db, "Bog Raider", "Boggy Dreads")
-	CadastrarCriaturaComDrop(db, "Weakened Shlorg", "Boggy Dreads")
-	CadastrarCriaturaComDrop(db, "Corym Charlatan", "Bola")
-	CadastrarCriaturaComDrop(db, "Corym Skirmisher", "Bola")
-	CadastrarCriaturaComDrop(db, "Corym Vanguard", "Bola")
-	CadastrarCriaturaComDrop(db, "Bonebeast", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Dreadbeast", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Goblin", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Goblin Assassin", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Goblin Leader", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Goblin Scavenger", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Muglex Clan Footman", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Muglex Clan Scavenger", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Necropharus", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Pirate Skeleton", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Salamander Trainer", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Troll-Trained Salamander", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Munster", "Bone Club")
-	CadastrarCriaturaComDrop(db, "Lost Basher", "Bone Fetish")
-	CadastrarCriaturaComDrop(db, "Lost Exile", "Bone Fetish")
-	CadastrarCriaturaComDrop(db, "Lost Husher", "Bone Fetish")
-	CadastrarCriaturaComDrop(db, "Ogre Sage", "Bone Fetish")
-	CadastrarCriaturaComDrop(db, "Ogre Shaman", "Bone Fetish")
-	CadastrarCriaturaComDrop(db, "Orclops Bloodbreaker", "Bone Fibula")
-	CadastrarCriaturaComDrop(db, "Dworc Shadowstalker", "Bone Rattle")
-	CadastrarCriaturaComDrop(db, "Draken Warmaster", "Bone Shoulderplate")
-	CadastrarCriaturaComDrop(db, "Orclops Bloodbreaker", "Bone Toothpick")
-	CadastrarCriaturaComDrop(db, "Orclops Doomhauler", "Bone Toothpick")
-	CadastrarCriaturaComDrop(db, "Orclops Ravager", "Bone Toothpick")
-	CadastrarCriaturaComDrop(db, "Skeleton Elite Warrior", "Bone Toothpick")
-	CadastrarCriaturaComDrop(db, "Ancient Spawn of Morgathla", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Armadile", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Darkfang", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Diamond Servant", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Diamond Servant Replica", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Hemming", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Leviathan", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Ogre Brute", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Outburst", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Ragiaz", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "The Unarmored Voidborn", "bonebreak")
-	CadastrarCriaturaComDrop(db, "War Golem", "Bonebreak")
-	CadastrarCriaturaComDrop(db, "Werecrocodile", "Bonebreak")
-	CadastrarCriaturaComDrop(db, "Werewolf", "Bonebreak")
-	CadastrarCriaturaComDrop(db, "Worker Golem", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Zavarash", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Feroxa (Mortal)", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Ghazbaran", "Bonebreaker")
-	CadastrarCriaturaComDrop(db, "Lost Basher", "Bonecarving Knife")
-	CadastrarCriaturaComDrop(db, "Lost Exile", "Bonecarving Knife")
-	CadastrarCriaturaComDrop(db, "Lost Husher", "Bonecarving Knife")
-	CadastrarCriaturaComDrop(db, "Bonebeast", "Bony Tail")
-	CadastrarCriaturaComDrop(db, "Ribstride", "Bony Tail")
-	CadastrarCriaturaComDrop(db, "Devoted Radiant Acolyte", "Book of Faith")
-	CadastrarCriaturaComDrop(db, "Radiant Acolyte", "Book of Faith")
-	CadastrarCriaturaComDrop(db, "Blood Hand", "Book of Necromantic Rituals")
-	CadastrarCriaturaComDrop(db, "Blood Priest", "Book of Necromantic Rituals")
-	CadastrarCriaturaComDrop(db, "Floating Savant", "Book of Necromantic Rituals")
-	CadastrarCriaturaComDrop(db, "Necromancer", "Book of Necromantic Rituals")
-	CadastrarCriaturaComDrop(db, "Necromancer Servant", "Book of Necromantic Rituals")
-	CadastrarCriaturaComDrop(db, "Necropharus", "Book of Necromantic Rituals")
-	CadastrarCriaturaComDrop(db, "Shadow Pupil", "Book of Necromantic Rituals")
-	CadastrarCriaturaComDrop(db, "Biting Book", "Book Page")
-	CadastrarCriaturaComDrop(db, "Burning Book", "Book Page")
-	CadastrarCriaturaComDrop(db, "Cursed Book", "Book Page")
-	CadastrarCriaturaComDrop(db, "Energetic Book", "Book Page")
-	CadastrarCriaturaComDrop(db, "Energuardian of Tales", "Book Page")
-	CadastrarCriaturaComDrop(db, "Guardian of Tales", "Book Page")
-	CadastrarCriaturaComDrop(db, "Icecold Book", "Book Page")
-	CadastrarCriaturaComDrop(db, "knowledge Elemental", "Book Page")
-	CadastrarCriaturaComDrop(db, "Headwalker", "Book with an Hourglass")
-	CadastrarCriaturaComDrop(db, "Feversleep", "Bowl of Terror Sweat")
-	CadastrarCriaturaComDrop(db, "Shiversleep", "Bowl of Terror Sweat")
-	CadastrarCriaturaComDrop(db, "Terrorsleep", "Bowl of Terror Sweat")
-	CadastrarCriaturaComDrop(db, "Candy Horror", "Brigadeiro")
-	CadastrarCriaturaComDrop(db, "Sugar Daddy", "Brigadeiro")
-	CadastrarCriaturaComDrop(db, "Brinebrute Inferniarch", "Brinebrute Claw")
-	CadastrarCriaturaComDrop(db, "Malvaroth", "Brinebrute Claw")
-	CadastrarCriaturaComDrop(db, "Afflicted Strider", "Broadsword")
-	CadastrarCriaturaComDrop(db, "Dragon", "Broadsword")
-	CadastrarCriaturaComDrop(db, "Orc Leader", "Broadsword")
-	CadastrarCriaturaComDrop(db, "Renegade Orc", "Broadsword")
-	CadastrarCriaturaComDrop(db, "Draken Elite", "Broken Draken Mail")
-	CadastrarCriaturaComDrop(db, "Paiz The Pauperizer", "Broken Draken Mail")
-	CadastrarCriaturaComDrop(db, "Undead Elite Gladiator", "Broken Gladiator Shield")
-	CadastrarCriaturaComDrop(db, "Undead Gladiator", "Broken Gladiator Shield")
-	CadastrarCriaturaComDrop(db, "Lizard Legionnaire", "Broken Halberd")
-	CadastrarCriaturaComDrop(db, "Atab", "Broken Mitmah Necklace")
-	CadastrarCriaturaComDrop(db, "Mitmah Scout", "Broken Mitmah Necklace")
-	CadastrarCriaturaComDrop(db, "Mitmah Vanguard", "Broken Mitmah Necklace")
-	CadastrarCriaturaComDrop(db, "Draken Elite", "Broken Slicer")
-	CadastrarCriaturaComDrop(db, "Paiz The Pauperizer", "Broken Slicer")
-	CadastrarCriaturaComDrop(db, "Lost Thrower", "Broken Throwing Axe")
-	CadastrarCriaturaComDrop(db, "Broodrider Inferniach", "Broodrider Saddle")
-	CadastrarCriaturaComDrop(db, "Lost Basher", "Buckle")
-	CadastrarCriaturaComDrop(db, "Lost Exile", "Buckle")
-	CadastrarCriaturaComDrop(db, "Lost Husher", "Buckle")
-	CadastrarCriaturaComDrop(db, "Lost Thrower", "Buckle")
-	CadastrarCriaturaComDrop(db, "Spiky Carnivor", "Buckle")
-	CadastrarCriaturaComDrop(db, "Bulltaur Brute", "Bulltaur Armor Scrap")
-	CadastrarCriaturaComDrop(db, "Bulltaur Brute", "Bulltaur Hoof")
-	CadastrarCriaturaComDrop(db, "Bulltaur Alchemist", "Bulltaur Horn")
-	CadastrarCriaturaComDrop(db, "Bulltaur Brute", "Bulltaur Horn")
-	CadastrarCriaturaComDrop(db, "Bulltaur Forgepriest", "Bulltaur Horn")
-	CadastrarCriaturaComDrop(db, "Blightwalker", "Bundle of Cursed Straw")
-	CadastrarCriaturaComDrop(db, "Capricious Phantom", "Capricious Heart")
-	CadastrarCriaturaComDrop(db, "Capricious Phantom", "Capricious Robe")
-	CadastrarCriaturaComDrop(db, "Carnisylvan Sapling", "Carnisylvan Bark")
-	CadastrarCriaturaComDrop(db, "Dark Carnisylvan", "Carnisylvan Bark")
-	CadastrarCriaturaComDrop(db, "Hulking Carnisylvan", "Carnisylvan Bark")
-	CadastrarCriaturaComDrop(db, "Poisonous Carnisylvan", "Carnisylvan Bark")
-	CadastrarCriaturaComDrop(db, "Dark Carnisylvan", "Carnisylvan Finger")
-	CadastrarCriaturaComDrop(db, "Hulking Carnisylvan", "Carnisylvan Finger")
-	CadastrarCriaturaComDrop(db, "Poisonous Carnilsylvan", "Carnisylvan Finger")
-	CadastrarCriaturaComDrop(db, "Carnivostrich", "Carnivostrich Feather")
-	CadastrarCriaturaComDrop(db, "Dark Torturer", "Cat's Paw")
-	CadastrarCriaturaComDrop(db, "Hemming", "Cat's Paw")
-	CadastrarCriaturaComDrop(db, "The Scourge of Oblivion", "Cat's Paw")
-	CadastrarCriaturaComDrop(db, "Mr. Punish", "Cat's Paw")
-	CadastrarCriaturaComDrop(db, "Cave Chimera", "Cave Chimera Head")
-	CadastrarCriaturaComDrop(db, "Cave Chimera", "Cave Chimera Leg")
-	CadastrarCriaturaComDrop(db, "Cave Devourer", "Cave Devourer Eyes")
-	CadastrarCriaturaComDrop(db, "Cave Devourer", "Cave Devourer Legs")
-	CadastrarCriaturaComDrop(db, "Cave Devourer", "Cave Devourer Maw")
-	CadastrarCriaturaComDrop(db, "Centipede", "Centipede Leg")
-	CadastrarCriaturaComDrop(db, "Gloom Maw", "Chain Leash")
-	CadastrarCriaturaComDrop(db, "Alptramun", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Anomaly", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Bretzecutioner", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Destroyer", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Ferumbras Mortal Shell", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Gorzindel", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Infernal Phantom", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Izcandar the Banished", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Juvenile Bashmu", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Lost Basher", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Lost Berserker", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Malofur Mangrinder", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Moohtant", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Nightstalker", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Norcferatu Heartless", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Outburst", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Plagueroot", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Rupture", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Shulgrax", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "The Nightmare Beast", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "The Scourge of Oblivion", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "The Shatterer", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Utua Stone Sting", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Ferumbras", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Sir Valorcrest", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "The Pale Count", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "The Percht Queen", "Chaos Mace")
-	CadastrarCriaturaComDrop(db, "Chasm Spawn", "Chasm Spawn Abdomen")
-	CadastrarCriaturaComDrop(db, "Chasm Spawn", "Chasm Spawn Head")
-	CadastrarCriaturaComDrop(db, "Chasm Spawn", "Chasm Spawn Tail")
-	CadastrarCriaturaComDrop(db, "Corym Charlatan", "Cheese Cutter")
-	CadastrarCriaturaComDrop(db, "Corym Skirmisher", "Cheese Cutter")
-	CadastrarCriaturaComDrop(db, "Corym Vanguard", "Cheese Cutter")
-	CadastrarCriaturaComDrop(db, "Cobra Scout", "Cheese Figurine")
-	CadastrarCriaturaComDrop(db, "Corym Skirmisher", "Cheese Figurine")
-	CadastrarCriaturaComDrop(db, "Corym Vanguard", "Cheese Figurine")
-	CadastrarCriaturaComDrop(db, "Corym Charlatan", "Cheese Figurine")
-	CadastrarCriaturaComDrop(db, "Devoted Radiant Acolyte", "Cloud Familiar")
-	CadastrarCriaturaComDrop(db, "Devoted Radiant Inquisitor", "Could Familiar")
-	CadastrarCriaturaComDrop(db, "Devoted Radiant Paragon", "Cloud Familiar")
-	CadastrarCriaturaComDrop(db, "Devoted Radiant Templar", "Cloud Familiar")
-	CadastrarCriaturaComDrop(db, "Devoted Radiant Warden", "Cloud Familiar")
-	CadastrarCriaturaComDrop(db, "Devoted Radiant Zealot", "Cloud Familiar")
-	CadastrarCriaturaComDrop(db, "Creepy Crawler", "Cluster of Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Crypt Construct", "Cluster of Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Crypt Fiend", "Cluster of Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Cobra Assassin", "Cobra Crest")
-	CadastrarCriaturaComDrop(db, "Cobra Scout", "Cobra Crest")
-	CadastrarCriaturaComDrop(db, "Cobra Vizier", "Cobra Crest")
-	CadastrarCriaturaComDrop(db, "Guardian Captain Quaid", "Cobra Crest")
-	CadastrarCriaturaComDrop(db, "Terror Bird", "Colourful Feather")
-	CadastrarCriaturaComDrop(db, "Iks Yapunac", "Colourful Feather")
-	CadastrarCriaturaComDrop(db, "Nymph", "Colourful Snail Shell")
-	CadastrarCriaturaComDrop(db, "Pixie", "Colourful Snail Shell")
-	CadastrarCriaturaComDrop(db, "Swan Maiden", "Colourful Snail Shell")
-	CadastrarCriaturaComDrop(db, "Ancient Lion Knight", "Combat Knife")
-	CadastrarCriaturaComDrop(db, "Assassin", "Combat Knife")
-	CadastrarCriaturaComDrop(db, "Enraged Soul", "Combat Knife")
-	CadastrarCriaturaComDrop(db, "Foam Stalker", "Combat Knife")
-	CadastrarCriaturaComDrop(db, "Ghost", "Combat Knife")
-	CadastrarCriaturaComDrop(db, "Goggle Cake", "Combat Knife")
-	CadastrarCriaturaComDrop(db, "Smuggler", "Combat Knife")
-	CadastrarCriaturaComDrop(db, "Tarnished Spirit", "Combat Knife")
-	CadastrarCriaturaComDrop(db, "Werehyaena", "Combat Knife")
-	CadastrarCriaturaComDrop(db, "Crawler", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Chopper", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Fleshslicer", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Hive Overseer", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Insectoid Worker", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Kollos", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Maw", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Mindmasher", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Shadowstalker", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Spidris", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Spidris Elite", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Spitter", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Swarmer", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "The Manhunter", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Waspoid", "Compound Eye")
-	CadastrarCriaturaComDrop(db, "Crusader", "Cookbook (Book World)")
-	CadastrarCriaturaComDrop(db, "Foam Stalker", "Coral Branch")
-	CadastrarCriaturaComDrop(db, "Minotaur Amazon", "Cowbell")
-	CadastrarCriaturaComDrop(db, "Minotaur Cult Follower", "Cowbell")
-	CadastrarCriaturaComDrop(db, "Minotaur Cult Prophet", "Cowbell")
-	CadastrarCriaturaComDrop(db, "Minotaur Cult Zealot", "Cowbell")
-	CadastrarCriaturaComDrop(db, "Crape Man", "Crab Man Claws")
-	CadastrarCriaturaComDrop(db, "Broken Shaper", "Cracked Alabaster Vase")
-	CadastrarCriaturaComDrop(db, "Shaper Matriarch", "Cracked Alabaster Vase")
-	CadastrarCriaturaComDrop(db, "Twisted Shaper", "Cracked Alabaster Vase")
-	CadastrarCriaturaComDrop(db, "Branchy Crawler", "Crawler's Essence")
-	CadastrarCriaturaComDrop(db, "Cloak Of Terror", "Crown (Cloak Of Terror)")
-	CadastrarCriaturaComDrop(db, "Instable Breach Brood", "Crystal Bone")
-	CadastrarCriaturaComDrop(db, "Abyssador", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Branchy Crawler", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Cave Chimera", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Cliff Strider", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Crazed Summer Rearguard", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Cyclursus", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Deathstrike", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Freakish Lost Soul", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Gnomevil", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Gorerilla", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Haunted Hunter", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Mould Phantom", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Naga Archer", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Orewalker", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Quara Looter", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Sulphur Spouter", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Vok the Freakish", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Zamulosh", "Crystal Crossbow")
-	CadastrarCriaturaComDrop(db, "Animated Feather", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Boar Man", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Brachiodemon", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Eradicator", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Eyeless Devourer", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Ice Horror", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Icecold Book", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Infernal Phantom", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Ironblight", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Juvenile Bashmu", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Melting Frozen Horror", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Roaming Dread", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Squid Warden", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Stone Devourer", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Streaked Devourer", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Tamru the Black", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "The Baron from Below", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Tunnel Tyrant", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Utua Stone Sting", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Vashresamun", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Walker", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Zamulosh", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Zushuka (Mortal)", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Yakchal", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Sight of Surrender", "Crystal Mace")
-	CadastrarCriaturaComDrop(db, "Afflicted Strider", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Barbarian Skullhunter", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Boar Man", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Crystal Spider", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Elf Overseer", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Energy Elemental", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Enraged Crystal Golem", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "High Voltage Elemental", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Icel Golem", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Ice Witch", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Knowledge Elemental", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Madareth", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Melting Frozen Horror", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Menacing Carnivor", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Nighthunter", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Pirat Cutthroat", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Rotspit", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Shardhead", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Spitter", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Squid Warden", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Werelion", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Werelioness", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Hirintror", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Zushuka (Mortal)", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Yakchal", "Crystal Sword")
-	CadastrarCriaturaComDrop(db, "Animated Feather", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Armadile", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Blight Mariner", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Crystal Wolf", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Darklight Source", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Diamond Servant", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Diamond Servant Replica", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Eradicator", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Haunted Hunter", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Icecold Book", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Ice Overlord", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Mazzinor", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Melting Frozen Horror", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Michael the Stalwart", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Orewalker", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Prince Drazzak", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Realityquake", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Ravenous Hunger", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Roaming Dread", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Sea Serpent", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Squid Warden", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "The Count Of The Core", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Tunnel Tyrant", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Turbulent Elemental", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Ghazbaran", "Crystalline Armor")
-	CadastrarCriaturaComDrop(db, "Armadile", "Crystalline Spikes")
-	CadastrarCriaturaComDrop(db, "Crystalcrusher", "Crystalline Spikes")
-	CadastrarCriaturaComDrop(db, "Enraged Crystal Golem", "Crystalline Spikes")
-	CadastrarCriaturaComDrop(db, "Ironblight", "Crystalline Spikes")
-	CadastrarCriaturaComDrop(db, "Stone Devourer", "Crystalline Spikes")
-	CadastrarCriaturaComDrop(db, "Abyssador", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Anomaly", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Brachiodemon", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Branchy Crawler", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Cliff Strider", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Deathstrike", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Gorzindel", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Gnomevil", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Harpy", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Melting Frozen Horror", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Outburst", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "The Source Of Corruption", "Crystalline Sword")
-	CadastrarCriaturaComDrop(db, "Creepy Crawler", "Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Crypt Construct", "Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Crypt Fiend", "Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Crypt Mage", "Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Cyclursus", "Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Haunted Hunter", "Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Roaming Dread", "Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Walking Dread", "Crystallized Death")
-	CadastrarCriaturaComDrop(db, "Adlerauge", "Cuirass Plate")
-	CadastrarCriaturaComDrop(db, "Michael the Stalwart", "Cuirass Plate")
-	CadastrarCriaturaComDrop(db, "Raubritter Marksman", "Cuirass Plate")
-	CadastrarCriaturaComDrop(db, "Raubritter Skirmisher", "Cuirass Plate")
-	CadastrarCriaturaComDrop(db, "Anomaly", "Curious Matter")
-	CadastrarCriaturaComDrop(db, "Breach Brood", "Curious Matter")
-	CadastrarCriaturaComDrop(db, "Burster", "Curious Matter")
-	CadastrarCriaturaComDrop(db, "Gorzindel", "Curious Matter")
-	CadastrarCriaturaComDrop(db, "The Souldespoiler", "Curious Matter")
-	CadastrarCriaturaComDrop(db, "Lizard Chosen", "Cursed Shoulder Spikes")
-	CadastrarCriaturaComDrop(db, "The Voice of Ruin", "Cursed Shoulder Spikes")
-	CadastrarCriaturaComDrop(db, "Falcon Knight", "Damaged Armor Plates")
-	CadastrarCriaturaComDrop(db, "Falcon Paladin", "Damaged Armor Plates")
-	CadastrarCriaturaComDrop(db, "Grand Chaplain Gaunder", "Damaged Armor Plates")
-	CadastrarCriaturaComDrop(db, "Grand Commander Soeren", "Damaged Armor Plates")
-	CadastrarCriaturaComDrop(db, "Dawnfly", "Damselfly Eye")
-	CadastrarCriaturaComDrop(db, "Emerald Damselfly", "Damselfly Eye")
-	CadastrarCriaturaComDrop(db, "Arctic Faun", "Dandelion Seeds")
-	CadastrarCriaturaComDrop(db, "Faun", "Dandelion Seeds")
-	CadastrarCriaturaComDrop(db, "Nymph", "Dandelion Seeds")
-	CadastrarCriaturaComDrop(db, "Pixie", "Dandelion Seeds")
-	CadastrarCriaturaComDrop(db, "Reality Reaver", "Dangerous Proto Matter")
-	CadastrarCriaturaComDrop(db, "Darklight Construct", "Darl Obsidian Splinter")
-	CadastrarCriaturaComDrop(db, "Darklight Source", "Darlk Obsidian Splinter")
-	CadastrarCriaturaComDrop(db, "Priestess", "Dark Rosary")
-	CadastrarCriaturaComDrop(db, "Dark Monk", "Dark Rosary")
-	CadastrarCriaturaComDrop(db, "Ancient Lion Knight", "Dark Shield")
-	CadastrarCriaturaComDrop(db, "Grim Reaper", "Dark Shield")
-	CadastrarCriaturaComDrop(db, "Michael the Stalwart", "Dark Shield")
-	CadastrarCriaturaComDrop(db, "Pirate Corsair", "Dark Shield")
-	CadastrarCriaturaComDrop(db, "Silencer", "Dark Shield")
-	CadastrarCriaturaComDrop(db, "Thanatursus", "Dark Shield")
-	CadastrarCriaturaComDrop(db, "Werelion", "Dark Shield")
-	CadastrarCriaturaComDrop(db, "The Handmaiden", "Dark Shield")
-	CadastrarCriaturaComDrop(db, "Haunted Dragon", "Dark Shield")
-	CadastrarCriaturaComDrop(db, "Walking Pillar", "Darklight Basalt Chunk")
-	CadastrarCriaturaComDrop(db, "Choking Fear", "Dead Weight")
-	CadastrarCriaturaComDrop(db, "Cyclursus", "Deadly Fangs")
-	CadastrarCriaturaComDrop(db, "Haunted Hunter", "Deadly Fangs")
-	CadastrarCriaturaComDrop(db, "Oozing Carcass", "Decayed Finger Bone")
-	CadastrarCriaturaComDrop(db, "Sopping Carcass", "Decayed Finger Bone")
-	CadastrarCriaturaComDrop(db, "Deepling Guard", "Deepling Breaktime Snack")
-	CadastrarCriaturaComDrop(db, "Deepling Tyrant", "Deepling Breaktime Snack")
-	CadastrarCriaturaComDrop(db, "Deepling Guard", "Deepling Claw")
-	CadastrarCriaturaComDrop(db, "Deepling Tyrant", "Deepling Claw")
-	CadastrarCriaturaComDrop(db, "Deepling Guard", "Deepling Guard Belt Buckle")
-	CadastrarCriaturaComDrop(db, "Deepling Tyrant", "Deepling Guard Belt Buckle")
-	CadastrarCriaturaComDrop(db, "Deathling Scout", "Deepling Ridge")
-	CadastrarCriaturaComDrop(db, "Deatlhing Spellsinger", "Deepling Ridge")
-	CadastrarCriaturaComDrop(db, "Deepling Warrior", "Deepling Ridge")
-	CadastrarCriaturaComDrop(db, "Deepling Elite", "Deepling Ridge")
-	CadastrarCriaturaComDrop(db, "Deepworm", "Deepworm Jaws")
-	CadastrarCriaturaComDrop(db, "Deepworm", "Deepworm Spike Roots")
-	CadastrarCriaturaComDrop(db, "Deepworm", "Deepworm Spikes")
-	CadastrarCriaturaComDrop(db, "Rootthing Amber Shaper", "Demon Root")
-	CadastrarCriaturaComDrop(db, "Rootthing Bug Tracker", "Demon Root")
-	CadastrarCriaturaComDrop(db, "Rootthing Nutshell", "Demon Root")
-	CadastrarCriaturaComDrop(db, "Brinebrute Inferniach", "Demonic Matter")
-	CadastrarCriaturaComDrop(db, "Broodrider Inferniarch", "Demonic Matter")
-	CadastrarCriaturaComDrop(db, "Gorger Inferniarch", "Demonic Matter")
-	CadastrarCriaturaComDrop(db, "Gralvalon", "Demonic Matter")
-	CadastrarCriaturaComDrop(db, "Hellhunter Inferniach", "Demonic Matter")
-	CadastrarCriaturaComDrop(db, "Malvaroth", "Demonic Matter")
-	CadastrarCriaturaComDrop(db, "Sineater Inferniach", "Demonic Matter")
-	CadastrarCriaturaComDrop(db, "Spellreaper Inferniach", "Demonic Matter")
-	CadastrarCriaturaComDrop(db, "Twisterror", "Demonic Matter")
-	CadastrarCriaturaComDrop(db, "Animated Feather", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Annihilon", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Blemished Spawn", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Cursed Book", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Enfeebled Silencer", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Girtablilu Warrior", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Gore Horn", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Hulking Carnisylvan", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Icecold Book", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Ice Witch", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Juvenile Bashmu", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Massive Earth Elemental", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Nightmare Scion", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Ogre Ruffian", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Poisonous Carnisylvan", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Silencer", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Squid Warden", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Swan Maiden", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Varnished Diremaw", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Zavarash", "Diamond Sceptre")
-	CadastrarCriaturaComDrop(db, "Diremaw", "Diremaw Brainpan")
-	CadastrarCriaturaComDrop(db, "Diremaw", "Diremaw Legs")
-	CadastrarCriaturaComDrop(db, "Blue Djin", "Dirty Turban")
-	CadastrarCriaturaComDrop(db, "Crypt Defiler", "Dirty Turban")
-	CadastrarCriaturaComDrop(db, "Grave Robber", "Dirty Turban")
-	CadastrarCriaturaComDrop(db, "Green Djinn", "Dirty Turban")
-	CadastrarCriaturaComDrop(db, "Nomad", "Dirty Turban")
-	CadastrarCriaturaComDrop(db, "Distorted Phantom", "Distorted Heart")
-	CadastrarCriaturaComDrop(db, "Distorted Phantom", "Distorted Robe")
-	CadastrarCriaturaComDrop(db, "Behemoth", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Black Knight", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Cyclops Smith", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Diabolic Imp", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Dragon", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Dwarf Guard", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Fire Devil", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Golgordan", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Latrivan", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Lethal Lissy", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Minotaur Guard", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Quara Predator", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Quara Predator Scout", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Stonecracker", "Double Axe")
-	CadastrarCriaturaComDrop(db, "The Horned Fox", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Valkyrie", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Ferumbras", "Double Axe")
-	CadastrarCriaturaComDrop(db, "General Murius", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Ghazbaran", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Grand Mother Foulscale", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Morgaroth", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Mr. Punish", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Orshabaal", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Tazhadur", "Double Axe")
-	CadastrarCriaturaComDrop(db, "Leaf Golem", "Dowser")
-	CadastrarCriaturaComDrop(db, "Wilting Leaf Golem", "Dowser")
-	CadastrarCriaturaComDrop(db, "Dragolisk", "Dragolisk Eye")
-	CadastrarCriaturaComDrop(db, "Dragolisk", "Dragolisk Poison Gland")
-	CadastrarCriaturaComDrop(db, "Bulltaur Brute", "Dragon Hammer")
-	CadastrarCriaturaComDrop(db, "Dragon", "Dragon Hammer")
-	CadastrarCriaturaComDrop(db, "Orc Warlord", "Dragon Hammer")
-	CadastrarCriaturaComDrop(db, "Grand Mother Foulscale", "Dragon Hammer")
-	CadastrarCriaturaComDrop(db, "Orshabaal", "Dragon Hammer")
-	CadastrarCriaturaComDrop(db, "Tazhadur", "Dragon Hammer")
-	CadastrarCriaturaComDrop(db, "Lizard Dragon Priest", "Dragon Priest's Wandtip")
-	CadastrarCriaturaComDrop(db, "Flamecaller Zazrak", "Dragon Priest's Wandtip")
-	CadastrarCriaturaComDrop(db, "Dragon Lord", "Dragon Slayer")
-	CadastrarCriaturaComDrop(db, "Eldritch Dragon Lord", "Dragon Slayer")
-	CadastrarCriaturaComDrop(db, "Frost Dragon", "Dragon Slayer")
-	CadastrarCriaturaComDrop(db, "Inkwing", "Dragon Slayer")
-	CadastrarCriaturaComDrop(db, "Ushuriel", "Dragon Slayer")
-	CadastrarCriaturaComDrop(db, "Undead Dragon", "Dragon Slayer")
-	CadastrarCriaturaComDrop(db, "Albino Dragon", "Dragon Slayer")
-	CadastrarCriaturaComDrop(db, "Haunted Dragon", "Dragon Slayer")
-	CadastrarCriaturaComDrop(db, "Soul of Dragonking", "Dragon Tongue")
-	CadastrarCriaturaComDrop(db, "Zyrtach", "Dragon Tongue")
-	CadastrarCriaturaComDrop(db, "Wardragon", "Dragon Tongue")
-	CadastrarCriaturaComDrop(db, "Gelidrazah the Frozen", "Dragon Tongue")
-	CadastrarCriaturaComDrop(db, "Ice Dragon", "Dragon Tongue")
-	CadastrarCriaturaComDrop(db, "Kalyassa", "Dragon Tongue")
-	CadastrarCriaturaComDrop(db, "Tazhadur", "Dragon Tongue")
-	CadastrarCriaturaComDrop(db, "Zorvorax", "Dragon Tongue")
-	CadastrarCriaturaComDrop(db, "Dragolisk", "Dragon's Tail")
-	CadastrarCriaturaComDrop(db, "Dragon", "Dragon's Tail")
-	CadastrarCriaturaComDrop(db, "Dragon Hatchling", "Dragon's Tail")
-	CadastrarCriaturaComDrop(db, "Draken Elite", "Draken Wristbands")
-	CadastrarCriaturaComDrop(db, "Paiz the Pauperizer", "Draken Wristbands")
-	CadastrarCriaturaComDrop(db, "Crazed Summer Rearguard", "Dream Essence Egg")
-	CadastrarCriaturaComDrop(db, "Crazed Summer Vanguard", "Dream Essence Egg")
-	CadastrarCriaturaComDrop(db, "Crazed Winter Rearguard", "Dream Essence Egg")
-	CadastrarCriaturaComDrop(db, "Insane Siren", "Dream Essence Egg")
-	CadastrarCriaturaComDrop(db, "Soul-Broken Harbinger", "Dream Essence Egg")
-	CadastrarCriaturaComDrop(db, "Insectoid Worker", "Dung Ball")
-	CadastrarCriaturaComDrop(db, "Mindmasher", "Dung Ball")
-	CadastrarCriaturaComDrop(db, "Corym Charlatan", "Earflap")
-	CadastrarCriaturaComDrop(db, "Corym Skirmisher", "Earflap")
-	CadastrarCriaturaComDrop(db, "Corym Vanguard", "Earflap")
-	CadastrarCriaturaComDrop(db, "Elder Bonelord", "Elder Bonelord Tentacle")
-	CadastrarCriaturaComDrop(db, "Crazed Summer Rearguard", "Elven Astral Observer")
-	CadastrarCriaturaComDrop(db, "Crazed Summer Vanguard", "Elven Astral Observer")
-	CadastrarCriaturaComDrop(db, "Crazed Winter Rearguard", "Elven Astral Observer")
-	CadastrarCriaturaComDrop(db, "Elf Arcanist", "Elven Astral Observer")
-	CadastrarCriaturaComDrop(db, "Dharalion", "Elven Astral Observer")
-	CadastrarCriaturaComDrop(db, "Emerald Tortoise", "Emerald Tortoise Shell")
-	CadastrarCriaturaComDrop(db, "Black Sphinx Acolyte", "Empty Honey Glass")
-	CadastrarCriaturaComDrop(db, "Burning Gladiator", "Empty Honey Glass")
-	CadastrarCriaturaComDrop(db, "Priestess Of The Wild Sun", "Empty Honey Glass")
-	CadastrarCriaturaComDrop(db, "Bulltaur Alchemist", "Encrypted Notes")
-	CadastrarCriaturaComDrop(db, "Brain Squid", "Energy Ball")
-	CadastrarCriaturaComDrop(db, "Dread Intruder", "Energy Ball")
-	CadastrarCriaturaComDrop(db, "Energetic Book", "Energy Ball")
-	CadastrarCriaturaComDrop(db, "Outburst", "Energy Ball")
-	CadastrarCriaturaComDrop(db, "Flimsy Lost Soul", "Ensouled Essence")
-	CadastrarCriaturaComDrop(db, "Freakish Lost Soul", "Ensouled Essence")
-	CadastrarCriaturaComDrop(db, "Mean Lost Soul", "Ensouled Essence")
-	CadastrarCriaturaComDrop(db, "Arachnophobica", "Essence of a Bad Dream")
-	CadastrarCriaturaComDrop(db, "Nightmare", "Essence of a Bad Dream")
-	CadastrarCriaturaComDrop(db, "Nightmare Scion", "Essence of a Bad Dream")
-	CadastrarCriaturaComDrop(db, "Thanatursus", "Essence of a Bad Dream")
-	CadastrarCriaturaComDrop(db, "Tormentor", "Essence of a Bad Dream")
-	CadastrarCriaturaComDrop(db, "Exalted Core", "(Nenhuma Criatura Dropa)")
-	CadastrarCriaturaComDrop(db, "Execowtioner", "Execowtioner Mask")
-	CadastrarCriaturaComDrop(db, "Deathling Scout", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Deathling Spellsinger", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Deepling Brawler", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Deepling Elite", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Deepling Guard", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Deepling Master Librarian", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Deepling Scout", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Deepling Spellsinger", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Deepling Tyrant", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Deepling Warrior", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Deepling Worker", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Shark", "Eye of a Deepling")
-	CadastrarCriaturaComDrop(db, "Weeper", "Eye of a Weeper")
-	CadastrarCriaturaComDrop(db, "Draken Abomination", "Eye of Corruption")
-	CadastrarCriaturaComDrop(db, "Eyeless Devourer", "Eyeless Devourer Legs")
-	CadastrarCriaturaComDrop(db, "Eyeless Devourer", "Eyeless Devourer Maw")
-	CadastrarCriaturaComDrop(db, "Eyeless Devourer", "Eyeless Devourer Tongue")
-	CadastrarCriaturaComDrop(db, "Burning Gladiator", "Fafnar Symbol")
-	CadastrarCriaturaComDrop(db, "Priestess Of The Wild Sun", "Fafnar Symbol")
-	CadastrarCriaturaComDrop(db, "Falcon Paladin", "Falcon Crest")
-	CadastrarCriaturaComDrop(db, "Falcon Knight", "Falcon Crest")
-	CadastrarCriaturaComDrop(db, "Grand Commander Soeren", "Falcon Crest")
-	CadastrarCriaturaComDrop(db, "Barkless Fanatic", "Fig Leaf")
-	CadastrarCriaturaComDrop(db, "Barkless Devotee", "Fig Leaf")
-	CadastrarCriaturaComDrop(db, "Ravenous Hunger", "Fig Leaf")
-	CadastrarCriaturaComDrop(db, "Leaf Golem", "Fir Cone")
-	CadastrarCriaturaComDrop(db, "Wilting Leaf Golem", "Fir Cone")
-	CadastrarCriaturaComDrop(db, "Angry Demon", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Arbaziloth", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Brachiodemom", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Demon", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Essence of Malice", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Feral Sphinx", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Golgordan", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Guardian of Tales", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Hellfire Fighter", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Infernal Phantom", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Insane Siren", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Latrivan", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Lava Golem", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Lost Basher", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Lost Berserk", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Lost Exile", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Lost Husher", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Mahrdis", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Mazoran", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Mean Lost Soul", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Rage Squid", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Sulphider", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "The Count of The Core", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "The Duke Of The Depths", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Vexclaw", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Weeper", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Furyosa", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Orshabaal", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "The Imperor", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Minishabaal", "Fire Axe")
-	CadastrarCriaturaComDrop(db, "Betrayed Wraith", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Burning Book", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Dark Torturer", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Dawnfire Asura", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Diabolic Imp", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Falcon Knight", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Floating Savant", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Frost Flower Asura", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Fury", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Grim Reaper", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Grimeleech", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Hand of Cursed Fate", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Hellflayeer", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Hellhound", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Juggernaut", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Midnight Asura", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Nightmare", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "True Dawnfire Asura", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "True Midnight Asura", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "True Feverbloom Asura", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "True Frost Flower Asura", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Fluffy", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Furyosa", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Grand Chaplain Gaunder", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Kerberos", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Kusuma", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Mazoran", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Plagirath", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Preceptor Lazare", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Ragiaz", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Razzagorn", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Shulgrax", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Tarbaz", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "The Blazing Rose", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "The Diamond Blossom", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "The Flaming Orchid", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "The Lily of Night", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "The Moonlight Aster", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "The Moonsnow Magnolia", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "The Winter Bloom", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Tormentor", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Zamulosh", "Flask of Demonic Blood")
-	CadastrarCriaturaComDrop(db, "Foam Stalker", "Floatsam")
-	CadastrarCriaturaComDrop(db, "Venerable Foam Stalker", "Floatsam")
-	CadastrarCriaturaComDrop(db, "Afflicted Strider", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Converter", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Dawnfire Asura", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Draken Spellweaver", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Girtablilu Warrior", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Harpy", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Lavafungus", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Lizard Dragon Priest", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Lumbering Carnivor", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Nightmare Scion", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Pirat Cutthroat", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Reality Reaver", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Sea Serpent", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "stabilizing Reality Reaver", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Tremendous Tyrant", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "True Dawnfire Asura", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Wyrm", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Amenef the Burning", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Captain Jones", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Hellgorak", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Raging Mage", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Reflection of a Mage", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Sister Hetai", "Focus Cape")
-	CadastrarCriaturaComDrop(db, "Fox", "Fox Paw")
-	CadastrarCriaturaComDrop(db, "Werefox", "Fox Paw")
-	CadastrarCriaturaComDrop(db, "Black Vixen", "Fox Paw")
-	CadastrarCriaturaComDrop(db, "Animated Guzzlemaw", "Frazzle Tongue")
-	CadastrarCriaturaComDrop(db, "Frazzlemaw", "Frazzle Tongue")
-	CadastrarCriaturaComDrop(db, "Guzzlemaw", "Frazzle Tongue")
-	CadastrarCriaturaComDrop(db, "Nibblemaw", "Frazzle Tongue")
-	CadastrarCriaturaComDrop(db, "Weakened Frazzlemaw", "Frazzle Tongue")
-	CadastrarCriaturaComDrop(db, "Mawhawk", "Frazzle Tongue")
-	CadastrarCriaturaComDrop(db, "Reflection of Mawhawk", "Frazzle Tongue")
-	CadastrarCriaturaComDrop(db, "Brain Squid", "Frozen Lightning")
-	CadastrarCriaturaComDrop(db, "Dread Intruder", "Frozen Lightning")
-	CadastrarCriaturaComDrop(db, "Anomaly", "Frozen Lightning")
-	CadastrarCriaturaComDrop(db, "Rupture", "Frozen Lightning")
-	CadastrarCriaturaComDrop(db, "Mazzinor", "Frozen Lightning")
-	CadastrarCriaturaComDrop(db, "Adult Goanna", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Blemished Spawn", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Capricious Phantom", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Cave Chimera", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Cunning Werepanter", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Girtablilu Warrior", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Lumbering Carnivor", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Raubritter Skirmisher", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Rotten Golem", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Sun-marked Goanna", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Turbulent Elemental", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Varnished Diremaw", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Werebear", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Wereboar", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Werecrocodile", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Werephanter", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Winged Jaracal", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Young Goanna", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Bloodback", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Feroxa", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Michael the Stalwart", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Owin", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Rakesh Moonfang", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Shadowpelt", "Fur Armor")
-	CadastrarCriaturaComDrop(db, "Animated Mummy", "Gauze Bandage")
-	CadastrarCriaturaComDrop(db, "Elder Mummy", "Gauze Bandage")
-	CadastrarCriaturaComDrop(db, "Mummy", "Gauze Bandage")
-	CadastrarCriaturaComDrop(db, "Mahatheb", "Gauze Bandage")
-	CadastrarCriaturaComDrop(db, "Ghastly Dragon", "Ghastly Dragon Head")
-	CadastrarCriaturaComDrop(db, "Ethershreck", "Ghastly Dragon Head")
-	CadastrarCriaturaComDrop(db, "Hatebreeder", "Ghastly Dragon Head")
-	CadastrarCriaturaComDrop(db, "Animated Moohtant", "Giant Pacifier")
-	CadastrarCriaturaComDrop(db, "Moohtant", "Giant Pacifier")
-	CadastrarCriaturaComDrop(db, "Bullwark", "Giant Pacifier")
-	CadastrarCriaturaComDrop(db, "Moohtant Wallbreaker", "Giant Pacifier")
-	CadastrarCriaturaComDrop(db, "Creepy Crawler", "Giant Tusk")
-	CadastrarCriaturaComDrop(db, "Crypt Fiend", "Giant Tusk")
-	CadastrarCriaturaComDrop(db, "Amazon", "Girlish Hair Decoration")
-	CadastrarCriaturaComDrop(db, "Valkyrie", "Girlish Hair Decoration")
-	CadastrarCriaturaComDrop(db, "Girtablilu Warrior", "Girtablilu Warrior Carapace")
-	CadastrarCriaturaComDrop(db, "Animated Feather", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Animated Snowman", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Crazed Winter Rearguard", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Crystal Spider", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Ice Dragon", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Ice Golem", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Icecold Book", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Memory of a Dwarf", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Monk's Apparition", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Mycobiontic Beetle", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Paladin's Apparition", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Seacrest Serpent", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Silverfrost Sentinel", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Squid Warden", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Court Warlock", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Earl Osam", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Gelidrazah the Frozen", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Hirintror", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Ice Horror", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Neferi the Spy", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Shardhead", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "The Bloodweb", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Zushuka", "Glacier Mask")
-	CadastrarCriaturaComDrop(db, "Crazed Winter Rearguard", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Crazed Winter Vanguard", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Druid's Apparition", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Girtablilu Warrior", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Google Cake", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Hazardous Phantom", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Icecold Book", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Many Faces", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Quara Pincher", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Quara Predator", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Quara Raider", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Renegade Quara Pincher", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Renegade Quara Predator", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Schiach", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Squid Warden", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Tremendous Tyrant", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Turbulent Elemental", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Court Warlock", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "King Zelos", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Srezz Yellow Eyes", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Tarbaz", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "The Time Guardian", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "The Winter Bloom", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Utua Stone Sting", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Yakchal", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Zushuka", "Glacier Robe")
-	CadastrarCriaturaComDrop(db, "Bluebeak", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Foam Stalker", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Ice Witch", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Icecold Book", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Many Faces", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Seacrest Serpent", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Soul-broken Harbinger", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Two-Headed Turtle", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Usurper Archer", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Varnished Diremaw", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Venerable Foam Stalker", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Hirintror", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Neferi the Spy", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Zushuka", "Glacier Shoes")
-	CadastrarCriaturaComDrop(db, "Acid Blob", "Glob of Acid Slime")
-	CadastrarCriaturaComDrop(db, "Defile", "Glob of Acid Slime")
-	CadastrarCriaturaComDrop(db, "Stonerefiner", "Glob of Acid Slime")
-	CadastrarCriaturaComDrop(db, "Devourer", "Glob of Glooth")
-	CadastrarCriaturaComDrop(db, "Glooth Blob", "Glob of Glooth")
-	CadastrarCriaturaComDrop(db, "Rot Elemental", "Glob of Glooth")
-	CadastrarCriaturaComDrop(db, "Death Blob", "Glob of Tar")
-	CadastrarCriaturaComDrop(db, "Defiler", "Glob of Tar")
-	CadastrarCriaturaComDrop(db, "Blood Beast", "Glooth Axe")
-	CadastrarCriaturaComDrop(db, "Devourer", "Glooth Axe")
-	CadastrarCriaturaComDrop(db, "Glooth Anemone", "Glooth Axe")
-	CadastrarCriaturaComDrop(db, "Glooth Bandit", "Glooth Axe")
-	CadastrarCriaturaComDrop(db, "Glooth Blob", "Glooth Axe")
-	CadastrarCriaturaComDrop(db, "Glooth Brigand", "Glooth Axe")
-	CadastrarCriaturaComDrop(db, "Glooth Golem", "Glooth Axe")
-	CadastrarCriaturaComDrop(db, "Rot Elemental", "Glooth Axe")
-	CadastrarCriaturaComDrop(db, "Glooth Fairy", "Glooth Axe")
-	CadastrarCriaturaComDrop(db, "Lisa", "Glooth Axe")
-	CadastrarCriaturaComDrop(db, "Blood Beast", "Glooth Blade")
-	CadastrarCriaturaComDrop(db, "Devourer", "Glooth Blade")
-	CadastrarCriaturaComDrop(db, "Glooth Anemone", "Glooth Blade")
-	CadastrarCriaturaComDrop(db, "Glooth Bandit", "Glooth Blade")
-	CadastrarCriaturaComDrop(db, "Glooth Blob", "Glooth Blade")
-	CadastrarCriaturaComDrop(db, "Glooth Brigand", "Glooth Blade")
-	CadastrarCriaturaComDrop(db, "Glooth Golem", "Glooth Blade")
-	CadastrarCriaturaComDrop(db, "Glooth Fairy", "Glooth Blade")
-	CadastrarCriaturaComDrop(db, "Lisa", "Glooth Blade")
-	CadastrarCriaturaComDrop(db, "Devourer", "Glooth Cape")
-	CadastrarCriaturaComDrop(db, "Glooth Anemone", "Glooth Cape")
-	CadastrarCriaturaComDrop(db, "Glooth Bandit", "Glooth Cape")
-	CadastrarCriaturaComDrop(db, "Glooth Fairy", "Glooth Cape")
-	CadastrarCriaturaComDrop(db, "Lisa", "Glooth Cape")
-	CadastrarCriaturaComDrop(db, "Tremor Worm", "Glooth Cape")
-	CadastrarCriaturaComDrop(db, "Blood Beast", "Glooth Club")
-	CadastrarCriaturaComDrop(db, "Devourer", "Glooth Club")
-	CadastrarCriaturaComDrop(db, "Glooth Anemone", "Glooth Club")
-	CadastrarCriaturaComDrop(db, "Glooth Bandit", "Glooth Club")
-	CadastrarCriaturaComDrop(db, "Glooth Blob", "Glooth Club")
-	CadastrarCriaturaComDrop(db, "Glooth Brigand", "Glooth Club")
-	CadastrarCriaturaComDrop(db, "Glooth Golem", "Glooth Club")
-	CadastrarCriaturaComDrop(db, "Glooth Fairy", "Glooth Club")
-	CadastrarCriaturaComDrop(db, "Lisa", "Glooth Club")
-	CadastrarCriaturaComDrop(db, "Glooth Golem", "Glooth Injection Tube")
-	CadastrarCriaturaComDrop(db, "Glooth Fairy", "Glooth Injection Tube")
-	CadastrarCriaturaComDrop(db, "Bashmu", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Bellicose", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Bellicose Orger", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Enfeebled Silencer", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Enraged Crystal", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Enraged Crystal Golem", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Enslaved Dwarf", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Infernal Phantom", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Lumbering Carnivor", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Mutated Tiger", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Orewalker", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Silencer", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Stone Devourer", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Werecrocodile", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Werelion", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Feroxa", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Ghazbaran", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Maior Domus", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Weakened Shlorg", "Glorious Axe")
-	CadastrarCriaturaComDrop(db, "Animated Feather", "Glowing Rune")
-	CadastrarCriaturaComDrop(db, "Biting Book", "Glowing Rune")
-	CadastrarCriaturaComDrop(db, "Brain Squid", "Glowing Rune")
-	CadastrarCriaturaComDrop(db, "Energetic Book", "Glowing Rune")
-	CadastrarCriaturaComDrop(db, "Energuardian of Tales", "Glowing Rune")
-	CadastrarCriaturaComDrop(db, "Guardian of Tales", "Glowing Rune")
-	CadastrarCriaturaComDrop(db, "Knowledge Elemental", "Glowing Rune")
-	CadastrarCriaturaComDrop(db, "Rage Squid", "Glowing Rune")
-	CadastrarCriaturaComDrop(db, "Squid Warden", "Glowing Rune")
-	CadastrarCriaturaComDrop(db, "Adult Goanna", "Goanna Claw")
-	CadastrarCriaturaComDrop(db, "Young Goanna", "Goanna Claw")
-	CadastrarCriaturaComDrop(db, "Adult Goanna", "Goanna Meat")
-	CadastrarCriaturaComDrop(db, "Sun-marked Goanna", "Goanna Meat")
-	CadastrarCriaturaComDrop(db, "Young Goanna", "Goanna Meat")
-	CadastrarCriaturaComDrop(db, "Pirate Cook", "Gold Tooth")
-	CadastrarCriaturaComDrop(db, "Pirate Gunner", "Gold Tooth")
-	CadastrarCriaturaComDrop(db, "Pirate Navigator", "Gold Tooth")
-	CadastrarCriaturaComDrop(db, "Pirate Quartermaster", "Gold Tooth")
-	CadastrarCriaturaComDrop(db, "Sea Captain", "Gold Tooth")
-	CadastrarCriaturaComDrop(db, "Devoted Radiant Inquisitor", "Golden Belt")
-	CadastrarCriaturaComDrop(db, "Radiant Inquisitor", "Golden Belt")
-	CadastrarCriaturaComDrop(db, "Angry Demon", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Blightwalker", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Boogy", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Cunning Werepanther", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Demon", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Priestess of the Wild Sun", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Werepanther", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Arbaziloth", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Arbaziloth Hard", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Latrivan", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Orshabaal", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Rakesh Moonfang", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Rotrender Scourge of Azzilon", "Golden Sickle")
-	CadastrarCriaturaComDrop(db, "Feral Werecrocodile", "Golden Sun Coin")
-	CadastrarCriaturaComDrop(db, "Werecrocodile", "Golden Sun Coin")
-	CadastrarCriaturaComDrop(db, "Ayana The Crunsib Curse", "Golden Sun Coin")
-	CadastrarCriaturaComDrop(db, "Gore Horn", "Gore Horn")
-	CadastrarCriaturaComDrop(db, "Gorerilla Mane", "Gorerilla")
-	CadastrarCriaturaComDrop(db, "Gorerilla Tail", "Gorerilla")
-	CadastrarCriaturaComDrop(db, "Gorger Antlers", "Gorger Inferniarch")
-	CadastrarCriaturaComDrop(db, "Grappling Hook", "Pirat Scoundrel")
-	CadastrarCriaturaComDrop(db, "Green Bandage", "Putrid Mummy")
-	CadastrarCriaturaComDrop(db, "Burning Book", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Choking Fear", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Cult Enforcer", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Demon Skeleton", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Diabolic Imp", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Energy Elemental", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Enslaved Dwarf", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Fire Devil", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Knowledge Elemental", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Lost Berserker", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Lost Exile", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Lost Husher", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Minotaur Invader", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Mooh'Tah Warrior", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Mutated Tiger", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Spiky Carnivor", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Undead Minion", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Vicious Squire", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Annihilon", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Minishabaal", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Terofar", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "The Imperor", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Tyrn", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Zavarash", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Zomba", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Zulazza the Corruptor", "Guardian Shield")
-	CadastrarCriaturaComDrop(db, "Animated Cyclops", "Halberd")
-	CadastrarCriaturaComDrop(db, "Barbarian Bloodwalker", "Halberd")
-	CadastrarCriaturaComDrop(db, "Cult Enforcer","Halberd")
-	CadastrarCriaturaComDrop(db, "Cyclops","Halberd")
-	CadastrarCriaturaComDrop(db, "Cyclops Drone","Halberd")
-	CadastrarCriaturaComDrop(db, "Foam Stalker","Halberd")
-	CadastrarCriaturaComDrop(db, "Frost Giant","Halberd")
-	CadastrarCriaturaComDrop(db, "Golden Servant","Halberd")
-	CadastrarCriaturaComDrop(db, "Golden Servant Replica","Halberd")
-	CadastrarCriaturaComDrop(db, "Hacker","Halberd")
-	CadastrarCriaturaComDrop(db, "Iron Servant","Halberd")
-	CadastrarCriaturaComDrop(db, "Iron Servant Replica","Halberd")
-	CadastrarCriaturaComDrop(db, "Lizard Sentinel","Halberd")
-	CadastrarCriaturaComDrop(db, "Mutated Rat","Halberd")
-	CadastrarCriaturaComDrop(db, "Orc Berserker","Halberd")
-	CadastrarCriaturaComDrop(db, "Orc Cult Inquisitor","Halberd")
-	CadastrarCriaturaComDrop(db, "Orc Cult Inquisitor","Halberd")
-	CadastrarCriaturaComDrop(db, "Quara Mantassin","Halberd")
-	CadastrarCriaturaComDrop(db, "Quara Pincher","Halberd")
-	CadastrarCriaturaComDrop(db, "Quara Pincher","Halberd")
-	CadastrarCriaturaComDrop(db, "Quara Pincher Scout","Halberd")
-	CadastrarCriaturaComDrop(db, "Renegade Quara Pincher","Halberd")
-	CadastrarCriaturaComDrop(db, "Thanatursus","Halberd")
-	CadastrarCriaturaComDrop(db, "Venerable Foam Stalker","Halberd")
-	CadastrarCriaturaComDrop(db, "Vicious Squire","Halberd")
-	CadastrarCriaturaComDrop(db, "Wailing Widow","Halberd")
-	CadastrarCriaturaComDrop(db, "Werehyaena","Halberd")
-	CadastrarCriaturaComDrop(db, "Werewolf","Halberd")
-	CadastrarCriaturaComDrop(db, "Zombie","Halberd")
-	CadastrarCriaturaComDrop(db, "Annihilon","Halberd")
-	CadastrarCriaturaComDrop(db, "Black Knight","Halberd")
-	CadastrarCriaturaComDrop(db, "Esmeralda","Halberd")
-	CadastrarCriaturaComDrop(db, "Stonerefiner","Half-Digested Stones")
-	CadastrarCriaturaComDrop(db, "Zombie","Half-Eaten Brain")
-	CadastrarCriaturaComDrop(db, "Brachiodemon","Hand")
-	CadastrarCriaturaComDrop(db, "Harpy","Harpy Feathers")
-	CadastrarCriaturaComDrop(db, "Brachiodemon","Head")
-	CadastrarCriaturaComDrop(db, "Many Faces","Head")
-	CadastrarCriaturaComDrop(db, "Headpecker","Headpecker Beak")
-	CadastrarCriaturaComDrop(db, "Headpecker","Headpecker Feather")
-	CadastrarCriaturaComDrop(db, "Norcferatu Heartless","Heart Amphora")
-	CadastrarCriaturaComDrop(db, "Cobra Assassin","Heavy Machete")
-	CadastrarCriaturaComDrop(db, "Cyclops Smith","Heavy Machete")
-	CadastrarCriaturaComDrop(db, "Efreet","Heavy Machete")
-	CadastrarCriaturaComDrop(db, "Marid","Heavy Machete")
-	CadastrarCriaturaComDrop(db, "Menacing Carnivor","Heavy Machete")
-	CadastrarCriaturaComDrop(db, "Fahim The Wise","Heavy Machete")
-	CadastrarCriaturaComDrop(db, "Merikh the Slaughterer","Heavy Machete")
-	CadastrarCriaturaComDrop(db, "Deathling Scout","Heavy Trident")
-	CadastrarCriaturaComDrop(db, "Deathling Spellsinger","Heavy Trident")
-	CadastrarCriaturaComDrop(db, "Deathling Brawler","Heavy Trident")
-	CadastrarCriaturaComDrop(db, "Deepling Elite","Heavy Trident")
-	CadastrarCriaturaComDrop(db, "Deepling Guard","Heavy Trident")
-	CadastrarCriaturaComDrop(db, "Deepling Scout","Heavy Trident")
-	CadastrarCriaturaComDrop(db, "Deepling Tyrant","Heavy Trident")
-	CadastrarCriaturaComDrop(db, "Deepling Warrior","Heavy Trident")
-	CadastrarCriaturaComDrop(db, "Deepling Worker","Heavy Trident")
-	CadastrarCriaturaComDrop(db, "Neutral Deepling Warrior","Heavy Trident")
-	CadastrarCriaturaComDrop(db, "Hellhound","Hellhound Slobber")
-	CadastrarCriaturaComDrop(db, "Kerberos","Hellhound Slobber")
-	CadastrarCriaturaComDrop(db, "Choking Fear","Hemp Rope")
-	CadastrarCriaturaComDrop(db, "Angry Sugar Fairy","Hibiscus Dress")
-	CadastrarCriaturaComDrop(db, "Nymph","Hibiscus Dress")
-	CadastrarCriaturaComDrop(db, "Vampire Bride","Hibiscus Dress")
-	CadastrarCriaturaComDrop(db, "Wyrm","Hibiscus Dress")
-	CadastrarCriaturaComDrop(db, "Boreth","Hibiscus Dress")
-	CadastrarCriaturaComDrop(db, "Hideous Fungus","Hideous Chunk")
-	CadastrarCriaturaComDrop(db, "Lizard High Guard","High Guard Flag")
-	CadastrarCriaturaComDrop(db, "Lizard High Guard","High Guard Shoulderplates")
-	CadastrarCriaturaComDrop(db, "Flickering Spirit Elemental","Holy Ash")
-	CadastrarCriaturaComDrop(db, "Lost Exile","Holy Ash")
-	CadastrarCriaturaComDrop(db, "Lost Husher","Holy Ash")
-	CadastrarCriaturaComDrop(db, "Psychic Spirit Elemental","Holy Ash")
-	CadastrarCriaturaComDrop(db, "Phosphorus","Holy Ash")
-	CadastrarCriaturaComDrop(db, "Spirit Overlord","Holy Ash")
-	CadastrarCriaturaComDrop(db, "Blood Hand","Horoscope")
-	CadastrarCriaturaComDrop(db, "Blood Priest","Horoscope")
-	CadastrarCriaturaComDrop(db, "Shadow Pupil","Horoscope")
-	CadastrarCriaturaComDrop(db, "Dark Canisylvan","Human Teeth")
-	CadastrarCriaturaComDrop(db, "Hulking Carnisylvan","Human Teeth")
-	CadastrarCriaturaComDrop(db, "Poisonous Carnisylvan","Human Teeth")
-	CadastrarCriaturaComDrop(db, "Humongous Fungus","Humongous Chunk")
-	CadastrarCriaturaComDrop(db, "Hydra","Hydra Head")
-	CadastrarCriaturaComDrop(db, "Lion Hydra","Hydra Head")
-	CadastrarCriaturaComDrop(db, "Two-Headed Turtle","Hydrophytes")
-	CadastrarCriaturaComDrop(db, "Crazed Winter Rearguard","Ice Flower")
-	CadastrarCriaturaComDrop(db, "Crazed Winter Vanguard","Ice Flower")
-	CadastrarCriaturaComDrop(db, "Soul-broken Harbinger","Ice Flower")
-	CadastrarCriaturaComDrop(db, "Bulltaur Forgepriest","Idol of the Forge")
-	CadastrarCriaturaComDrop(db, "Infernal Phantom","Infernal Heart")
-	CadastrarCriaturaComDrop(db, "Infernal Phantom","Infernal Robe")
-	CadastrarCriaturaComDrop(db, "Infernoid Blob","Infernoid Ember")
-	CadastrarCriaturaComDrop(db, "Infernoid Hound","Infernoid Ember")
-	CadastrarCriaturaComDrop(db, "Infernoid Soul","Infernoid Ember")
-	CadastrarCriaturaComDrop(db, "Infernoid Spiritual","Infernoid Ember")
-	CadastrarCriaturaComDrop(db, "Herald of Fire","Infernoid Ember")
-	CadastrarCriaturaComDrop(db, "Brain Squid","Inkwell")
-	CadastrarCriaturaComDrop(db, "Ink Blob","Inkwell")
-	CadastrarCriaturaComDrop(db, "Ink Splash","Inkwell")
-	CadastrarCriaturaComDrop(db, "Rage Squid","Inkwell")
-	CadastrarCriaturaComDrop(db, "Squid Warden","Inkwell")
-	CadastrarCriaturaComDrop(db, "Brain Squid", "Instable Proto Matter")
-	CadastrarCriaturaComDrop(db, "Dread Intruder", "Instable Proto Matter")
-	CadastrarCriaturaComDrop(db, "Outburst", "Instable Proto Matter")
-	CadastrarCriaturaComDrop(db, "Werelion","Ivory Carving")
-	CadastrarCriaturaComDrop(db, "Werelioness","Ivory Carving")
-	CadastrarCriaturaComDrop(db, "Bony Seal Devil","Jaws")
-	CadastrarCriaturaComDrop(db, "Deepling Master Librarian", "Key to the Drowned Librabry")
-	CadastrarCriaturaComDrop(db, "Deepling Spellsinger", "Key to the Drowned Librabry")
-	CadastrarCriaturaComDrop(db, "Assassin","Knife")
-	CadastrarCriaturaComDrop(db, "Barbarian Headsplitter","Knife")
-	CadastrarCriaturaComDrop(db, "Barbarian Skullhunter","Knife")
-	CadastrarCriaturaComDrop(db, "Cobra Assassin","Knife")
-	CadastrarCriaturaComDrop(db, "Crazed Summer Vanguard","Knife")
-	CadastrarCriaturaComDrop(db, "Headpecker","Knife")
-	CadastrarCriaturaComDrop(db, "Smuggler","Knife")
-	CadastrarCriaturaComDrop(db, "Undead Prospector","Knife")
-	CadastrarCriaturaComDrop(db, "Usurper Archer","Knife")
-	CadastrarCriaturaComDrop(db, "Werehyaena","Knife")
-	CadastrarCriaturaComDrop(db, "Ancient lion Knight","Knife")
-	CadastrarCriaturaComDrop(db, "Apprentice Sheng","Knife")
-	CadastrarCriaturaComDrop(db, "Faceless Bane","Knife")
-	CadastrarCriaturaComDrop(db, "Afflicted Strider","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Blemished Spawn","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Crusader","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Execowtioner","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Girtablilu Warrior","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Hellhound","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Hulking Carnisylvan","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Lost Basher","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Lost Berserker","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Lost Exile","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Lost Husher","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Minotaur Invader","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Pirat Cutthroat","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Poisonous Carnisylvan","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Skeleton Elite Warrior","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Thanatursus","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Tremendous Tyrant","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Undead Elite Gladiator","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Undead Gladiator","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Amenef the Burning","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Black Knight","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Fluffy","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Kerberos","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Morguthis","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Neferi the Spy","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Sir Leonard","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Sir Leopold","Knight Axe")
-	CadastrarCriaturaComDrop(db, "The Enraged Thor Knight","Knight Axe")
-	CadastrarCriaturaComDrop(db, "Cliff Strider","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Crystal Spider","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Cult Enforcer","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Foam Stalker","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Giant Spider","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Gore Horn","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Hellspawn","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Lost Basher","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Menacing Carnivor","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Mooh'Tah Warrior","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Nightmare","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Orewalker","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Plaguesmith","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Soul-broken Harbinger","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Sulphur Spouter","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Two-Headed Turtle","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Usurper Knight","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Usurper Warlock","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Venerable Foam Stalker","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Vicious Squire","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Black Knight","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Count Vlarkorth","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Flameborn","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Hellgorak","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Hide","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Horadron","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Mamma Longlegs","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Sir Baeloc","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Sir Leonard","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Sir Leopold","Knight Legs")
-	CadastrarCriaturaComDrop(db, "The Bloodweb","Knight Legs")
-	CadastrarCriaturaComDrop(db, "The Old Widow","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Tormentor","Knight Legs")
-	CadastrarCriaturaComDrop(db, "Cursed Ape","Kongra's Shouldpad")
-	CadastrarCriaturaComDrop(db, "Kongra","Kongra's Shouldpad")
-	CadastrarCriaturaComDrop(db, "Crypt Warden","Lamassu Hoof")
-	CadastrarCriaturaComDrop(db, "Lamassu","Lamassu Hoof")
-	CadastrarCriaturaComDrop(db, "Lancer Beetle","Lancer Beetle Shell")
-	CadastrarCriaturaComDrop(db, "The Blightfather","Lancer Beetle Shell")
-	CadastrarCriaturaComDrop(db, "Blood Hand","Lancet")
-	CadastrarCriaturaComDrop(db, "Blood Priest","Lancet")
-	CadastrarCriaturaComDrop(db, "Lavafungus","Lavafungus Head")
-	CadastrarCriaturaComDrop(db, "Lavafungus","Lavafungus Ring")
-	CadastrarCriaturaComDrop(db, "Lavaworm","Laworm Jaws")
-	CadastrarCriaturaComDrop(db, "Lavaworm","Lavaworm Spike Roots")
-	CadastrarCriaturaComDrop(db, "Lavaworm","Lavaworm Spikes")
-	CadastrarCriaturaComDrop(db, "Burning Gladiator","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Cursed Prospector","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Elder Wyrm","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Energetic Book","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Juvenile Bashmu","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Lich","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Mercurial Menace","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Pirat Bombardier","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "War Golem","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Gravelord Oshuran","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Mazzinor","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Omrafir","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Phosphorus","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Prince Drazzak","Lightning Boots")
-	CadastrarCriaturaComDrop(db, "Brain Squid","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Burning Gladiator","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Cloak of Terror","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Courage Leech","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Cunning Werephanter","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Energetic Book","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Evil Prospector","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Giant Spider","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "High Voltage Elemental","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Hulking Carnisylvan","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Reality Reaver","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Sphinx","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Stabilizing Reality Reaver","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Tow-Headed Turtle","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Usurper Warlock","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Werelioness","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Anomaly","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Burster","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Court Warlock","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Lord Azaram","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Neferi the Spy","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Outburst","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Phosphorus","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Rakesh Moonfang","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Realityquake","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Rupture","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Sister Hetai","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Tyrn","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "World Devourer","Lightning Headband")
-	CadastrarCriaturaComDrop(db, "Bulltaur Forgepriest","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Cursed Prospector","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Elder Wyrm","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "High Voltage Elemental","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Raubritter Chastener","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Warlock","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Anomaly","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Court Warlock","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "King Zelos","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Mad Mage","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Omrafir","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Outburst","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Overseer Osverger","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Phosphorus","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Prince Drazzak","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Realityquake","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Tyrn","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Zarabustor","Lightning Robe")
-	CadastrarCriaturaComDrop(db, "Nibblemaw","Lime Tart")
-	CadastrarCriaturaComDrop(db, "Sugar Daddy","Lime Tart")
-	CadastrarCriaturaComDrop(db, "Liodile","Liodile Fang")
-	CadastrarCriaturaComDrop(db, "Usurper Archer","Lion Cloak Patch")
-	CadastrarCriaturaComDrop(db, "Usurper Commander","Lion Cloak Patch")
-	CadastrarCriaturaComDrop(db, "Usurper Knight","Lion Cloak Patch")
-	CadastrarCriaturaComDrop(db, "Usurper Warlock","Lion Cloak Patch")
-	CadastrarCriaturaComDrop(db, "Usurper Archer","Lion Crest")
-	CadastrarCriaturaComDrop(db, "Usurper Commander","Lion Crest")
-	CadastrarCriaturaComDrop(db, "Usurper Knight","Lion Crest")
-	CadastrarCriaturaComDrop(db, "Usurper Warlock","Lion Crest")
-	CadastrarCriaturaComDrop(db, "Lizard Executioner","Lizard Tail")
-	CadastrarCriaturaComDrop(db, "Lizard Henchman","Lizard Tail")
-	CadastrarCriaturaComDrop(db, "Lizard Magician","Lizard Tail")
-	CadastrarCriaturaComDrop(db, "Lizard Swordmaster","Lizard Tail")
-	CadastrarCriaturaComDrop(db, "Lizard Commander","Lizard Tail")
-	CadastrarCriaturaComDrop(db, "Devoted Radiant Zealot","Loose Prayer Beads")
-	CadastrarCriaturaComDrop(db, "Radiant Zealot","Loose Prayer Beads")
-	CadastrarCriaturaComDrop(db, "Lost Basher","Lost Basher's Spike")
-	CadastrarCriaturaComDrop(db, "Lost Thrower","Lost Bracers")
-	CadastrarCriaturaComDrop(db, "Draken Spellweaver","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "Raging Mage","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "Warlock","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "Ancient Spawn of Morgathla","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "Lloy","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "Mad Mage","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "Ravenous Hunger","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "Reflection of a Mage","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "The Baron from Below","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "The Blazing Time Guardian","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "The Count of the Core","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "The Duke of the Depths","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "The Freezing Time Guardian","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "The Sandking","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "The Time Guardian","Luminous Orb")
-	CadastrarCriaturaComDrop(db, "Brimstone Bug","Lump of Earth")
-	CadastrarCriaturaComDrop(db, "Clay Guardian","Lump of Earth")
-	CadastrarCriaturaComDrop(db, "Drillworm","Lump of Earth")
-	CadastrarCriaturaComDrop(db, "Earth Elemental","Lump of Earth")
-	CadastrarCriaturaComDrop(db, "Massive Earth Elemental","Lump of Earth")
-	CadastrarCriaturaComDrop(db, "Muddy Earth Elemental","Lump of Earth")
-	CadastrarCriaturaComDrop(db, "Earth Overlord","Lump of Earth")
-	CadastrarCriaturaComDrop(db, "Sulphur Scuttler","Lump of Earth")
-	CadastrarCriaturaComDrop(db, "The Shatterer","Lump of Earth")
-	CadastrarCriaturaComDrop(db, "Mad Froth","Lost Thrower")
-	CadastrarCriaturaComDrop(db, "Burning Gladiator","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Crazed Summer Vanguard","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Dragon Lord Hatchling","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Feral Sphinx","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Hellflayer","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Hellhound","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Honey Elemental","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Infernal Demon","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Infernalist","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Lava Golem","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Magma Crawler","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Manticore","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Massive Fire Elemental","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Orc Warlord","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Pirat Bombardier","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Sphinx","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Sulphider","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Wandering Pillar","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Bibby Bloodbath","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Count Vlarkorth","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Sister Hetai","Magma Boots")
-	CadastrarCriaturaComDrop(db, "The Souldespoler","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Warlord Ruzad","Magma Boots")
-	CadastrarCriaturaComDrop(db, "Lava Golem","Magma Clump")
-	CadastrarCriaturaComDrop(db, "Magma Crawler","Magma Clump")
-	CadastrarCriaturaComDrop(db, "Vulcongra","Magma Clump")
-	CadastrarCriaturaComDrop(db, "Walking Pillar","Magma Clump")
-	CadastrarCriaturaComDrop(db, "Wandering Pillar","Magma Clump")
-	CadastrarCriaturaComDrop(db, "Weeper","Magma Clump")
-	CadastrarCriaturaComDrop(db, "Afflicted Strider","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Burning Book","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Cinder Wyrmling","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Crape Man","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Dawnfire Asura","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Diabolic Imp","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Gazer Spectre","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Girtablilu Warrior","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Gorerilla","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Guardian of Tales","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Hellfire Fight","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Hellhound","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Insane Siren","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Lava Golem","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Manticore","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Percht","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Sabretooth","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Shaburak Lord","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Shaburak Prince","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Stalking Stals","Magma Coat")
-	CadastrarCriaturaComDrop(db, "True Dawnfire Asura","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Vulcongra","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Wandering Pillar","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Weeper","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Court Warlock","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Fire Overlord","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Furyosa","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Gaz'Haragoth","Magma Coat")
-	CadastrarCriaturaComDrop(db, "King Zelos","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Mazoran","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Morgaroth","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Scarlett Etzel","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Sister Hetai","Magma Coat")
-	CadastrarCriaturaComDrop(db, "The Baron from Below","Magma Coat")
-	CadastrarCriaturaComDrop(db, "The Blazing Rose","Magma Coat")
-	CadastrarCriaturaComDrop(db, "The Count of the Core","Magma Coat")
-	CadastrarCriaturaComDrop(db, "The Flaming Orchid","Magma Coat")
-	CadastrarCriaturaComDrop(db, "The Imperor","Magma Coat")
-	CadastrarCriaturaComDrop(db, "The Sandking","Magma Coat")
-	CadastrarCriaturaComDrop(db, "The Time Guardian","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Urmahlullu the Weakened","Magma Coat")
-	CadastrarCriaturaComDrop(db, "Burning Book","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Cinder Wyrmling","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Diabolic Imp","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Efreet","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Feral Sphinx","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Hellhound","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Insane Siren","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Manticore","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Marid","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Percht","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Raubritter Chastener","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Sphinx","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Usurper Warlock","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Werephanter","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Clavius","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Court Warlock","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Essence of Malice","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Fahim The Wise","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Merikh the Slaughterer","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Overseer Osverger","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Scarlett Etzel","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Sir Baeloc","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Urmahlullu the Weakened","Magma Monocle")
-	CadastrarCriaturaComDrop(db, "Makara","Makara Fin")
-	CadastrarCriaturaComDrop(db, "Makara","Makara Tongue")
-	CadastrarCriaturaComDrop(db, "Mammoth","Mammoth Tusk")
-	CadastrarCriaturaComDrop(db, "The Bloodtusk","Mammoth Tusk")
-	CadastrarCriaturaComDrop(db, "Chakoya Toolshaper","Mammoth Whopper")
-	CadastrarCriaturaComDrop(db, "Chakoya Tribewarden","Mammoth Whopper")
-	CadastrarCriaturaComDrop(db, "Crypt Warrior","Mammoth Whopper")
-	CadastrarCriaturaComDrop(db, "Mammoth","Mammoth Whopper")
-	CadastrarCriaturaComDrop(db, "Memory of a Mammoth","Mammoth Whopper")
-	CadastrarCriaturaComDrop(db, "Skeleton Elite Warrior","Mammoth Whopper")
-	CadastrarCriaturaComDrop(db, "Ocyakao","Mammoth Whopper")
-	CadastrarCriaturaComDrop(db, "Manticore","Manticore Ear")
-	CadastrarCriaturaComDrop(db, "Enusat the Onyx Wing","Manticore Ear")
-	CadastrarCriaturaComDrop(db, "Manticore","Manticore Tail")
-	CadastrarCriaturaComDrop(db, "Enusat the Onyx Wing","Manticore Tail")
-	CadastrarCriaturaComDrop(db, "Mantosaurus","Mantosaurus Jaw")
-	CadastrarCriaturaComDrop(db, "Mega Dragon","Mega Dragon Heart")
-	CadastrarCriaturaComDrop(db, "Afflicted Strider","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Betrayed Wraith","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Eyeless Devourer","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Foam Stalker","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Glooth Brigand","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Infernal Demon","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Mean Lost Soul","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Mutated Bat","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Raubritter Skirmisher","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Retching Horror","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Rotten Golem","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Serpent Spawn","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Streaked Devourer","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Venerable Foam Stalker","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Amenef the Burning","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Blight Mariner","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Bruise Payne","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Ghulosh","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Madareth","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Man in the Cave","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Michael the Stalwart","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Plagirath","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "The Noxious Spawn","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Unaz the Mean","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Utua Stone Sting","Mercenary Sword")
-	CadastrarCriaturaComDrop(db, "Mercurial Menace","Mercurial Wing")
-	CadastrarCriaturaComDrop(db, "Brachiodemon","Metal Bat")
-	CadastrarCriaturaComDrop(db, "Eyeless Devourer","Metal Bat")
-	CadastrarCriaturaComDrop(db, "Metal Gargoyle","Metal Bat")
-	CadastrarCriaturaComDrop(db, "Rustheap Golem","Metal Bat")
-	CadastrarCriaturaComDrop(db, "The Unarmored Voidborn","Metal Bat")
-	CadastrarCriaturaComDrop(db, "Metal Gargoyle","Metal jaw")
-	CadastrarCriaturaComDrop(db, "Bellicose Orger","Metal Spats")
-	CadastrarCriaturaComDrop(db, "Control Tower","Metal Spats")
-	CadastrarCriaturaComDrop(db, "Glooth Battery","Metal Spats")
-	CadastrarCriaturaComDrop(db, "Gore Horn","Metal Spats")
-	CadastrarCriaturaComDrop(db, "Lavafungus","Metal Spats")
-	CadastrarCriaturaComDrop(db, "Metal Gargoyle","Metal Spats")
-	CadastrarCriaturaComDrop(db, "Ogre Ruffian","Metal Spats")
-	CadastrarCriaturaComDrop(db, "Sabretooth","Metal Spats")
-	CadastrarCriaturaComDrop(db, "Walker","Metal Spats")
-	CadastrarCriaturaComDrop(db, "Sister Hetai","Metal Spats")
-	CadastrarCriaturaComDrop(db, "Minotaur Amazon","Mino Lance")
-	CadastrarCriaturaComDrop(db, "Minotaur Cult Follower","Mino Lance")
-	CadastrarCriaturaComDrop(db, "Bulltaur Brute","Mino Shield")
-	CadastrarCriaturaComDrop(db, "Minotaur Amazon","Mino Shield")
-	CadastrarCriaturaComDrop(db, "Minotaur Cult Follower","Mino Shield")
-	CadastrarCriaturaComDrop(db, "Minotaur Hunter","Mino Shield")
-	CadastrarCriaturaComDrop(db, "Thanatursus","Mino Shield")
-	CadastrarCriaturaComDrop(db, "Usurper Archer","Mino Shield")
-	CadastrarCriaturaComDrop(db, "The False God","Mino Shield")
-	CadastrarCriaturaComDrop(db, "Mega Dragon","Molten Dragon Essence")
-	CadastrarCriaturaComDrop(db, "Moonspawn Blightspitter","Moonspawn Headpiece")
-	CadastrarCriaturaComDrop(db, "Moonspawn Oozecrown","Moonspawn Tentacle")
-	CadastrarCriaturaComDrop(db, "Mould Phantom","Mould Heart")
-	CadastrarCriaturaComDrop(db, "Mould Phantom","Mould Heart")
-	CadastrarCriaturaComDrop(db, "Mould Phantom","Mould Robe")
-	CadastrarCriaturaComDrop(db, "Pirat Bombardier","Mouldy Powder")
-	CadastrarCriaturaComDrop(db, "Pirat Mate","Mouldy Powder")
-	CadastrarCriaturaComDrop(db, "Brinebrute Inferniarch","Mummified Demon Finger")
-	CadastrarCriaturaComDrop(db, "Broodrider Inferniarch","Mummified Demon Finger")
-	CadastrarCriaturaComDrop(db, "Gorger Inferniarch","Mummified Demon Finger")
-	CadastrarCriaturaComDrop(db, "Hellhunter Inferniarch","Mummified Demon Finger")
-	CadastrarCriaturaComDrop(db, "Sineater Inferniarch","Mummified Demon Finger")
-	CadastrarCriaturaComDrop(db, "Spellreaper Inferniarch","Mummified Demon Finger")
-	CadastrarCriaturaComDrop(db, "Mutated Bat","Mutated Bat Ear")
-	CadastrarCriaturaComDrop(db, "Bruise Payne","Mutated Bat Ear")
-	CadastrarCriaturaComDrop(db, "Mutated Human","Mutated Flesh")
-	CadastrarCriaturaComDrop(db, "Mutated Rat","Mutated Rat Tail")
-	CadastrarCriaturaComDrop(db, "Esmeralda","Mutated Rat Tail")
-	CadastrarCriaturaComDrop(db, "Naga Archer","Naga Archer Scales")
-	CadastrarCriaturaComDrop(db, "Naga Archer","Naga Armring")
-	CadastrarCriaturaComDrop(db, "Naga Warrior","Naga Armring")
-	CadastrarCriaturaComDrop(db, "Naga Archer","Naga Earring")
-	CadastrarCriaturaComDrop(db, "Naga Warrior","Naga Earring")
-	CadastrarCriaturaComDrop(db, "Naga Warrior","Naga Warrior Scales")
-	CadastrarCriaturaComDrop(db, "Creepy Crawler","Necromantic Core")
-	CadastrarCriaturaComDrop(db, "Crypt Fiend","Necromantic Core")
-	CadastrarCriaturaComDrop(db, "Crypt Mage","Necromantic Core")
-	CadastrarCriaturaComDrop(db, "Cyclursus","Necromantic Core")
-	CadastrarCriaturaComDrop(db, "Roaming Dread","Necromantic Core")
-	CadastrarCriaturaComDrop(db, "Walking Dread","Necromantic Core")
-	CadastrarCriaturaComDrop(db, "Rustheap Golem","Necromantic Rust")
-	CadastrarCriaturaComDrop(db, "The False God","Necromantic Rust")
-	CadastrarCriaturaComDrop(db, "Night Harpy","Night Harpy Feathers")
-	CadastrarCriaturaComDrop(db, "Nighthunter","Nighthunter Wing")
-	CadastrarCriaturaComDrop(db, "Dragolisk","Nimmersatt's Seal")
-	CadastrarCriaturaComDrop(db, "Mega Dragon","Nimmersatt's Seal")
-	CadastrarCriaturaComDrop(db, "Wardragon","Nimmersatt's Seal")
-	CadastrarCriaturaComDrop(db, "Brain Squid","Odd Organ")
-	CadastrarCriaturaComDrop(db, "Dread Intruder","Odd Organ")
-	CadastrarCriaturaComDrop(db, "Essence of Malice","Odd Organ")
-	CadastrarCriaturaComDrop(db, "Rupture","Odd Organ")
-	CadastrarCriaturaComDrop(db, "The Souldespoiler","Odd Organ")
-	CadastrarCriaturaComDrop(db, "Animated Ogre Brute","Ogre Ear Stud")
-	CadastrarCriaturaComDrop(db, "Animated Ogre Savage","Ogre Ear Stud")
-	CadastrarCriaturaComDrop(db, "Animated Ogre Shaman","Ogre Ear Stud")
-	CadastrarCriaturaComDrop(db, "Ogre Brute","Ogre Ear Stud")
-	CadastrarCriaturaComDrop(db, "Ogre Rowdy","Ogre Ear Stud")
-	CadastrarCriaturaComDrop(db, "Ogre Ruffian","Ogre Ear Stud")
-	CadastrarCriaturaComDrop(db, "Ogre Sage","Ogre Ear Stud")
-	CadastrarCriaturaComDrop(db, "Ogre Savage","Ogre Ear Stud")
-	CadastrarCriaturaComDrop(db, "Ogre Shaman","Ogre Ear Stud")
-	CadastrarCriaturaComDrop(db, "Venerable Girtablilu","Old Girtablilu Carapace")
-	CadastrarCriaturaComDrop(db, "Orc Cult Fanatic","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Orc Cult Inquisitor","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Orc Cult Minion","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Orc Cultist","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Orc Marauder","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Orc Rider","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Orc Warlord","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Orclops Bloodbreaker","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Orclops Doomhauler","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Orclops Ravager","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Rorc","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Bibby Bloodbath","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Cublarc the Phunderer","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Vladrukh","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Warlord Ruzad","Orchish Axe")
-	CadastrarCriaturaComDrop(db, "Orc Berserker","Orcish Gear")
-	CadastrarCriaturaComDrop(db, "Orc Cult Inquisitor","Orcish Gear")
-	CadastrarCriaturaComDrop(db, "Orclops Bloodbreaker","Orcish Toothbrush")
-	CadastrarCriaturaComDrop(db, "Capricious Phantom","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Cave Chimera","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Deepling Guard","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Deepling Master Librarian","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Deepling Spellsinger","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Deepling Tyrant","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Eyeless Devourer","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Feral Werecrocodile","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Freakish Lost Soul","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Gorerilla","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Harpy","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Mitmah Scout","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Mould Phantom","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Naga Archer","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Streaked Devourer","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Usurper Archer","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Adlerauge","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Ayana The Crimson Curse","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Katex Blood Tongue","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Melting Frozen Horror","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Vok the Freakish","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Yirkas Blue Scales","Ornate Crossbow")
-	CadastrarCriaturaComDrop(db, "Hellflayer","Pair of Hellflayer Horns")
-	CadastrarCriaturaComDrop(db, "Bluebleak","Paper Boat")
-	CadastrarCriaturaComDrop(db, "Shell Drake","Paper Plane")
-	CadastrarCriaturaComDrop(db, "Plaguesmith","Piece of Draconian Steel")
-	CadastrarCriaturaComDrop(db, "Earl Osam","Piece of Draconian Steel")
-	CadastrarCriaturaComDrop(db, "Maior Domus","Piece of Draconian Steel")
-	CadastrarCriaturaComDrop(db, "Soul of Dragonking Zyrtarch","Piece of Draconian Steel")
-	CadastrarCriaturaComDrop(db, "The False God","Piece of Draconian Steel")
-	CadastrarCriaturaComDrop(db, "Gloom Maw","Piece of Frozen Night")
-	CadastrarCriaturaComDrop(db, "Norceferatu Nightweaver","Piece of Frozen Night")
-	CadastrarCriaturaComDrop(db, "Plaguesmith","Piece of Hell Steel")
-	CadastrarCriaturaComDrop(db, "Duke Krule","Piece of Hell Steel")
-	CadastrarCriaturaComDrop(db, "Earl Osam","Piece of Hell Steel")
-	CadastrarCriaturaComDrop(db, "Lloyd","Piece of Hell Steel")
-	CadastrarCriaturaComDrop(db, "Lord Azaram","Piece of Hell Steel")
-	CadastrarCriaturaComDrop(db, "Maior Domus","Piece of Hell Steel")
-	CadastrarCriaturaComDrop(db, "Sir Baeloc","Piece of Hell Steel")
-	CadastrarCriaturaComDrop(db, "The False God","Piece of Hell Steel")
-	CadastrarCriaturaComDrop(db, "The Source of Corruption","Piece of Hell Steel")
-	CadastrarCriaturaComDrop(db, "Minotaur Guard","Piece of Warrior Armor")
-	CadastrarCriaturaComDrop(db, "Minotaur Invader","Piece of Warrior Armor")
-	CadastrarCriaturaComDrop(db, "The Horned Fox","Piece of Warrior Armor")
-	CadastrarCriaturaComDrop(db, "Pirat Bombardier","Pirat's Tail")
-	CadastrarCriaturaComDrop(db, "Pirat Cutthroat","Pirat's Tail")
-	CadastrarCriaturaComDrop(db, "Pirat Mate","Pirat's Tail")
-	CadastrarCriaturaComDrop(db, "Pirat Scoundrel","Pirat's Tail")
-	CadastrarCriaturaComDrop(db, "Pirat Bombardier","Pirate Coin")
-	CadastrarCriaturaComDrop(db, "Pirat Cutthroat","Pirate Coin")
-	CadastrarCriaturaComDrop(db, "Pirat Scoundrel","Pirate Coin")
-	CadastrarCriaturaComDrop(db, "Ratmiral Blackwhiskers","Pirate Coin")
-	CadastrarCriaturaComDrop(db, "Tentugly's Head","Pirate Coin")
-	CadastrarCriaturaComDrop(db, "Breach Brood","Plasma Pearls")
-	CadastrarCriaturaComDrop(db, "Dreadful Disruptor","Plasma Pearls")
-	CadastrarCriaturaComDrop(db, "Instable Breach Brood","Plasma Pearls")
-	CadastrarCriaturaComDrop(db, "Reality Reaver","Plasma Pearls")
-	CadastrarCriaturaComDrop(db, "Stabilizing Reality Reaver","Plasma Pearls")
-	CadastrarCriaturaComDrop(db, "Burster","Plasma Pearls")
-	CadastrarCriaturaComDrop(db, "Essence of Malice","Plasma Pearls")
-	CadastrarCriaturaComDrop(db, "Rupture","Plasma Pearls")
-	CadastrarCriaturaComDrop(db, "The Souldespoiler","Plasma Pearls")
-	CadastrarCriaturaComDrop(db, "Dreadful Disruptor","Plasmatic Lightning")
-	CadastrarCriaturaComDrop(db, "Reality Reaver","Plasmatic Lightning")
-	CadastrarCriaturaComDrop(db, "Eradicator","Plasmatic Lightning")
-	CadastrarCriaturaComDrop(db, "The Scourge of Oblivion","Plasmatic Lightning")
-	CadastrarCriaturaComDrop(db, "Bog Raider","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Dragon","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Ghastly Dragon","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Giant Spider","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Orc Cult Fanatic","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Orc Leader","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Orc Warlord","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Renegade Orc","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Sea Serpent","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Undead Elite Gladiator","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Undead Gladeator","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Bibby Bloodbath","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Countess Sorrow","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Demodras","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Grand Mother Foulscale","Plate Legs")
-	CadastrarCriaturaComDrop(db, "The Snapper","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Warlord Ruzad","Plate Legs")
-	CadastrarCriaturaComDrop(db, "Blood Beast", "Poisoned Fang")
-	CadastrarCriaturaComDrop(db, "Retching Horror", "Pool of Chitinous Gloe")
-	CadastrarCriaturaComDrop(db, "Norceferatu Heartless","Pot of Orcish Warpaint")
-	CadastrarCriaturaComDrop(db, "Hulking Prehemoth", "Prehemoth Claw")
-	CadastrarCriaturaComDrop(db, "Hulking Prehemoth", "Prehemoth Horns")
-	CadastrarCriaturaComDrop(db, "Hawk Hopper", "Pressed Flower")
-	CadastrarCriaturaComDrop(db, "Cliff Strider","Pulverized Ore")
-	CadastrarCriaturaComDrop(db, "Drillworm","Pulverized Ore")
-	CadastrarCriaturaComDrop(db, "Orewalker","Pulverized Ore")
-	CadastrarCriaturaComDrop(db, "True Feverbloom Asura","Pyrophyte Seed Pod")
-	CadastrarCriaturaComDrop(db, "Quara Predator","Quara Bone")
-	CadastrarCriaturaComDrop(db, "Quara Predator Scout","Quara Bone")
-	CadastrarCriaturaComDrop(db, "Renegade Quara Predator","Quara Bone")
-	CadastrarCriaturaComDrop(db, "Quara Hydromancer","Quara Eye")
-	CadastrarCriaturaComDrop(db, "Quara Hydromancer Scout","Quara Eye")
-	CadastrarCriaturaComDrop(db, "Quara Plunderer","Quara Eye")
-	CadastrarCriaturaComDrop(db, "Renegade Quara Hydromancer","Quara Eye")
-	CadastrarCriaturaComDrop(db, "Quara Pincher","Quara Pincers")
-	CadastrarCriaturaComDrop(db, "Quara Pincher Scout","Quara Pincers")
-	CadastrarCriaturaComDrop(db, "Quara Raider","Quara Pincers")
-	CadastrarCriaturaComDrop(db, "Renegade Quara Pincher","Quara Pincers")
-	CadastrarCriaturaComDrop(db, "Quara Constrictor","Quara Tentacle")
-	CadastrarCriaturaComDrop(db, "Quara Constrictor Scout","Quara Tentacle")
-	CadastrarCriaturaComDrop(db, "Renegade Quara Constrictor","Quara Tentacle")
-	CadastrarCriaturaComDrop(db, "Corym Charlatan","Ratana")
-	CadastrarCriaturaComDrop(db, "Corym Skirmisher","Ratana")
-	CadastrarCriaturaComDrop(db, "Corym Vanguard","Ratana")
-	CadastrarCriaturaComDrop(db, "Werehyaena","Ratana")
-	CadastrarCriaturaComDrop(db, "Herald of Fire","Ratana")
-	CadastrarCriaturaComDrop(db, "Animated Clomp","Raw Meat")
-	CadastrarCriaturaComDrop(db, "Clomp","Raw Meat")
-	CadastrarCriaturaComDrop(db, "Museum Stone Rhino","Raw Meat")
-	CadastrarCriaturaComDrop(db, "Stone Rhino","Raw Meat")
-	CadastrarCriaturaComDrop(db, "Adult Goanna","Red Goanna Scale")
-	CadastrarCriaturaComDrop(db, "Sun-marked Goanna","Red Goanna Scale")
-	CadastrarCriaturaComDrop(db, "Lost Basher","Red Hair Dye")
-	CadastrarCriaturaComDrop(db, "Lost Exile","Red Hair Dye")
-	CadastrarCriaturaComDrop(db, "Lost Husher","Red Hair Dye")
-	CadastrarCriaturaComDrop(db, "Lost Thrower","Red Hair Dye")
-	CadastrarCriaturaComDrop(db, "Eyeless Devourer","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Naga Warrior","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Priestess of the Wild Sun","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Quara Predator","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Renegade Quara Predator","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Sopping Corpus","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Spectre","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Streaked Devourer","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Undead Elite Gladiator","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Undertaker","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Werebear","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Werewolf","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Feroxa","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Madareth","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Shadowpelt","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Thul","Relic Sword")
-	CadastrarCriaturaComDrop(db, "Rootthing Amber Shaper","Resin Parasite")
-	CadastrarCriaturaComDrop(db, "Rootthing Bug Tracker","Resin Parasite")
-	CadastrarCriaturaComDrop(db, "Rootthing Nutshell","Resin Parasite")
-	CadastrarCriaturaComDrop(db, "Quara Looter","Resinous Fish Fin")
-	CadastrarCriaturaComDrop(db, "Quara Plunderer","Resinous Fish Fin")
-	CadastrarCriaturaComDrop(db, "Quara Raider","Resinous Fish Fin")
-	CadastrarCriaturaComDrop(db, "Rhindeer", "Rhindeer Antlers")
-	CadastrarCriaturaComDrop(db, "Cunning Werepanther", "Ripper Lance")
-	CadastrarCriaturaComDrop(db, "Dworc Fleshhunter", "Ripper Lance")
-	CadastrarCriaturaComDrop(db, "Dworc Shadowstalker", "Ripper Lance")
-	CadastrarCriaturaComDrop(db, "Insectoid Scout", "Ripper Lance")
-	CadastrarCriaturaComDrop(db, "Sopping Carcass", "Ripper Lance")
-	CadastrarCriaturaComDrop(db, "Werephanter", "Ripper Lance")
-	CadastrarCriaturaComDrop(db, "Fleshslicer", "Ripper Lance")
-	CadastrarCriaturaComDrop(db, "Mindmasher", "Ripper Lance")
-	CadastrarCriaturaComDrop(db, "Rakesh Moonfang", "Ripper Lance")
-	CadastrarCriaturaComDrop(db, "Noxious Ripptor","Ripptor Claw")
-	CadastrarCriaturaComDrop(db, "Noxious Ripptor", "Ripptor Scales")
-	CadastrarCriaturaComDrop(db, "Varg", "Ritual Bone Knife")
-	CadastrarCriaturaComDrop(db, "Iks Ahpututu","Ritual Tooth")
-	CadastrarCriaturaComDrop(db, "Iks Aucar","Ritual Tooth")
-	CadastrarCriaturaComDrop(db, "Iks Chuka","Ritual Tooth")
-	CadastrarCriaturaComDrop(db, "Iks Pututu","Ritual Tooth")
-	CadastrarCriaturaComDrop(db, "Iks Yapunac","Ritual Tooth")
-	CadastrarCriaturaComDrop(db, "Ahau","Ritual Tooth")
-	CadastrarCriaturaComDrop(db, "Bony Sea Devil", "Rod")
-	CadastrarCriaturaComDrop(db, "Branchy Crawler", "Roots")
-	CadastrarCriaturaComDrop(db, "Iks Ahpututu","Rotten Feather")
-	CadastrarCriaturaComDrop(db, "Iks Aucar","Rotten Feather")
-	CadastrarCriaturaComDrop(db, "Iks Chuka","Rotten Feather")
-	CadastrarCriaturaComDrop(db, "Iks Pututu","Rotten Feather")
-	CadastrarCriaturaComDrop(db, "Ahau","Rotten Feather")
-	CadastrarCriaturaComDrop(db, "Rotten Piece of Cloth","Ghoul")
-	CadastrarCriaturaComDrop(db, "Bloated Man-Maggot","Rotten Roots")
-	CadastrarCriaturaComDrop(db, "Meandering Mushroom","Rotten Roots")
-	CadastrarCriaturaComDrop(db, "Mycobiontic Beetle","Rotten Roots")
-	CadastrarCriaturaComDrop(db, "Oozing Carcass","Rotten Roots")
-	CadastrarCriaturaComDrop(db, "Oozing Corpus","Rotten Roots")
-	CadastrarCriaturaComDrop(db, "Rotten Man-Maggot","Rotten Roots")
-	CadastrarCriaturaComDrop(db, "Sopping Carcass","Rotten Roots")
-	CadastrarCriaturaComDrop(db, "Sopping Corpus","Rotten Roots")
-	CadastrarCriaturaComDrop(db, "Mycobiontic Beetle","Rotten Vermin Ichor")
-	CadastrarCriaturaComDrop(db, "Darlight Matter","Rubber Cap")
-	CadastrarCriaturaComDrop(db, "Glooth Bandit","Rubber Cap")
-	CadastrarCriaturaComDrop(db, "Glooth Brigand","Rubber Cap")
-	CadastrarCriaturaComDrop(db, "Glooth Golem","Rubber Cap")
-	CadastrarCriaturaComDrop(db, "Rotten Golem","Rubber Cap")
-	CadastrarCriaturaComDrop(db, "Turbulent Elemental","Rubber Cap")
-	CadastrarCriaturaComDrop(db, "Glooth Fairy","Rubber Cap")
-	CadastrarCriaturaComDrop(db, "Sabretooth","Sabretooth Fur")
-	CadastrarCriaturaComDrop(db, "Sandcrawler","Sandcrawler Shell")
-	CadastrarCriaturaComDrop(db, "Draken Abomination","Scale of Corruption")
-	CadastrarCriaturaComDrop(db, "Lizard Chosen","Scale of Corruption")
-	CadastrarCriaturaComDrop(db, "Ancient Scarab","Scarab Pincers")
-	CadastrarCriaturaComDrop(db, "Ancient Spawn of Morgathla","Scarab Pincers")
-	CadastrarCriaturaComDrop(db, "Fleshcrawler","Scarab Pincers")
-	CadastrarCriaturaComDrop(db, "Burning Book","Scimitar")
-	CadastrarCriaturaComDrop(db, "Cobra Assassin","Scimitar")
-	CadastrarCriaturaComDrop(db, "Crazed Summer Vanguard","Scimitar")
-	CadastrarCriaturaComDrop(db, "Diabolic Imp","Scimitar")
-	CadastrarCriaturaComDrop(db, "Fire Devil","Scimitar")
-	CadastrarCriaturaComDrop(db, "Honour Guard","Scimitar")
-	CadastrarCriaturaComDrop(db, "Naga Warrior","Scimitar")
-	CadastrarCriaturaComDrop(db, "Orc Leader","Scimitar")
-	CadastrarCriaturaComDrop(db, "Orc Warlord","Scimitar")
-	CadastrarCriaturaComDrop(db, "Renegade Orc","Scimitar")
-	CadastrarCriaturaComDrop(db, "Salamander","Scimitar")
-	CadastrarCriaturaComDrop(db, "Undead Elite Gladiator","Scimitar")
-	CadastrarCriaturaComDrop(db, "Undead Gladiator","Scimitar")
-	CadastrarCriaturaComDrop(db, "Ushuriel","Scimitar")
-	CadastrarCriaturaComDrop(db, "Warlord Ruzad","Scimitar")
-	CadastrarCriaturaComDrop(db, "Venerable Girtablilu","Scorpion Charm")
-	CadastrarCriaturaComDrop(db, "Girtablilu Warrior","Scorpion Charm")
-	CadastrarCriaturaComDrop(db, "Hero","Scroll of Heroic Deeds")
-	CadastrarCriaturaComDrop(db, "Renegade Knight","Scroll of Heroic Deeds")
-	CadastrarCriaturaComDrop(db, "Vile Grandmaster","Scroll of Heroic Deeds")
-	CadastrarCriaturaComDrop(db, "Nightmare","Scythe Leg")
-	CadastrarCriaturaComDrop(db, "Nightmare Scion","Scythe Leg")
-	CadastrarCriaturaComDrop(db, "Tormentor","Scythe Leg")
-	CadastrarCriaturaComDrop(db, "Lion Hydra","Sealing Wax")
-	CadastrarCriaturaComDrop(db, "Gnarlhound","Shaggy Tail")
-	CadastrarCriaturaComDrop(db, "Orc Marauder","Shaggy Tail")
-	CadastrarCriaturaComDrop(db, "Cublarc the Plunder","Shaggy Tail")
-	CadastrarCriaturaComDrop(db, "Fleabringer","Shaggy Tail")
-	CadastrarCriaturaComDrop(db, "Animated Ogre Shaman","Shamanic Talisman")
-	CadastrarCriaturaComDrop(db, "Ogre Sage","Shamanic Talisman")
-	CadastrarCriaturaComDrop(db, "Ogre Shaman","Shamanic Talisman")
-	CadastrarCriaturaComDrop(db, "Pirat Cutthroat","Shark Fins")
-	CadastrarCriaturaComDrop(db, "Pirat Made","Shark Fins")
-	CadastrarCriaturaComDrop(db, "Arctic Faun","Shimmering Beetles")
-	CadastrarCriaturaComDrop(db, "Boogy","Shimmering Beetles")
-	CadastrarCriaturaComDrop(db, "Dark Faun","Shimmering Beetles")
-	CadastrarCriaturaComDrop(db, "Faun","Shimmering Beetles")
-	CadastrarCriaturaComDrop(db, "Pooka","Shimmering Beetles")
-	CadastrarCriaturaComDrop(db, "Twisted Pooka","Shimmering Beetles")
-	CadastrarCriaturaComDrop(db, "Raxias","Shimmering Beetles")
-	CadastrarCriaturaComDrop(db, "Cliff Strider","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Crystal Wolf","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Enslaved Dwarf","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Eternal Guardian","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Gargoyle","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Ghastly Dragon","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Ironblight","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Metal Gargoyle","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Museum Stone Golem","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Orewalker","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Spectre","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Stone Golem","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Earth Overlord","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Ethershreck","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Fahim The Wise","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Grorlma","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Merikh the Slaughterer","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Stonecracker","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "The Shatterer","Shiny Stone")
-	CadastrarCriaturaComDrop(db, "Silencer","Silencer Resonating Chamber")
-	CadastrarCriaturaComDrop(db, "Biting Book","Silken Bookmark")
-	CadastrarCriaturaComDrop(db, "Burning Book","Silken Bookmark")
-	CadastrarCriaturaComDrop(db, "Cursed Book","Silken Bookmark")
-	CadastrarCriaturaComDrop(db, "Energetic Book","Silken Bookmark")
-	CadastrarCriaturaComDrop(db, "Icecold Book","Silken Bookmark")
-	CadastrarCriaturaComDrop(db, "Knowledge Elemental","Silken Bookmark")
-	CadastrarCriaturaComDrop(db, "Weretiger","Silver Moon Coin")
-	CadastrarCriaturaComDrop(db, "White Weretiger","Silver Moon Coin")
-	CadastrarCriaturaComDrop(db, "Tamru The Black","Silver Moon Coin")
-	CadastrarCriaturaComDrop(db, "Raubritter Chastener","Silver Poniard")
-	CadastrarCriaturaComDrop(db, "Raubritter Skirmisher","Silver Poniard")
-	CadastrarCriaturaComDrop(db, "Clavius","Silver Poniard")
-	CadastrarCriaturaComDrop(db, "Michael the Stalwart","Silver Poniard")
-	CadastrarCriaturaComDrop(db, "Overseer Osverger","Silver Poniard")
-	CadastrarCriaturaComDrop(db, "Sineater Inferniarch","Sineater Wing")
-	CadastrarCriaturaComDrop(db, "Putrid Mummy","Single Human Eye")
-	CadastrarCriaturaComDrop(db, "Animated Ogre Brute","Skull Fetish")
-	CadastrarCriaturaComDrop(db, "Animated Ogre Savage","Skull Fetish")
-	CadastrarCriaturaComDrop(db, "Animated Ogre Shaman","Skull Fetish")
-	CadastrarCriaturaComDrop(db, "Ogre Brute","Skull Fetish")
-	CadastrarCriaturaComDrop(db, "Ogre Rowdy","Skull Fetish")
-	CadastrarCriaturaComDrop(db, "Ogre Ruffian","Skull Fetish")
-	CadastrarCriaturaComDrop(db, "Ogre Sage","Skull Fetish")
-	CadastrarCriaturaComDrop(db, "Ogre Savage","Skull Fetish")
-	CadastrarCriaturaComDrop(db, "Ogre Shaman","Skull Fetish")
-	CadastrarCriaturaComDrop(db, "The Unarmored Voidborn","Skull Fetish")
-	CadastrarCriaturaComDrop(db, "Bony Sea Devil","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Frost Flower Asura","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Grim Reaper","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Haunted Dragon","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Midnight Asura","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Sopping Corpus","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "True Frost Flower Asura","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "True Midnight Asura","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Undead Dragon","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Winged Jaracal","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Annihilon","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Feroxa","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "The Moonlight Aster","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "The Scourge of Oblivion","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Zavarash","Skullcracker Armor")
-	CadastrarCriaturaComDrop(db, "Glooth Anemone","Slimy Leaf Tentacle")
-	CadastrarCriaturaComDrop(db, "Lisa","Slimy Leaf Tentacle")
-	CadastrarCriaturaComDrop(db, "Sliver","(Nenhuma Criatura Dropa)")
-	CadastrarCriaturaComDrop(db, "Bonelord","Small Flask of Eyedrops")
-	CadastrarCriaturaComDrop(db, "Elder Bonerlord","Small Flask of Eyedrops")
-	CadastrarCriaturaComDrop(db, "Gazer","Small Flask of Eyedrops")
-	CadastrarCriaturaComDrop(db, "Bonelord's Phylactery","Small Flask of Eyedrops")
-	CadastrarCriaturaComDrop(db, "The Evil Eye","Small Flask of Eyedrops")
-	CadastrarCriaturaComDrop(db, "The Gravedigger","Small Flask of Eyedrops")
-	CadastrarCriaturaComDrop(db, "Hero","Small Notebook")
-	CadastrarCriaturaComDrop(db, "Renegade Knight","Small Notebook")
-	CadastrarCriaturaComDrop(db, "Vile Grandmaster","Small Notebook")
-	CadastrarCriaturaComDrop(db, "Pirat Mate","Small Treasure Chest")
-	CadastrarCriaturaComDrop(db, "Ratmiral Blackwhiskers","Small Treasure Chest")
-	CadastrarCriaturaComDrop(db, "Tentugly's  Head","Small Treasure Chest")
-	CadastrarCriaturaComDrop(db, "Two-Headed Turtle","Small Tropical Fish")
-	CadastrarCriaturaComDrop(db, "Breach Brood","Spark Sphere")
-	CadastrarCriaturaComDrop(db, "Bruster","Spark Sphere")
-	CadastrarCriaturaComDrop(db, "Eradicator","Spark Sphere")
-	CadastrarCriaturaComDrop(db, "Melting Frozen Horror","Spark Sphere")
-	CadastrarCriaturaComDrop(db, "The Scourge of Oblivion","Spark Sphere")
-	CadastrarCriaturaComDrop(db, "The Souldespoiler","Spark Sphere")
-	CadastrarCriaturaComDrop(db, "Instable Sparkion","Sparkion Claw")
-	CadastrarCriaturaComDrop(db, "Sparkion","Sparkion Claw")
-	CadastrarCriaturaComDrop(db, "Instable Sparkion","Sparkion Legs")
-	CadastrarCriaturaComDrop(db, "Sparkion","Sparkion Legs")
-	CadastrarCriaturaComDrop(db, "Instable Sparkion","Sparkion Stings")
-	CadastrarCriaturaComDrop(db, "Sparkion","Sparkion Stings")
-	CadastrarCriaturaComDrop(db, "Instable Sparkion","Sparkion Tail")
-	CadastrarCriaturaComDrop(db, "Sparkion","Sparkion Tail")
-	CadastrarCriaturaComDrop(db, "Blood Priest","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Brachiodemon","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Bulltaur Forgepriest","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Carnivostrich","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Choking Fear","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Crypt Mage","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Dawnfire Asura","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Frost Flower Asura","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Hellflayer","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Infernalist","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Lava Golem","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Midnight Asura","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Nighthunter","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Quara Plunderer","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Serpent Spawn","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Soul-broken Harbinger","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Spellreaper Inferniarch","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "True Dawnfire Asura","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "True Frost Flower Asura","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "True Midnight Asura","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Ferumbras","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Ferumbras Mortal Shell","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Ghazbaran","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Gorzindel","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Hellgorak","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Horadron","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Mimar Haffar","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Raging Mage","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Reflection of a Mage","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Soul of Dragoking Zyrtarch","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "The Moonlight Aster","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "The Noxious Spawn","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Wrathful Archivist","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Yaga the Crone","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Yirkas Blue Scales","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Zarabustor","Spellbook of a Mind Control")
-	CadastrarCriaturaComDrop(db, "Deepling Master Librarian","Spellsinger's Seal")
-	CadastrarCriaturaComDrop(db, "Deepling Spellsinger","Spellsinger's Seal")
-	CadastrarCriaturaComDrop(db, "Brain Squid","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Bulltaur Alchemist","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Burning Gladiator","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Draken Spellweaver","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Energetic Book","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Energuardian of Tales","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Ghastly Dragon","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Haunted Dragon","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Juvenile Bashmu","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Knowledge Elemental","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Undead Dragon","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Arbaziloth (Hard)","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Dragon Hoard","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Ethershreck","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Hatebreeder","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Lady Tenebris","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Loyd","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "The Duke of the Depths","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Utua Stone Sting","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Wrathful Archivist","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Yirkas Blue Scales","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Zamulosh","Spellweaver's Robe")
-	CadastrarCriaturaComDrop(db, "Feral Sphinx","Sphinx Tiara")
-	CadastrarCriaturaComDrop(db, "Sphinx","Sphinx Tiara")
-	CadastrarCriaturaComDrop(db, "Norcferatu Nightweaver","Spiked Bracers")
-	CadastrarCriaturaComDrop(db, "Norcferatu Heartless","Spiked Gorget")
-	CadastrarCriaturaComDrop(db, "Eternal Guardian","Spiked Iron Ball")
-	CadastrarCriaturaComDrop(db, "Lizard Chosen","Spiked Iron Ball")
-	CadastrarCriaturaComDrop(db, "Lizard High Guardian","Spiked Iron Ball")
-	CadastrarCriaturaComDrop(db, "The Voice of Ruin","Spiked Iron Ball")
-	CadastrarCriaturaComDrop(db, "Corym Skirmisher","Spiky Club")
-	CadastrarCriaturaComDrop(db, "Corym Vanguard","Spiky Club")
-	CadastrarCriaturaComDrop(db, "Orger","Spiky Club")
-	CadastrarCriaturaComDrop(db, "Naga Warrior","Spiky Club")
-	CadastrarCriaturaComDrop(db, "Spitter","Spitter Nose")
-	CadastrarCriaturaComDrop(db, "Rotspit","Spitter Nose")
-	CadastrarCriaturaComDrop(db, "The Hungerer","Spitter Nose")
-	CadastrarCriaturaComDrop(db, "Bulltaur Forgepriest","Staff Piece")
-	CadastrarCriaturaComDrop(db, "Raubritter Chastener","Stag Parchment")
-	CadastrarCriaturaComDrop(db, "Raubritter Marksman","Stag Parchment")
-	CadastrarCriaturaComDrop(db, "Adlerauge","Stag Parchment")
-	CadastrarCriaturaComDrop(db, "Clavius","Stag Parchment")
-	CadastrarCriaturaComDrop(db, "Overseer Osverger","Stag Parchment")
-	CadastrarCriaturaComDrop(db, "Stalking Stalk","Stalking Seeds")
-	CadastrarCriaturaComDrop(db, "Stampor","Stampor Talons")
-	CadastrarCriaturaComDrop(db, "Tromphonyte","Stampor Talons")
-	CadastrarCriaturaComDrop(db, "Bluebeak","Star Ink")
-	CadastrarCriaturaComDrop(db, "Ink Splash", "Star Ink")
-	CadastrarCriaturaComDrop(db, "Gargoyle","Stone Wing")
-	CadastrarCriaturaComDrop(db, "Stonerefiner","Stonerefiner's Skull")
-	CadastrarCriaturaComDrop(db, "Albino Dragon","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Dragon Lord","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Frost Dragon","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Ice Golem","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Icecold Book","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Lavaworm","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Lich","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Quara Mantassin","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Renegade Quara Mantassin","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Serpent Spaw","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Vampire","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Walking Pillar","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Adlerauge","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Arbaziloth","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Arbaziloth (Hard)","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Blight Mariner","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Clavius","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Demondras","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Dragon Hoard","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Gravelord Oshuran","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Hirintror","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Michael the Stalwart","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Overseer Osverger","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Ushuriel","Strange Helmet")
-	CadastrarCriaturaComDrop(db, "Bulltaur Alchemist","Strange Substance")
-	CadastrarCriaturaComDrop(db, "Streaked Devourer","Streaked Devourer Eyes")
-	CadastrarCriaturaComDrop(db, "Streaked ","Streaked Devourer Legs")
-	CadastrarCriaturaComDrop(db, "Streaked Devourer","Streaked Devourer Maw")
-	CadastrarCriaturaComDrop(db, "Mutated Tiger","Striped Fur")
-	CadastrarCriaturaComDrop(db, "Tiger","Striped Fur")
-	CadastrarCriaturaComDrop(db, "White Tiger","Striped Fur")
-	CadastrarCriaturaComDrop(db, "Sulphider","Sulphider Shell")
-	CadastrarCriaturaComDrop(db, "Sulphider","Sulphur Powder")
-	CadastrarCriaturaComDrop(db, "Sulphur Spouter","Sulphur Powder")
-	CadastrarCriaturaComDrop(db, "Brimstone Bug","Sulphurous Stone")
-	CadastrarCriaturaComDrop(db, "Museum Stone Golem","Sulphurous Stone")
-	CadastrarCriaturaComDrop(db, "Orewalker","Sulphurous Stone")
-	CadastrarCriaturaComDrop(db, "Stone Golem","Sulphurous Stone")
-	CadastrarCriaturaComDrop(db, "Wandering Pillar","Sulphurous Stone")
-	CadastrarCriaturaComDrop(db, "Grorlam","Sulphurous Stone")
-	CadastrarCriaturaComDrop(db, "Sulphur Scuttler","Sulphurous Stone")
-	CadastrarCriaturaComDrop(db, "Leaf Golem","Swampling Club")
-	CadastrarCriaturaComDrop(db, "Minotaur Occultist","Swampling Club")
-	CadastrarCriaturaComDrop(db, "Swampling","Swampling Club")
-	CadastrarCriaturaComDrop(db, "Wilting Leaf Golem","Swampling Club")
-	CadastrarCriaturaComDrop(db, "Swarmer","Swarmer Antenna")
-	CadastrarCriaturaComDrop(db, "Draken Abomination","Tail of Corruption")
-	CadastrarCriaturaComDrop(db, "Radiant Warden","Tatty Robe")
-	CadastrarCriaturaComDrop(db, "Minotaur Cult Zealot","Taurus Mace")
-	CadastrarCriaturaComDrop(db, "Minotaur Mage","Taurus Mace")
-	CadastrarCriaturaComDrop(db, "Worm Priestess","Taurus Mace")
-	CadastrarCriaturaComDrop(db, "Cloak of Terror","Telescope Eye")
-	CadastrarCriaturaComDrop(db, "Armadile","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Choking Fear","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Cobra Vizier","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Cursed Book","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Dwarf Geomancer","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Enfeebled Silencer","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Exotic Cave Spider","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Foam Stalker","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Ghastly Dragon","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Glooth Bandit","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Glooth Brigand","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Hideous Fungus","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Hulking Carnisylvan","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Humongous Fungus","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Ink Blob","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Ink Splash","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Lost Basher","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Lost Berserk","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Lost Exile","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Lost Husher","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Mercurial Menance","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Moonspawn Blightspitter","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Ogre Sage","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Omnivora","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Oozing Corpus","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Pirat Bombardier","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Shrieking Cry-Stal","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Silencer","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Thanatursus","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Undertaker","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Venerable Foam Stalker","Terra Boots")
-	CadastrarCriaturaComDrop(db, "White Lion","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Blight Mariner","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Deathbine","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Neferi the Spy","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Ravenous Hunger","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Sister Hetai","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Terofar","Terra Boots")
-	CadastrarCriaturaComDrop(db, "Adult Goanna","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Ancient Scarab","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Bramble Wyrmling","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Cobra Vizier","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Cursed Book","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Draken Abomination","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Earworm","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Glooth Bandit","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Glooth Brigand","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Hulking Carnisylvan","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Ink Blob","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Ink Splash","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Lamassu","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Rootthing Nutshell","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Sun-marked Goanna","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Thanatursus","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Usurper Warlock","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Young Goanna","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Ancient Spawn of Morgathla","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Arthom the Hunter","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Clavius","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Court Warlock","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Drume","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Duke Krule","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Guard Captain Quaid","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Hide","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Kusuma","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Megasylvan Yselda","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Neferi the Spy","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Overseer Osverger","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Scarlett Etzel","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Sister Hetai","Terra Hod")
-	CadastrarCriaturaComDrop(db, "The Unarmored Voidborn","Terra Hod")
-	CadastrarCriaturaComDrop(db, "Askarak Lord","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Askarak Prince","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Banshee","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Blightwalker","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Bramble Wyrmling","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Choking Fear","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Cursed Book","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Exotic Cave Spider","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Feral Werecrocodile","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Glooth Bandit","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Glooth Brigand","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Hideous Fungus","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Humonogous Fungus","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Ink Blob","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Ink Splash","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Medusa","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Moonspawn Blightspitter","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Raubritter Marksman","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Rotten Golem","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Spiky Carnivor","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Alderauge","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Ancient Spawn of Morgathla","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Ayana The Crimson Curse","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Court Warlock","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Drume","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Earth Overlord","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Esmeralda","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Fleshcrawler","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Gorga","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Gorgo","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "King Zelos","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Megasylvan Yselda","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Plagirath","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Ravenous Hunger","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Scarlett Etzel","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "The Duke of the Depths","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "The Evil Eye","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "The Lord of the Lice","Terra Mantle")
-	CadastrarCriaturaComDrop(db, "Terramite","Terramite Legs")
-	CadastrarCriaturaComDrop(db, "Thornback Tortoise","Thorn")
-	CadastrarCriaturaComDrop(db, "Afflicted Strider","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Armadile","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Behemoth","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Enslaved Dwarf","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Execowtiioner","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Falcon Knight","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Headpecker","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Hellflayer","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Infernal Phantom","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Juggernaut","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Lion Hydra","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Lost Soul","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Medusa","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Minotaur Invader","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Orewalker","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Rhindeer","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Rotten Golem","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Silencer","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Spidris","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Spidris Elite","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Thanatursus","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Werelion","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Fleshslicer","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Gorga","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Gorgo","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Grand Chaplain Gaunder","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Maior Domus","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Preceptor Lazare","Titan Axe")
-	CadastrarCriaturaComDrop(db, "Crypt Construct","Toe Nails")
-	CadastrarCriaturaComDrop(db, "Crypt Mage","Toe Nails")
-	CadastrarCriaturaComDrop(db, "Haunted Hunter","Toe Nails")
-	CadastrarCriaturaComDrop(db, "Roaming Dread","Toe Nails")
-	CadastrarCriaturaComDrop(db, "Walking Dread","Toe Nails")
-	CadastrarCriaturaComDrop(db, "Nightfiend","Tooth File")
-	CadastrarCriaturaComDrop(db, "Vampire Viscount","Tooth File")
-	CadastrarCriaturaComDrop(db, "Vicious Manbat","Tooth File")
-	CadastrarCriaturaComDrop(db, "Crusader","Torn Page")
-	CadastrarCriaturaComDrop(db, "Headwalker","Torn Page")
-	CadastrarCriaturaComDrop(db, "Feversleep","Trapped Bad Dream Monster")
-	CadastrarCriaturaComDrop(db, "Shiversleep","Trapped Bad Dream Monster")
-	CadastrarCriaturaComDrop(db, "Terrorsleep","Trapped Bad Dream Monster")
-	CadastrarCriaturaComDrop(db, "The Enraged Thorn Knight","Trapped Bad Dream Monster")
-	CadastrarCriaturaComDrop(db, "Tremendous Tyrant Head","Tremendous Tyrant")
-	CadastrarCriaturaComDrop(db, "Tremendous Tyrant Shell","Tremendous Tyrant")
-	CadastrarCriaturaComDrop(db, "Tunel Tyrant Head","Tunnel Tyrant")
-	CadastrarCriaturaComDrop(db, "Tunnel Tyrant Shell","Tunnel Tyrant")
-	CadastrarCriaturaComDrop(db, "Two-Headed Turtle Heads","Two-Headed Turtle")
-	CadastrarCriaturaComDrop(db, "Undertaker Fangs","Undertaker")
-	CadastrarCriaturaComDrop(db, "Betrayed Wraith","Unholy Bone")
-	CadastrarCriaturaComDrop(db, "Crypt Warrior","Unholy Bone")
-	CadastrarCriaturaComDrop(db, "Gravedigger","Unholy Bone")
-	CadastrarCriaturaComDrop(db, "Haunted Dragon","Unholy Bone")
-	CadastrarCriaturaComDrop(db, "Lost Soul","Unholy Bone")
-	CadastrarCriaturaComDrop(db, "Skeleton Elite Warrior","Unholy Bone")
-	CadastrarCriaturaComDrop(db, "Undead Dragon","Unholy Bone")
-	CadastrarCriaturaComDrop(db, "Zanakeph","Unholy Bone")
-	CadastrarCriaturaComDrop(db, "Zorvorax","Unholy Bone")
-	CadastrarCriaturaComDrop(db, "Vampire Viscount","Vampire's Cape Chain")
-	CadastrarCriaturaComDrop(db, "The Pale Count","Vampire's Cape Chain")
-	CadastrarCriaturaComDrop(db, "Varnished Diremaw","Varnished Diremaw Brainpan")
-	CadastrarCriaturaComDrop(db, "Varnished Diremaw","Varnished Diremaw Legs")
-	CadastrarCriaturaComDrop(db, "Cliff Strider","Vein of Ore")
-	CadastrarCriaturaComDrop(db, "Drillworm","Vein of Ore")
-	CadastrarCriaturaComDrop(db, "Orewalker","Vein of Ore")
-	CadastrarCriaturaComDrop(db, "Elder Forest Fury","Venison")
-	CadastrarCriaturaComDrop(db, "Forest Fury","Venison")
-	CadastrarCriaturaComDrop(db, "Vibrant Phantom","Vibrant Heart")
-	CadastrarCriaturaComDrop(db, "Vibrant Phantom", "Vibrant Robe")
-	CadastrarCriaturaComDrop(db, "Dark Torturer","Vile Axe")
-	CadastrarCriaturaComDrop(db, "Grimeleech","Vile Axe")
-	CadastrarCriaturaComDrop(db, "Eradicator","Vile Axe")
-	CadastrarCriaturaComDrop(db, "Ferumbras","Vile Axe")
-	CadastrarCriaturaComDrop(db, "Fermbras Mortal Shell","Vile Axe")
-	CadastrarCriaturaComDrop(db, "Hellgorak","Vile Axe")
-	CadastrarCriaturaComDrop(db, "Horadron","Vile Axe")
-	CadastrarCriaturaComDrop(db, "Mazzinor","Vile Axe")
-	CadastrarCriaturaComDrop(db, "Realityquake","Vile Axe")
-	CadastrarCriaturaComDrop(db, "Breach Brood","Volatile Proto Matter")
-	CadastrarCriaturaComDrop(db, "Burster","Volatile Proto Matter")
-	CadastrarCriaturaComDrop(db, "Behemoth","War Axe")
-	CadastrarCriaturaComDrop(db, "Eyeless Devourer","War Axe")
-	CadastrarCriaturaComDrop(db, "Falcon Knight","War Axe")
-	CadastrarCriaturaComDrop(db, "Glooth Bandit","War Axe")
-	CadastrarCriaturaComDrop(db, "Hulking Prehemoth","War Axe")
-	CadastrarCriaturaComDrop(db, "Infernal Demon","War Axe")
-	CadastrarCriaturaComDrop(db, "Infernal Phantom","War Axe")
-	CadastrarCriaturaComDrop(db, "Juggernaut","War Axe")
-	CadastrarCriaturaComDrop(db, "Lost Basher","War Axe")
-	CadastrarCriaturaComDrop(db, "Nightmare","War Axe")
-	CadastrarCriaturaComDrop(db, "Norcferatu Heartless","War Axe")
-	CadastrarCriaturaComDrop(db, "Priestess of the Wild Sun","War Axe")
-	CadastrarCriaturaComDrop(db, "Rotten Golem","War Axe")
-	CadastrarCriaturaComDrop(db, "Stone Devourer","War Axe")
-	CadastrarCriaturaComDrop(db, "Streked Devourer","War Axe")
-	CadastrarCriaturaComDrop(db, "Undead Dragon","War Axe")
-	CadastrarCriaturaComDrop(db, "Katex Blood Tongue","War Axe")
-	CadastrarCriaturaComDrop(db, "Outburst","War Axe")
-	CadastrarCriaturaComDrop(db, "Preceptor Lazare","War Axe")
-	CadastrarCriaturaComDrop(db, "Srezz Yellow Eyes","War Axe")
-	CadastrarCriaturaComDrop(db, "Stonecracker","War Axe")
-	CadastrarCriaturaComDrop(db, "The False God","War Axe")
-	CadastrarCriaturaComDrop(db, "Tormentor","War Axe")
-	CadastrarCriaturaComDrop(db, "Yirkas Blue Scales","War Axe")
-	CadastrarCriaturaComDrop(db, "Wardragon","Wardragon Claw")
-	CadastrarCriaturaComDrop(db, "Wardragon","Wardragon Tooth")
-	CadastrarCriaturaComDrop(db, "Waspoid","Waspoid Claw")
-	CadastrarCriaturaComDrop(db, "Chooper","Waspoid Claw")
-	CadastrarCriaturaComDrop(db, "Weaver's Wandtip","Draken Spellweaver")
-	CadastrarCriaturaComDrop(db, "Werebadger","Werebadger Claws")
-	CadastrarCriaturaComDrop(db, "Sharpclaw","Werebadger Claws")
-	CadastrarCriaturaComDrop(db, "Werebadger","Werebadger Skull")
-	CadastrarCriaturaComDrop(db, "Sharpclaw","Werebadger Skull")
-	CadastrarCriaturaComDrop(db, "Wereboar", "Wereboar Loincloth")
-	CadastrarCriaturaComDrop(db, "Bloodback", "Wereboar Loincloth")
-	CadastrarCriaturaComDrop(db, "Feroxa", "Wereboar Loincloth")
-	CadastrarCriaturaComDrop(db, "Owin", "Wereboar Loincloth")
-	CadastrarCriaturaComDrop(db, "Wereboar","Wereboar Tusks")
-	CadastrarCriaturaComDrop(db, "Bloodback","Wereboar Tusks")
-	CadastrarCriaturaComDrop(db, "Owin","Wereboar Tusks")
-	CadastrarCriaturaComDrop(db, "Ayana The Crimson Curse","Werecrocodile Tongue")
-	CadastrarCriaturaComDrop(db, "Feral Werecrocodile","Werecrocodile Tongue")
-	CadastrarCriaturaComDrop(db, "Werecrocodile","Werecrocodile Tongue")
-	CadastrarCriaturaComDrop(db, "Werefox","Werefox Tail")
-	CadastrarCriaturaComDrop(db, "Black Vixen","Werefox Tail")
-	CadastrarCriaturaComDrop(db, "Werehyaena","Werehyaena Nose")
-	CadastrarCriaturaComDrop(db, "Werehyaena Shaman","Werehyaena Nose")
-	CadastrarCriaturaComDrop(db, "Katex Blood Tongue","Werehyaena Nose")
-	CadastrarCriaturaComDrop(db, "Werehyaena","Werehyaena Talisman")
-	CadastrarCriaturaComDrop(db, "Werehyaena Shaman","Werehyaena Talisman")
-	CadastrarCriaturaComDrop(db, "Katex Blood Tongue","Werehyaena Talisman")
-	CadastrarCriaturaComDrop(db, "Cunning Werepanther","Werepanther Claw")
-	CadastrarCriaturaComDrop(db, "Werepanther","Werepanther Claw")
-	CadastrarCriaturaComDrop(db, "Rakesh Moonfang","Werepanther Claw")
-	CadastrarCriaturaComDrop(db, "Werewolf","Werewolf Fur")
-	CadastrarCriaturaComDrop(db, "Darkfang","Werewolf Fur")
-	CadastrarCriaturaComDrop(db, "Hemming","Werewolf Fur")
-	CadastrarCriaturaComDrop(db, "Wailing Widow","Widow's Mandibles")
-	CadastrarCriaturaComDrop(db, "Angry Sugar Fairy","Wild Flowers")
-	CadastrarCriaturaComDrop(db, "Nymph","Wild Flowers")
-	CadastrarCriaturaComDrop(db, "Pixie","Wild Flowers")
-	CadastrarCriaturaComDrop(db, "Swan Maiden","Wild Flowers")
-	CadastrarCriaturaComDrop(db, "True Feverbloom Asura","Wild Flowers")
-	CadastrarCriaturaComDrop(db, "Lost Basher","Wimp Tooth Chain")
-	CadastrarCriaturaComDrop(db, "Lost Exile","Wimp Tooth Chain")
-	CadastrarCriaturaComDrop(db, "Lost Husher","Wimp Tooth Chain")
-	CadastrarCriaturaComDrop(db, "Serpent Spawn","Winged Tail")
-	CadastrarCriaturaComDrop(db, "Srezz Yellow Eyes","Winged Tail")
-	CadastrarCriaturaComDrop(db, "The Noxious Spawn","Winged Tail")
-	CadastrarCriaturaComDrop(db, "Witch","Witch Broom")
-	CadastrarCriaturaComDrop(db, "Ekatrix","Witch Broom")
-	CadastrarCriaturaComDrop(db, "Adult Goanna","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Arctic Faun","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Capricious Phantom","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Crazed Summer Rearguard","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Dark Faun","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Faun","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Monk's Apparition","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Paladin's Apparition","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Pirat Bombardier","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Rootthing Bug Tracker","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Rotten Golem","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Rotten Man-Maggot","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Soul-broken Harbinger","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Turbulent Elemental","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Usurper Archer","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Varnished Diremaw","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Venerable Girtablilu","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Guard Captain Quaid","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Ravenous Hunger","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Raxias","Wood Cape")
-	CadastrarCriaturaComDrop(db, "Arctic Faun","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Boogy","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Dark Faun","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Faun","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Mitmag Seer","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Noxious Ripptor","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Pixie","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Raubritter Chastener","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Rootthing Amber Shaper","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Sineater Inferniarch","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Young Goanna","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Clavius","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Court Warlock","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Mimar Haffar","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Ravenous Hunger","Wooden Spellbook")
-	CadastrarCriaturaComDrop(db, "Meandering Mushroom","Worm Sponge")
-	CadastrarCriaturaComDrop(db, "Oozing Corpus","Worm Sponge")
-	CadastrarCriaturaComDrop(db, "Atab","Yapunac Dagger")
-	CadastrarCriaturaComDrop(db, "Iks Yapunac","Yapunac Dagger")
-	CadastrarCriaturaComDrop(db, "Darklight Emitter","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Draken Abomination","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Draken Elite","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Draken Warmaster","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Ghastly Dragon","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Lizard Chosen","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Lizard High Guard","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Lizard Legionnaire","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Lizard Zaogun","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Battlemaster Zunzu","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Ethershreck","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Fazzrah","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Lizard Gate Guardian","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Paiz the Pauperizer","Zaoan Armor")
-	CadastrarCriaturaComDrop(db, "Draken Spellweaver","Zaoan Robe")
-	CadastrarCriaturaComDrop(db, "Lizard Dragon Priest","Zaoan Robe")
-	CadastrarCriaturaComDrop(db, "Flamecaller Zazrak","Zaoan Robe")
-	CadastrarCriaturaComDrop(db, "Darklight Construct","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Draken Spellweaver","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Draken Warmaster","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Ghastly Dragon","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Lizard Chosen","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Lizard Dragon Priest","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Lizard High Guard","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Lizard Legionnaire","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Lizard Zaogun","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Battlemaster Zunzu","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "EtherShreck","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Fazzrah","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Flamecaller Zazrak","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Hatebreeder","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Lizard Gate Guardian","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "The Voice of Ruin","Zaoan Shoes")
-	CadastrarCriaturaComDrop(db, "Lizard Zaogun","Zaogun Flag")
-	CadastrarCriaturaComDrop(db, "Battlemaster Zunzu","Zaogun Flag")
-	CadastrarCriaturaComDrop(db, "Fazzrah","Zaogun Flag")
-	CadastrarCriaturaComDrop(db, "Lizard Zaogun","Lizard Zaogun")
-	CadastrarCriaturaComDrop(db, "Battlemaster Zunzu","Lizard Zaogun")
-	CadastrarCriaturaComDrop(db, "Fazzrah","Lizard Zaogun")
+// dropInicial representa UMA linha de dado: "esta criatura dropa este item".
+type dropInicial struct {
+	Criatura string
+	Item     string
+}
+
+// dropsIniciais é a lista de dados que popula o banco.
+// Antes eram 2.337 chamadas de função repetidas; agora é uma tabela de dados
+// e UM laço só (em InserirDadosTibia) cuida de todas elas.
+// Para cadastrar um novo drop, basta acrescentar uma linha aqui.
+var dropsIniciais = []dropInicial{
+	{"Abyssador", "Crystal Crossbow"},
+	{"Abyssador", "Crystalline Sword"},
+	{"Acid Blob", "Glob of Acid Slime"},
+	{"Adlerauge", "Cuirass Plate"},
+	{"Adlerauge", "Ornate Crossbow"},
+	{"Adlerauge", "Stag Parchment"},
+	{"Adlerauge", "Strange Helmet"},
+	{"Adlerauge", "Terra Mantle"},
+	{"Adult Goanna", "Fur Armor"},
+	{"Adult Goanna", "Goanna Claw"},
+	{"Adult Goanna", "Goanna Meat"},
+	{"Adult Goanna", "Red Goanna Scale"},
+	{"Adult Goanna", "Terra Hod"},
+	{"Adult Goanna", "Wood Cape"},
+	{"Afflicted Strider", "Afflicted Strider Head"},
+	{"Afflicted Strider", "Afflicted Strider Worms"},
+	{"Afflicted Strider", "Broadsword"},
+	{"Afflicted Strider", "Crystal Sword"},
+	{"Afflicted Strider", "Focus Cape"},
+	{"Afflicted Strider", "Knight Axe"},
+	{"Afflicted Strider", "Magma Coat"},
+	{"Afflicted Strider", "Mercenary Sword"},
+	{"Afflicted Strider", "Titan Axe"},
+	{"Ahau", "Ritual Tooth"},
+	{"Ahau", "Rotten Feather"},
+	{"Albino Dragon", "Dragon Slayer"},
+	{"Albino Dragon", "Strange Helmet"},
+	{"Alptramun", "Chaos Mace"},
+	{"Amazon", "Girlish Hair Decoration"},
+	{"Amenef the Burning", "Focus Cape"},
+	{"Amenef the Burning", "Knight Axe"},
+	{"Amenef the Burning", "Mercenary Sword"},
+	{"Ancient Lion Knight", "Combat Knife"},
+	{"Ancient Lion Knight", "Dark Shield"},
+	{"Ancient Lion Knight", "Knife"},
+	{"Ancient Scarab", "Scarab Pincers"},
+	{"Ancient Scarab", "Terra Hod"},
+	{"Ancient Spawn of Morgathla", "Ancient Stone"},
+	{"Ancient Spawn of Morgathla", "Bonebreaker"},
+	{"Ancient Spawn of Morgathla", "Luminous Orb"},
+	{"Ancient Spawn of Morgathla", "Scarab Pincers"},
+	{"Ancient Spawn of Morgathla", "Terra Hod"},
+	{"Ancient Spawn of Morgathla", "Terra Mantle"},
+	{"Angry Demon", "Fire Axe"},
+	{"Angry Demon", "Golden Sickle"},
+	{"Angry Sugar Fairy", "Hibiscus Dress"},
+	{"Angry Sugar Fairy", "Wild Flowers"},
+	{"Animated Clomp", "Raw Meat"},
+	{"Animated Cyclops", "Halberd"},
+	{"Animated Feather", "Crystal Mace"},
+	{"Animated Feather", "Crystalline Armor"},
+	{"Animated Feather", "Diamond Sceptre"},
+	{"Animated Feather", "Glacier Mask"},
+	{"Animated Feather", "Glowing Rune"},
+	{"Animated Guzzlemaw", "Frazzle Tongue"},
+	{"Animated Moohtant", "Giant Pacifier"},
+	{"Animated Mummy", "Gauze Bandage"},
+	{"Animated Ogre Brute", "Ogre Ear Stud"},
+	{"Animated Ogre Brute", "Skull Fetish"},
+	{"Animated Ogre Savage", "Ogre Ear Stud"},
+	{"Animated Ogre Savage", "Skull Fetish"},
+	{"Animated Ogre Shaman", "Ogre Ear Stud"},
+	{"Animated Ogre Shaman", "Shamanic Talisman"},
+	{"Animated Ogre Shaman", "Skull Fetish"},
+	{"Animated Snowman", "Glacier Mask"},
+	{"Annihilon", "Diamond Sceptre"},
+	{"Annihilon", "Guardian Shield"},
+	{"Annihilon", "Halberd"},
+	{"Annihilon", "Skullcracker Armor"},
+	{"Anomaly", "Chaos Mace"},
+	{"Anomaly", "Crystalline Sword"},
+	{"Anomaly", "Curious Matter"},
+	{"Anomaly", "Frozen Lightning"},
+	{"Anomaly", "Lightning Headband"},
+	{"Anomaly", "Lightning Robe"},
+	{"Apprentice Sheng", "Knife"},
+	{"Arachir The Ancient One", "Blood Preservation"},
+	{"Arachnophobica", "Essence of a Bad Dream"},
+	{"Arbaziloth", "Fire Axe"},
+	{"Arbaziloth", "Golden Sickle"},
+	{"Arbaziloth", "Strange Helmet"},
+	{"Arbaziloth (Hard)", "Golden Sickle"},
+	{"Arbaziloth (Hard)", "Spellweaver's Robe"},
+	{"Arbaziloth (Hard)", "Strange Helmet"},
+	{"Arctic Faun", "Dandelion Seeds"},
+	{"Arctic Faun", "Shimmering Beetles"},
+	{"Arctic Faun", "Wood Cape"},
+	{"Arctic Faun", "Wooden Spellbook"},
+	{"Armadile", "Bonebreaker"},
+	{"Armadile", "Crystalline Armor"},
+	{"Armadile", "Crystalline Spikes"},
+	{"Armadile", "Terra Boots"},
+	{"Armadile", "Titan Axe"},
+	{"Arthei", "Blood Preservation"},
+	{"Arthom the Hunter", "Terra Hod"},
+	{"Askarak Lord", "Terra Mantle"},
+	{"Askarak Prince", "Terra Mantle"},
+	{"Assassin", "Battle Shield"},
+	{"Assassin", "Combat Knife"},
+	{"Assassin", "Knife"},
+	{"Atab", "Broken Mitmah Necklace"},
+	{"Atab", "Yapunac Dagger"},
+	{"Ayana the Crimson Curse", "Golden Sun Coin"},
+	{"Ayana the Crimson Curse", "Ornate Crossbow"},
+	{"Ayana the Crimson Curse", "Terra Mantle"},
+	{"Ayana the Crimson Curse", "Werecrocodile Tongue"},
+	{"Banshee", "Terra Mantle"},
+	{"Barbarian Bloodwalker", "Halberd"},
+	{"Barbarian Headsplitter", "Knife"},
+	{"Barbarian Skullhunter", "Crystal Sword"},
+	{"Barbarian Skullhunter", "Knife"},
+	{"Barkless Devotee", "Fig Leaf"},
+	{"Barkless Fanatic", "Fig Leaf"},
+	{"Bashmu", "Bashmu Fang"},
+	{"Bashmu", "Bashmu Feather"},
+	{"Bashmu", "Bashmu Tongue"},
+	{"Bashmu", "Glorious Axe"},
+	{"Battlemaster Zunzu", "Lizard Zaogun"},
+	{"Battlemaster Zunzu", "Zaoan Armor"},
+	{"Battlemaster Zunzu", "Zaoan Shoes"},
+	{"Battlemaster Zunzu", "Zaogun Flag"},
+	{"Behemoth", "Double Axe"},
+	{"Behemoth", "Titan Axe"},
+	{"Behemoth", "War Axe"},
+	{"Bellicose", "Glorious Axe"},
+	{"Bellicose Orger", "Glorious Axe"},
+	{"Bellicose Orger", "Metal Spats"},
+	{"Betrayed Wraith", "Flask of Demonic Blood"},
+	{"Betrayed Wraith", "Mercenary Sword"},
+	{"Betrayed Wraith", "Unholy Bone"},
+	{"Bibby Bloodbath", "Magma Boots"},
+	{"Bibby Bloodbath", "Orchish Axe"},
+	{"Bibby Bloodbath", "Plate Legs"},
+	{"Biting Book", "Book Page"},
+	{"Biting Book", "Glowing Rune"},
+	{"Biting Book", "Silken Bookmark"},
+	{"Black Knight", "Double Axe"},
+	{"Black Knight", "Halberd"},
+	{"Black Knight", "Knight Axe"},
+	{"Black Knight", "Knight Legs"},
+	{"Black Sphinx Acolyte", "Empty Honey Glass"},
+	{"Black Vixen", "Fox Paw"},
+	{"Black Vixen", "Werefox Tail"},
+	{"Blemished Spawn", "Blemished Spawn Abdomen"},
+	{"Blemished Spawn", "Blemished Spawn Head"},
+	{"Blemished Spawn", "Blemished Tail"},
+	{"Blemished Spawn", "Diamond Sceptre"},
+	{"Blemished Spawn", "Fur Armor"},
+	{"Blemished Spawn", "Knight Axe"},
+	{"Blight Mariner", "Crystalline Armor"},
+	{"Blight Mariner", "Mercenary Sword"},
+	{"Blight Mariner", "Strange Helmet"},
+	{"Blight Mariner", "Terra Boots"},
+	{"Blightwalker", "Bundle of Cursed Straw"},
+	{"Blightwalker", "Golden Sickle"},
+	{"Blightwalker", "Terra Mantle"},
+	{"Bloated Man-Maggot", "Bloated Maggot"},
+	{"Bloated Man-Maggot", "Rotten Roots"},
+	{"Blood Beast", "Glooth Axe"},
+	{"Blood Beast", "Glooth Blade"},
+	{"Blood Beast", "Glooth Club"},
+	{"Blood Beast", "Poisoned Fang"},
+	{"Blood Hand", "Blood Tincture in a Vial"},
+	{"Blood Hand", "Book of Necromantic Rituals"},
+	{"Blood Hand", "Horoscope"},
+	{"Blood Hand", "Lancet"},
+	{"Blood Priest", "Blood Tincture in a Vial"},
+	{"Blood Priest", "Book of Necromantic Rituals"},
+	{"Blood Priest", "Horoscope"},
+	{"Blood Priest", "Lancet"},
+	{"Blood Priest", "Spellbook of a Mind Control"},
+	{"Bloodback", "Fur Armor"},
+	{"Bloodback", "Wereboar Loincloth"},
+	{"Bloodback", "Wereboar Tusks"},
+	{"Blue Djin", "Dirty Turban"},
+	{"Bluebeak", "Glacier Shoes"},
+	{"Bluebeak", "Paper Boat"},
+	{"Bluebeak", "Star Ink"},
+	{"Boar Man", "Boar Man Hoof"},
+	{"Boar Man", "Crystal Mace"},
+	{"Boar Man", "Crystal Sword"},
+	{"Bog Raider", "Boggy Dreads"},
+	{"Bog Raider", "Plate Legs"},
+	{"Bonebeast", "Bone Club"},
+	{"Bonebeast", "Bony Tail"},
+	{"Bonelord", "Small Flask of Eyedrops"},
+	{"Bonelord's Phylactery", "Small Flask of Eyedrops"},
+	{"Bony Sea Devil", "Jaws"},
+	{"Bony Sea Devil", "Rod"},
+	{"Bony Sea Devil", "Skullcracker Armor"},
+	{"Boogy", "Golden Sickle"},
+	{"Boogy", "Shimmering Beetles"},
+	{"Boogy", "Wooden Spellbook"},
+	{"Boreth", "Blood Preservation"},
+	{"Boreth", "Hibiscus Dress"},
+	{"Brachiodemon", "Alloy Legs"},
+	{"Brachiodemon", "Crystal Mace"},
+	{"Brachiodemon", "Crystalline Sword"},
+	{"Brachiodemon", "Fire Axe"},
+	{"Brachiodemon", "Hand"},
+	{"Brachiodemon", "Head"},
+	{"Brachiodemon", "Metal Bat"},
+	{"Brachiodemon", "Spellbook of a Mind Control"},
+	{"Brain Squid", "Energy Ball"},
+	{"Brain Squid", "Frozen Lightning"},
+	{"Brain Squid", "Glowing Rune"},
+	{"Brain Squid", "Inkwell"},
+	{"Brain Squid", "Instable Proto Matter"},
+	{"Brain Squid", "Lightning Headband"},
+	{"Brain Squid", "Odd Organ"},
+	{"Brain Squid", "Spellweaver's Robe"},
+	{"Bramble Wyrmling", "Terra Hod"},
+	{"Bramble Wyrmling", "Terra Mantle"},
+	{"Branchy Crawler", "Crawler's Essence"},
+	{"Branchy Crawler", "Crystal Crossbow"},
+	{"Branchy Crawler", "Crystalline Sword"},
+	{"Branchy Crawler", "Roots"},
+	{"Breach Brood", "Curious Matter"},
+	{"Breach Brood", "Plasma Pearls"},
+	{"Breach Brood", "Spark Sphere"},
+	{"Breach Brood", "Volatile Proto Matter"},
+	{"Bretzecutioner", "Chaos Mace"},
+	{"Brimstone Bug", "Lump of Earth"},
+	{"Brimstone Bug", "Sulphurous Stone"},
+	{"Brinebrute Inferniarch", "Brinebrute Claw"},
+	{"Brinebrute Inferniarch", "Demonic Matter"},
+	{"Brinebrute Inferniarch", "Mummified Demon Finger"},
+	{"Broken Shaper", "Ancient Belt Buckle"},
+	{"Broken Shaper", "Cracked Alabaster Vase"},
+	{"Broodrider Inferniarch", "Broodrider Saddle"},
+	{"Broodrider Inferniarch", "Demonic Matter"},
+	{"Broodrider Inferniarch", "Mummified Demon Finger"},
+	{"Bruise Payne", "Black Shield"},
+	{"Bruise Payne", "Mercenary Sword"},
+	{"Bruise Payne", "Mutated Bat Ear"},
+	{"Bulltaur Alchemist", "Alloy Legs"},
+	{"Bulltaur Alchemist", "Bulltaur Horn"},
+	{"Bulltaur Alchemist", "Encrypted Notes"},
+	{"Bulltaur Alchemist", "Spellweaver's Robe"},
+	{"Bulltaur Alchemist", "Strange Substance"},
+	{"Bulltaur Brute", "Bulltaur Armor Scrap"},
+	{"Bulltaur Brute", "Bulltaur Hoof"},
+	{"Bulltaur Brute", "Bulltaur Horn"},
+	{"Bulltaur Brute", "Dragon Hammer"},
+	{"Bulltaur Brute", "Mino Shield"},
+	{"Bulltaur Forgepriest", "Bulltaur Horn"},
+	{"Bulltaur Forgepriest", "Idol of the Forge"},
+	{"Bulltaur Forgepriest", "Lightning Robe"},
+	{"Bulltaur Forgepriest", "Spellbook of a Mind Control"},
+	{"Bulltaur Forgepriest", "Staff Piece"},
+	{"Bullwark", "Giant Pacifier"},
+	{"Burning Book", "Book Page"},
+	{"Burning Book", "Flask of Demonic Blood"},
+	{"Burning Book", "Guardian Shield"},
+	{"Burning Book", "Magma Coat"},
+	{"Burning Book", "Magma Monocle"},
+	{"Burning Book", "Scimitar"},
+	{"Burning Book", "Silken Bookmark"},
+	{"Burning Gladiator", "Empty Honey Glass"},
+	{"Burning Gladiator", "Fafnar Symbol"},
+	{"Burning Gladiator", "Lightning Boots"},
+	{"Burning Gladiator", "Lightning Headband"},
+	{"Burning Gladiator", "Magma Boots"},
+	{"Burning Gladiator", "Spellweaver's Robe"},
+	{"Burster", "Curious Matter"},
+	{"Burster", "Lightning Headband"},
+	{"Burster", "Plasma Pearls"},
+	{"Burster", "Spark Sphere"},
+	{"Burster", "Volatile Proto Matter"},
+	{"Candy Horror", "Black Shield"},
+	{"Candy Horror", "Brigadeiro"},
+	{"Capricious Phantom", "Capricious Heart"},
+	{"Capricious Phantom", "Capricious Robe"},
+	{"Capricious Phantom", "Fur Armor"},
+	{"Capricious Phantom", "Ornate Crossbow"},
+	{"Capricious Phantom", "Wood Cape"},
+	{"Captain Jones", "Focus Cape"},
+	{"Carnisylvan Sapling", "Carnisylvan Bark"},
+	{"Carnivostrich", "Carnivostrich Feather"},
+	{"Carnivostrich", "Spellbook of a Mind Control"},
+	{"Cave Chimera", "Cave Chimera Head"},
+	{"Cave Chimera", "Cave Chimera Leg"},
+	{"Cave Chimera", "Crystal Crossbow"},
+	{"Cave Chimera", "Fur Armor"},
+	{"Cave Chimera", "Ornate Crossbow"},
+	{"Cave Devourer", "Cave Devourer Eyes"},
+	{"Cave Devourer", "Cave Devourer Legs"},
+	{"Cave Devourer", "Cave Devourer Maw"},
+	{"Centipede", "Centipede Leg"},
+	{"Chakoya Toolshaper", "Mammoth Whopper"},
+	{"Chakoya Tribewarden", "Mammoth Whopper"},
+	{"Chasm Spawn", "Chasm Spawn Abdomen"},
+	{"Chasm Spawn", "Chasm Spawn Head"},
+	{"Chasm Spawn", "Chasm Spawn Tail"},
+	{"Choking Fear", "Dead Weight"},
+	{"Choking Fear", "Guardian Shield"},
+	{"Choking Fear", "Hemp Rope"},
+	{"Choking Fear", "Spellbook of a Mind Control"},
+	{"Choking Fear", "Terra Boots"},
+	{"Choking Fear", "Terra Mantle"},
+	{"Chopper", "Compound Eye"},
+	{"Chopper", "Waspoid Claw"},
+	{"Cinder Wyrmling", "Magma Coat"},
+	{"Cinder Wyrmling", "Magma Monocle"},
+	{"Clavius", "Magma Monocle"},
+	{"Clavius", "Silver Poniard"},
+	{"Clavius", "Stag Parchment"},
+	{"Clavius", "Strange Helmet"},
+	{"Clavius", "Terra Hod"},
+	{"Clavius", "Wooden Spellbook"},
+	{"Clay Guardian", "Lump of Earth"},
+	{"Cliff Strider", "Crystal Crossbow"},
+	{"Cliff Strider", "Crystalline Sword"},
+	{"Cliff Strider", "Knight Legs"},
+	{"Cliff Strider", "Pulverized Ore"},
+	{"Cliff Strider", "Shiny Stone"},
+	{"Cliff Strider", "Vein of Ore"},
+	{"Cloak of Terror", "Crown (Cloak Of Terror)"},
+	{"Cloak of Terror", "Lightning Headband"},
+	{"Cloak of Terror", "Telescope Eye"},
+	{"Clomp", "Raw Meat"},
+	{"Cobra Assassin", "Cobra Crest"},
+	{"Cobra Assassin", "Heavy Machete"},
+	{"Cobra Assassin", "Knife"},
+	{"Cobra Assassin", "Scimitar"},
+	{"Cobra Scout", "Cheese Figurine"},
+	{"Cobra Scout", "Cobra Crest"},
+	{"Cobra Vizier", "Cobra Crest"},
+	{"Cobra Vizier", "Terra Boots"},
+	{"Cobra Vizier", "Terra Hod"},
+	{"Control Tower", "Alloy Legs"},
+	{"Control Tower", "Metal Spats"},
+	{"Converter", "Focus Cape"},
+	{"Corym Charlatan", "Bola"},
+	{"Corym Charlatan", "Cheese Cutter"},
+	{"Corym Charlatan", "Cheese Figurine"},
+	{"Corym Charlatan", "Earflap"},
+	{"Corym Charlatan", "Ratana"},
+	{"Corym Skirmisher", "Bola"},
+	{"Corym Skirmisher", "Cheese Cutter"},
+	{"Corym Skirmisher", "Cheese Figurine"},
+	{"Corym Skirmisher", "Earflap"},
+	{"Corym Skirmisher", "Ratana"},
+	{"Corym Skirmisher", "Spiky Club"},
+	{"Corym Vanguard", "Bola"},
+	{"Corym Vanguard", "Cheese Cutter"},
+	{"Corym Vanguard", "Cheese Figurine"},
+	{"Corym Vanguard", "Earflap"},
+	{"Corym Vanguard", "Ratana"},
+	{"Corym Vanguard", "Spiky Club"},
+	{"Count Vlarkorth", "Knight Legs"},
+	{"Count Vlarkorth", "Magma Boots"},
+	{"Countess Sorrow", "Plate Legs"},
+	{"Courage Leech", "Lightning Headband"},
+	{"Court Warlock", "Glacier Mask"},
+	{"Court Warlock", "Glacier Robe"},
+	{"Court Warlock", "Lightning Headband"},
+	{"Court Warlock", "Lightning Robe"},
+	{"Court Warlock", "Magma Coat"},
+	{"Court Warlock", "Magma Monocle"},
+	{"Court Warlock", "Terra Hod"},
+	{"Court Warlock", "Terra Mantle"},
+	{"Court Warlock", "Wooden Spellbook"},
+	{"Crape Man", "Crab Man Claws"},
+	{"Crape Man", "Magma Coat"},
+	{"Crawler", "Compound Eye"},
+	{"Crazed Summer Rearguard", "Crystal Crossbow"},
+	{"Crazed Summer Rearguard", "Dream Essence Egg"},
+	{"Crazed Summer Rearguard", "Elven Astral Observer"},
+	{"Crazed Summer Rearguard", "Wood Cape"},
+	{"Crazed Summer Vanguard", "Dream Essence Egg"},
+	{"Crazed Summer Vanguard", "Elven Astral Observer"},
+	{"Crazed Summer Vanguard", "Knife"},
+	{"Crazed Summer Vanguard", "Magma Boots"},
+	{"Crazed Summer Vanguard", "Scimitar"},
+	{"Crazed Winter Rearguard", "Dream Essence Egg"},
+	{"Crazed Winter Rearguard", "Elven Astral Observer"},
+	{"Crazed Winter Rearguard", "Glacier Mask"},
+	{"Crazed Winter Rearguard", "Glacier Robe"},
+	{"Crazed Winter Rearguard", "Ice Flower"},
+	{"Crazed Winter Vanguard", "Glacier Robe"},
+	{"Crazed Winter Vanguard", "Ice Flower"},
+	{"Creepy Crawler", "Cluster of Crystallized Death"},
+	{"Creepy Crawler", "Crystallized Death"},
+	{"Creepy Crawler", "Giant Tusk"},
+	{"Creepy Crawler", "Necromantic Core"},
+	{"Crusader", "Cookbook (Book World)"},
+	{"Crusader", "Knight Axe"},
+	{"Crusader", "Torn Page"},
+	{"Crypt Construct", "Cluster of Crystallized Death"},
+	{"Crypt Construct", "Crystallized Death"},
+	{"Crypt Construct", "Toe Nails"},
+	{"Crypt Defiler", "Dirty Turban"},
+	{"Crypt Fiend", "Cluster of Crystallized Death"},
+	{"Crypt Fiend", "Crystallized Death"},
+	{"Crypt Fiend", "Giant Tusk"},
+	{"Crypt Fiend", "Necromantic Core"},
+	{"Crypt Mage", "Crystallized Death"},
+	{"Crypt Mage", "Necromantic Core"},
+	{"Crypt Mage", "Spellbook of a Mind Control"},
+	{"Crypt Mage", "Toe Nails"},
+	{"Crypt Warden", "Lamassu Hoof"},
+	{"Crypt Warrior", "Mammoth Whopper"},
+	{"Crypt Warrior", "Unholy Bone"},
+	{"Crystal Spider", "Crystal Sword"},
+	{"Crystal Spider", "Glacier Mask"},
+	{"Crystal Spider", "Knight Legs"},
+	{"Crystal Wolf", "Crystalline Armor"},
+	{"Crystal Wolf", "Shiny Stone"},
+	{"Crystalcrusher", "Crystalline Spikes"},
+	{"Cublarc the Plunderer", "Orchish Axe"},
+	{"Cublarc the Plunderer", "Shaggy Tail"},
+	{"Cult Enforcer", "Guardian Shield"},
+	{"Cult Enforcer", "Halberd"},
+	{"Cult Enforcer", "Knight Legs"},
+	{"Cunning Werepanther", "Fur Armor"},
+	{"Cunning Werepanther", "Golden Sickle"},
+	{"Cunning Werepanther", "Lightning Headband"},
+	{"Cunning Werepanther", "Ripper Lance"},
+	{"Cunning Werepanther", "Werepanther Claw"},
+	{"Cursed Ape", "Kongra's Shouldpad"},
+	{"Cursed Book", "Book Page"},
+	{"Cursed Book", "Diamond Sceptre"},
+	{"Cursed Book", "Silken Bookmark"},
+	{"Cursed Book", "Terra Boots"},
+	{"Cursed Book", "Terra Hod"},
+	{"Cursed Book", "Terra Mantle"},
+	{"Cursed Prospector", "Lightning Boots"},
+	{"Cursed Prospector", "Lightning Robe"},
+	{"Cyclops", "Battle Shield"},
+	{"Cyclops", "Halberd"},
+	{"Cyclops Drone", "Battle Shield"},
+	{"Cyclops Drone", "Halberd"},
+	{"Cyclops Smith", "Battle Shield"},
+	{"Cyclops Smith", "Double Axe"},
+	{"Cyclops Smith", "Heavy Machete"},
+	{"Cyclursus", "Crystal Crossbow"},
+	{"Cyclursus", "Crystallized Death"},
+	{"Cyclursus", "Deadly Fangs"},
+	{"Cyclursus", "Necromantic Core"},
+	{"Dark Carnisylvan", "Carnisylvan Bark"},
+	{"Dark Carnisylvan", "Carnisylvan Finger"},
+	{"Dark Carnisylvan", "Human Teeth"},
+	{"Dark Faun", "Shimmering Beetles"},
+	{"Dark Faun", "Wood Cape"},
+	{"Dark Faun", "Wooden Spellbook"},
+	{"Dark Monk", "Dark Rosary"},
+	{"Dark Torturer", "Cat's Paw"},
+	{"Dark Torturer", "Flask of Demonic Blood"},
+	{"Dark Torturer", "Vile Axe"},
+	{"Darkfang", "Bonebreaker"},
+	{"Darkfang", "Werewolf Fur"},
+	{"Darklight Construct", "Dark Obsidian Splinter"},
+	{"Darklight Construct", "Zaoan Shoes"},
+	{"Darklight Emitter", "Basalt Crumbs"},
+	{"Darklight Emitter", "Zaoan Armor"},
+	{"Darklight Matter", "Rubber Cap"},
+	{"Darklight Source", "Crystalline Armor"},
+	{"Darklight Source", "Dark Obsidian Splinter"},
+	{"Dawnfire Asura", "Flask of Demonic Blood"},
+	{"Dawnfire Asura", "Focus Cape"},
+	{"Dawnfire Asura", "Magma Coat"},
+	{"Dawnfire Asura", "Spellbook of a Mind Control"},
+	{"Dawnfly", "Damselfly Eye"},
+	{"Death Blob", "Glob of Tar"},
+	{"Deathbine", "Terra Boots"},
+	{"Deathstrike", "Crystal Crossbow"},
+	{"Deathstrike", "Crystalline Sword"},
+	{"Deepling Brawler", "Eye of a Deepling"},
+	{"Deepling Brawler", "Heavy Trident"},
+	{"Deepling Elite", "Deepling Ridge"},
+	{"Deepling Elite", "Eye of a Deepling"},
+	{"Deepling Elite", "Heavy Trident"},
+	{"Deepling Guard", "Deepling Breaktime Snack"},
+	{"Deepling Guard", "Deepling Claw"},
+	{"Deepling Guard", "Deepling Guard Belt Buckle"},
+	{"Deepling Guard", "Eye of a Deepling"},
+	{"Deepling Guard", "Heavy Trident"},
+	{"Deepling Guard", "Ornate Crossbow"},
+	{"Deepling Master Librarian", "Eye of a Deepling"},
+	{"Deepling Master Librarian", "Key to the Drowned Librabry"},
+	{"Deepling Master Librarian", "Ornate Crossbow"},
+	{"Deepling Master Librarian", "Spellsinger's Seal"},
+	{"Deepling Scout", "Deepling Ridge"},
+	{"Deepling Scout", "Eye of a Deepling"},
+	{"Deepling Scout", "Heavy Trident"},
+	{"Deepling Spellsinger", "Deepling Ridge"},
+	{"Deepling Spellsinger", "Eye of a Deepling"},
+	{"Deepling Spellsinger", "Heavy Trident"},
+	{"Deepling Spellsinger", "Key to the Drowned Librabry"},
+	{"Deepling Spellsinger", "Ornate Crossbow"},
+	{"Deepling Spellsinger", "Spellsinger's Seal"},
+	{"Deepling Tyrant", "Deepling Breaktime Snack"},
+	{"Deepling Tyrant", "Deepling Claw"},
+	{"Deepling Tyrant", "Deepling Guard Belt Buckle"},
+	{"Deepling Tyrant", "Eye of a Deepling"},
+	{"Deepling Tyrant", "Heavy Trident"},
+	{"Deepling Tyrant", "Ornate Crossbow"},
+	{"Deepling Warrior", "Deepling Ridge"},
+	{"Deepling Warrior", "Eye of a Deepling"},
+	{"Deepling Warrior", "Heavy Trident"},
+	{"Deepling Worker", "Eye of a Deepling"},
+	{"Deepling Worker", "Heavy Trident"},
+	{"Deepworm", "Deepworm Jaws"},
+	{"Deepworm", "Deepworm Spike Roots"},
+	{"Deepworm", "Deepworm Spikes"},
+	{"Defile", "Glob of Acid Slime"},
+	{"Defiler", "Glob of Tar"},
+	{"Demodras", "Plate Legs"},
+	{"Demodras", "Strange Helmet"},
+	{"Demon", "Fire Axe"},
+	{"Demon", "Golden Sickle"},
+	{"Demon Skeleton", "Battle Shield"},
+	{"Demon Skeleton", "Guardian Shield"},
+	{"Destroyer", "Chaos Mace"},
+	{"Devoted Radiant Acolyte", "Book of Faith"},
+	{"Devoted Radiant Acolyte", "Cloud Familiar"},
+	{"Devoted Radiant Inquisitor", "Cloud Familiar"},
+	{"Devoted Radiant Inquisitor", "Golden Belt"},
+	{"Devoted Radiant Paragon", "Cloud Familiar"},
+	{"Devoted Radiant Templar", "Cloud Familiar"},
+	{"Devoted Radiant Warden", "Cloud Familiar"},
+	{"Devoted Radiant Zealot", "Cloud Familiar"},
+	{"Devoted Radiant Zealot", "Loose Prayer Beads"},
+	{"Devourer", "Glob of Glooth"},
+	{"Devourer", "Glooth Axe"},
+	{"Devourer", "Glooth Blade"},
+	{"Devourer", "Glooth Cape"},
+	{"Devourer", "Glooth Club"},
+	{"Dharalion", "Elven Astral Observer"},
+	{"Diabolic Imp", "Double Axe"},
+	{"Diabolic Imp", "Flask of Demonic Blood"},
+	{"Diabolic Imp", "Guardian Shield"},
+	{"Diabolic Imp", "Magma Coat"},
+	{"Diabolic Imp", "Magma Monocle"},
+	{"Diabolic Imp", "Scimitar"},
+	{"Diamond Servant", "Bonebreaker"},
+	{"Diamond Servant", "Crystalline Armor"},
+	{"Diamond Servant Replica", "Bonebreaker"},
+	{"Diamond Servant Replica", "Crystalline Armor"},
+	{"Diblis The Fair", "Blood Preservation"},
+	{"Diremaw", "Diremaw Brainpan"},
+	{"Diremaw", "Diremaw Legs"},
+	{"Distorted Phantom", "Distorted Heart"},
+	{"Distorted Phantom", "Distorted Robe"},
+	{"Dragolisk", "Dragolisk Eye"},
+	{"Dragolisk", "Dragolisk Poison Gland"},
+	{"Dragolisk", "Dragon's Tail"},
+	{"Dragolisk", "Nimmersatt's Seal"},
+	{"Dragon", "Broadsword"},
+	{"Dragon", "Double Axe"},
+	{"Dragon", "Dragon Hammer"},
+	{"Dragon", "Dragon's Tail"},
+	{"Dragon", "Plate Legs"},
+	{"Dragon Hatchling", "Dragon's Tail"},
+	{"Dragon Hoard", "Spellweaver's Robe"},
+	{"Dragon Hoard", "Strange Helmet"},
+	{"Dragon Lord", "Dragon Slayer"},
+	{"Dragon Lord", "Strange Helmet"},
+	{"Dragon Lord Hatchling", "Magma Boots"},
+	{"Draken Abomination", "Eye of Corruption"},
+	{"Draken Abomination", "Scale of Corruption"},
+	{"Draken Abomination", "Tail of Corruption"},
+	{"Draken Abomination", "Terra Hod"},
+	{"Draken Abomination", "Zaoan Armor"},
+	{"Draken Elite", "Broken Draken Mail"},
+	{"Draken Elite", "Broken Slicer"},
+	{"Draken Elite", "Draken Wristbands"},
+	{"Draken Elite", "Zaoan Armor"},
+	{"Draken Spellweaver", "Focus Cape"},
+	{"Draken Spellweaver", "Luminous Orb"},
+	{"Draken Spellweaver", "Spellweaver's Robe"},
+	{"Draken Spellweaver", "Weaver's Wandtip"},
+	{"Draken Spellweaver", "Zaoan Robe"},
+	{"Draken Spellweaver", "Zaoan Shoes"},
+	{"Draken Warmaster", "Bone Shoulderplate"},
+	{"Draken Warmaster", "Zaoan Armor"},
+	{"Draken Warmaster", "Zaoan Shoes"},
+	{"Dread Intruder", "Energy Ball"},
+	{"Dread Intruder", "Frozen Lightning"},
+	{"Dread Intruder", "Instable Proto Matter"},
+	{"Dread Intruder", "Odd Organ"},
+	{"Dreadbeast", "Bone Club"},
+	{"Dreadful Disruptor", "Plasma Pearls"},
+	{"Dreadful Disruptor", "Plasmatic Lightning"},
+	{"Drillworm", "Lump of Earth"},
+	{"Drillworm", "Pulverized Ore"},
+	{"Drillworm", "Vein of Ore"},
+	{"Druid's Apparition", "Glacier Robe"},
+	{"Drume", "Terra Hod"},
+	{"Drume", "Terra Mantle"},
+	{"Duke Krule", "Piece of Hell Steel"},
+	{"Duke Krule", "Terra Hod"},
+	{"Dwarf Geomancer", "Terra Boots"},
+	{"Dwarf Guard", "Battle Shield"},
+	{"Dwarf Guard", "Double Axe"},
+	{"Dworc Fleshhunter", "Ripper Lance"},
+	{"Dworc Shadowstalker", "Blood Amulet"},
+	{"Dworc Shadowstalker", "Bone Rattle"},
+	{"Dworc Shadowstalker", "Ripper Lance"},
+	{"Earl Osam", "Glacier Mask"},
+	{"Earl Osam", "Piece of Draconian Steel"},
+	{"Earl Osam", "Piece of Hell Steel"},
+	{"Earth Elemental", "Lump of Earth"},
+	{"Earth Overlord", "Lump of Earth"},
+	{"Earth Overlord", "Shiny Stone"},
+	{"Earth Overlord", "Terra Mantle"},
+	{"Earworm", "Terra Hod"},
+	{"Efreet", "Heavy Machete"},
+	{"Efreet", "Magma Monocle"},
+	{"Ekatrix", "Witch Broom"},
+	{"Elder Bonelord", "Elder Bonelord Tentacle"},
+	{"Elder Bonelord", "Small Flask of Eyedrops"},
+	{"Elder Forest Fury", "Venison"},
+	{"Elder Mummy", "Gauze Bandage"},
+	{"Elder Wyrm", "Lightning Boots"},
+	{"Elder Wyrm", "Lightning Robe"},
+	{"Eldritch Dragon Lord", "Dragon Slayer"},
+	{"Elf Arcanist", "Elven Astral Observer"},
+	{"Elf Overseer", "Battle Shield"},
+	{"Elf Overseer", "Crystal Sword"},
+	{"Emerald Damselfly", "Damselfly Eye"},
+	{"Emerald Tortoise", "Emerald Tortoise Shell"},
+	{"Energetic Book", "Book Page"},
+	{"Energetic Book", "Energy Ball"},
+	{"Energetic Book", "Glowing Rune"},
+	{"Energetic Book", "Lightning Boots"},
+	{"Energetic Book", "Lightning Headband"},
+	{"Energetic Book", "Silken Bookmark"},
+	{"Energetic Book", "Spellweaver's Robe"},
+	{"Energuardian of Tales", "Book Page"},
+	{"Energuardian of Tales", "Glowing Rune"},
+	{"Energuardian of Tales", "Spellweaver's Robe"},
+	{"Energy Elemental", "Crystal Sword"},
+	{"Energy Elemental", "Guardian Shield"},
+	{"Enfeebled Silencer", "Diamond Sceptre"},
+	{"Enfeebled Silencer", "Glorious Axe"},
+	{"Enfeebled Silencer", "Terra Boots"},
+	{"Enraged Crystal", "Glorious Axe"},
+	{"Enraged Crystal Golem", "Crystal Sword"},
+	{"Enraged Crystal Golem", "Crystalline Spikes"},
+	{"Enraged Crystal Golem", "Glorious Axe"},
+	{"Enraged Soul", "Combat Knife"},
+	{"Enslaved Dwarf", "Glorious Axe"},
+	{"Enslaved Dwarf", "Guardian Shield"},
+	{"Enslaved Dwarf", "Shiny Stone"},
+	{"Enslaved Dwarf", "Titan Axe"},
+	{"Enusat the Onyx Wing", "Manticore Ear"},
+	{"Enusat the Onyx Wing", "Manticore Tail"},
+	{"Eradicator", "Crystal Mace"},
+	{"Eradicator", "Crystalline Armor"},
+	{"Eradicator", "Plasmatic Lightning"},
+	{"Eradicator", "Spark Sphere"},
+	{"Eradicator", "Vile Axe"},
+	{"Esmeralda", "Halberd"},
+	{"Esmeralda", "Mutated Rat Tail"},
+	{"Esmeralda", "Terra Mantle"},
+	{"Essence of Malice", "Fire Axe"},
+	{"Essence of Malice", "Magma Monocle"},
+	{"Essence of Malice", "Odd Organ"},
+	{"Essence of Malice", "Plasma Pearls"},
+	{"Eternal Guardian", "Ancient Stone"},
+	{"Eternal Guardian", "Shiny Stone"},
+	{"Eternal Guardian", "Spiked Iron Ball"},
+	{"Ethershreck", "Ghastly Dragon Head"},
+	{"Ethershreck", "Shiny Stone"},
+	{"Ethershreck", "Spellweaver's Robe"},
+	{"Ethershreck", "Zaoan Armor"},
+	{"Ethershreck", "Zaoan Shoes"},
+	{"Evil Prospector", "Lightning Headband"},
+	{"Exalted Core", "(Nenhuma Criatura Dropa)"},
+	{"Execowtioner", "Execowtioner Mask"},
+	{"Execowtioner", "Knight Axe"},
+	{"Execowtioner", "Titan Axe"},
+	{"Exotic Cave Spider", "Terra Boots"},
+	{"Exotic Cave Spider", "Terra Mantle"},
+	{"Eyeless Devourer", "Crystal Mace"},
+	{"Eyeless Devourer", "Eyeless Devourer Legs"},
+	{"Eyeless Devourer", "Eyeless Devourer Maw"},
+	{"Eyeless Devourer", "Eyeless Devourer Tongue"},
+	{"Eyeless Devourer", "Mercenary Sword"},
+	{"Eyeless Devourer", "Metal Bat"},
+	{"Eyeless Devourer", "Ornate Crossbow"},
+	{"Eyeless Devourer", "Relic Sword"},
+	{"Eyeless Devourer", "War Axe"},
+	{"Faceless Bane", "Knife"},
+	{"Fahim The Wise", "Heavy Machete"},
+	{"Fahim The Wise", "Magma Monocle"},
+	{"Fahim The Wise", "Shiny Stone"},
+	{"Falcon Knight", "Damaged Armor Plates"},
+	{"Falcon Knight", "Falcon Crest"},
+	{"Falcon Knight", "Flask of Demonic Blood"},
+	{"Falcon Knight", "Titan Axe"},
+	{"Falcon Knight", "War Axe"},
+	{"Falcon Paladin", "Damaged Armor Plates"},
+	{"Falcon Paladin", "Falcon Crest"},
+	{"Faun", "Dandelion Seeds"},
+	{"Faun", "Shimmering Beetles"},
+	{"Faun", "Wood Cape"},
+	{"Faun", "Wooden Spellbook"},
+	{"Fazzrah", "Lizard Zaogun"},
+	{"Fazzrah", "Zaoan Armor"},
+	{"Fazzrah", "Zaoan Shoes"},
+	{"Fazzrah", "Zaogun Flag"},
+	{"Feral Sphinx", "Fire Axe"},
+	{"Feral Sphinx", "Magma Boots"},
+	{"Feral Sphinx", "Magma Monocle"},
+	{"Feral Sphinx", "Sphinx Tiara"},
+	{"Feral Werecrocodile", "Golden Sun Coin"},
+	{"Feral Werecrocodile", "Ornate Crossbow"},
+	{"Feral Werecrocodile", "Terra Mantle"},
+	{"Feral Werecrocodile", "Werecrocodile Tongue"},
+	{"Feroxa", "Angelic Axe"},
+	{"Feroxa", "Badger Boots"},
+	{"Feroxa", "Fur Armor"},
+	{"Feroxa", "Glorious Axe"},
+	{"Feroxa", "Relic Sword"},
+	{"Feroxa", "Skullcracker Armor"},
+	{"Feroxa", "Wereboar Loincloth"},
+	{"Feroxa (Mortal)", "Bonebreaker"},
+	{"Ferumbras", "Chaos Mace"},
+	{"Ferumbras", "Double Axe"},
+	{"Ferumbras", "Spellbook of a Mind Control"},
+	{"Ferumbras", "Vile Axe"},
+	{"Ferumbras Mortal Shell", "Chaos Mace"},
+	{"Ferumbras Mortal Shell", "Spellbook of a Mind Control"},
+	{"Ferumbras Mortal Shell", "Vile Axe"},
+	{"Feversleep", "Bowl of Terror Sweat"},
+	{"Feversleep", "Trapped Bad Dream Monster"},
+	{"Fire Devil", "Double Axe"},
+	{"Fire Devil", "Guardian Shield"},
+	{"Fire Devil", "Scimitar"},
+	{"Fire Overlord", "Magma Coat"},
+	{"Flameborn", "Knight Legs"},
+	{"Flamecaller Zazrak", "Dragon Priest's Wandtip"},
+	{"Flamecaller Zazrak", "Zaoan Robe"},
+	{"Flamecaller Zazrak", "Zaoan Shoes"},
+	{"Fleabringer", "Shaggy Tail"},
+	{"Fleshcrawler", "Scarab Pincers"},
+	{"Fleshcrawler", "Terra Mantle"},
+	{"Fleshslicer", "Compound Eye"},
+	{"Fleshslicer", "Ripper Lance"},
+	{"Fleshslicer", "Titan Axe"},
+	{"Flickering Spirit Elemental", "Holy Ash"},
+	{"Flimsy Lost Soul", "Ensouled Essence"},
+	{"Floating Savant", "Book of Necromantic Rituals"},
+	{"Floating Savant", "Flask of Demonic Blood"},
+	{"Fluffy", "Flask of Demonic Blood"},
+	{"Fluffy", "Knight Axe"},
+	{"Foam Stalker", "Combat Knife"},
+	{"Foam Stalker", "Coral Branch"},
+	{"Foam Stalker", "Floatsam"},
+	{"Foam Stalker", "Glacier Shoes"},
+	{"Foam Stalker", "Halberd"},
+	{"Foam Stalker", "Knight Legs"},
+	{"Foam Stalker", "Mercenary Sword"},
+	{"Foam Stalker", "Terra Boots"},
+	{"Foreman Kneebiter", "Battle Shield"},
+	{"Forest Fury", "Venison"},
+	{"Fox", "Fox Paw"},
+	{"Frazzlemaw", "Frazzle Tongue"},
+	{"Freakish Lost Soul", "Crystal Crossbow"},
+	{"Freakish Lost Soul", "Ensouled Essence"},
+	{"Freakish Lost Soul", "Ornate Crossbow"},
+	{"Frost Dragon", "Dragon Slayer"},
+	{"Frost Dragon", "Strange Helmet"},
+	{"Frost Flower Asura", "Flask of Demonic Blood"},
+	{"Frost Flower Asura", "Skullcracker Armor"},
+	{"Frost Flower Asura", "Spellbook of a Mind Control"},
+	{"Frost Giant", "Battle Shield"},
+	{"Frost Giant", "Halberd"},
+	{"Frost Giantess", "Battle Shield"},
+	{"Fury", "Flask of Demonic Blood"},
+	{"Furyosa", "Fire Axe"},
+	{"Furyosa", "Flask of Demonic Blood"},
+	{"Furyosa", "Magma Coat"},
+	{"Gargoyle", "Battle Shield"},
+	{"Gargoyle", "Shiny Stone"},
+	{"Gargoyle", "Stone Wing"},
+	{"Gaz'Haragoth", "Magma Coat"},
+	{"Gazer", "Small Flask of Eyedrops"},
+	{"Gazer Spectre", "Magma Coat"},
+	{"Gelidrazah the Frozen", "Dragon Tongue"},
+	{"Gelidrazah the Frozen", "Glacier Mask"},
+	{"General Murius", "Battle Shield"},
+	{"General Murius", "Double Axe"},
+	{"Ghastly Dragon", "Ghastly Dragon Head"},
+	{"Ghastly Dragon", "Plate Legs"},
+	{"Ghastly Dragon", "Shiny Stone"},
+	{"Ghastly Dragon", "Spellweaver's Robe"},
+	{"Ghastly Dragon", "Terra Boots"},
+	{"Ghastly Dragon", "Zaoan Armor"},
+	{"Ghastly Dragon", "Zaoan Shoes"},
+	{"Ghazbaran", "Bonebreaker"},
+	{"Ghazbaran", "Crystalline Armor"},
+	{"Ghazbaran", "Double Axe"},
+	{"Ghazbaran", "Glorious Axe"},
+	{"Ghazbaran", "Spellbook of a Mind Control"},
+	{"Ghost", "Combat Knife"},
+	{"Ghulosh", "Mercenary Sword"},
+	{"Giant Spider", "Knight Legs"},
+	{"Giant Spider", "Lightning Headband"},
+	{"Giant Spider", "Plate Legs"},
+	{"Girtablilu Warrior", "Diamond Sceptre"},
+	{"Girtablilu Warrior", "Focus Cape"},
+	{"Girtablilu Warrior", "Fur Armor"},
+	{"Girtablilu Warrior", "Girtablilu Warrior Carapace"},
+	{"Girtablilu Warrior", "Glacier Robe"},
+	{"Girtablilu Warrior", "Knight Axe"},
+	{"Girtablilu Warrior", "Magma Coat"},
+	{"Girtablilu Warrior", "Scorpion Charm"},
+	{"Gloom Maw", "Black Shield"},
+	{"Gloom Maw", "Chain Leash"},
+	{"Gloom Maw", "Piece of Frozen Night"},
+	{"Glooth Anemone", "Glooth Axe"},
+	{"Glooth Anemone", "Glooth Blade"},
+	{"Glooth Anemone", "Glooth Cape"},
+	{"Glooth Anemone", "Glooth Club"},
+	{"Glooth Anemone", "Slimy Leaf Tentacle"},
+	{"Glooth Bandit", "Glooth Axe"},
+	{"Glooth Bandit", "Glooth Blade"},
+	{"Glooth Bandit", "Glooth Cape"},
+	{"Glooth Bandit", "Glooth Club"},
+	{"Glooth Bandit", "Rubber Cap"},
+	{"Glooth Bandit", "Terra Boots"},
+	{"Glooth Bandit", "Terra Hod"},
+	{"Glooth Bandit", "Terra Mantle"},
+	{"Glooth Bandit", "War Axe"},
+	{"Glooth Battery", "Metal Spats"},
+	{"Glooth Blob", "Glob of Glooth"},
+	{"Glooth Blob", "Glooth Axe"},
+	{"Glooth Blob", "Glooth Blade"},
+	{"Glooth Blob", "Glooth Club"},
+	{"Glooth Brigand", "Glooth Axe"},
+	{"Glooth Brigand", "Glooth Blade"},
+	{"Glooth Brigand", "Glooth Club"},
+	{"Glooth Brigand", "Mercenary Sword"},
+	{"Glooth Brigand", "Rubber Cap"},
+	{"Glooth Brigand", "Terra Boots"},
+	{"Glooth Brigand", "Terra Hod"},
+	{"Glooth Brigand", "Terra Mantle"},
+	{"Glooth Fairy", "Glooth Axe"},
+	{"Glooth Fairy", "Glooth Blade"},
+	{"Glooth Fairy", "Glooth Cape"},
+	{"Glooth Fairy", "Glooth Club"},
+	{"Glooth Fairy", "Glooth Injection Tube"},
+	{"Glooth Fairy", "Rubber Cap"},
+	{"Glooth Golem", "Glooth Axe"},
+	{"Glooth Golem", "Glooth Blade"},
+	{"Glooth Golem", "Glooth Club"},
+	{"Glooth Golem", "Glooth Injection Tube"},
+	{"Glooth Golem", "Rubber Cap"},
+	{"Gnarlhound", "Shaggy Tail"},
+	{"Gnomevil", "Crystal Crossbow"},
+	{"Gnomevil", "Crystalline Sword"},
+	{"Goblin", "Bone Club"},
+	{"Goblin Assassin", "Bone Club"},
+	{"Goblin Leader", "Bone Club"},
+	{"Goblin Scavenger", "Bone Club"},
+	{"Goggle Cake", "Combat Knife"},
+	{"Golden Servant", "Halberd"},
+	{"Golden Servant Replica", "Halberd"},
+	{"Golgordan", "Double Axe"},
+	{"Golgordan", "Fire Axe"},
+	{"Google Cake", "Glacier Robe"},
+	{"Gore Horn", "Diamond Sceptre"},
+	{"Gore Horn", "Gore Horn"},
+	{"Gore Horn", "Knight Legs"},
+	{"Gore Horn", "Metal Spats"},
+	{"Gorerilla", "Crystal Crossbow"},
+	{"Gorerilla", "Gorerilla Mane"},
+	{"Gorerilla", "Gorerilla Tail"},
+	{"Gorerilla", "Magma Coat"},
+	{"Gorerilla", "Ornate Crossbow"},
+	{"Gorga", "Terra Mantle"},
+	{"Gorga", "Titan Axe"},
+	{"Gorger Inferniarch", "Demonic Matter"},
+	{"Gorger Inferniarch", "Gorger Antlers"},
+	{"Gorger Inferniarch", "Mummified Demon Finger"},
+	{"Gorgo", "Terra Mantle"},
+	{"Gorgo", "Titan Axe"},
+	{"Gorzindel", "Chaos Mace"},
+	{"Gorzindel", "Crystalline Sword"},
+	{"Gorzindel", "Curious Matter"},
+	{"Gorzindel", "Spellbook of a Mind Control"},
+	{"Gralvalon", "Demonic Matter"},
+	{"Grand Chaplain Gaunder", "Damaged Armor Plates"},
+	{"Grand Chaplain Gaunder", "Flask of Demonic Blood"},
+	{"Grand Chaplain Gaunder", "Titan Axe"},
+	{"Grand Commander Soeren", "Damaged Armor Plates"},
+	{"Grand Commander Soeren", "Falcon Crest"},
+	{"Grand Mother Foulscale", "Double Axe"},
+	{"Grand Mother Foulscale", "Dragon Hammer"},
+	{"Grand Mother Foulscale", "Plate Legs"},
+	{"Grave Robber", "Dirty Turban"},
+	{"Gravedigger", "Unholy Bone"},
+	{"Gravelord Oshuran", "Lightning Boots"},
+	{"Gravelord Oshuran", "Strange Helmet"},
+	{"Green Djinn", "Dirty Turban"},
+	{"Grim Reaper", "Dark Shield"},
+	{"Grim Reaper", "Flask of Demonic Blood"},
+	{"Grim Reaper", "Skullcracker Armor"},
+	{"Grimeleech", "Flask of Demonic Blood"},
+	{"Grimeleech", "Vile Axe"},
+	{"Grorlam", "Shiny Stone"},
+	{"Grorlam", "Sulphurous Stone"},
+	{"Guardian Captain Quaid", "Cobra Crest"},
+	{"Guardian Captain Quaid", "Terra Hod"},
+	{"Guardian Captain Quaid", "Wood Cape"},
+	{"Guardian of Tales", "Book Page"},
+	{"Guardian of Tales", "Fire Axe"},
+	{"Guardian of Tales", "Glowing Rune"},
+	{"Guardian of Tales", "Magma Coat"},
+	{"Guzzlemaw", "Frazzle Tongue"},
+	{"Hacker", "Halberd"},
+	{"Hand of Cursed Fate", "Flask of Demonic Blood"},
+	{"Harpy", "Crystalline Sword"},
+	{"Harpy", "Focus Cape"},
+	{"Harpy", "Harpy Feathers"},
+	{"Harpy", "Ornate Crossbow"},
+	{"Hatebreeder", "Ghastly Dragon Head"},
+	{"Hatebreeder", "Spellweaver's Robe"},
+	{"Hatebreeder", "Zaoan Shoes"},
+	{"Haunted Dragon", "Dark Shield"},
+	{"Haunted Dragon", "Dragon Slayer"},
+	{"Haunted Dragon", "Skullcracker Armor"},
+	{"Haunted Dragon", "Spellweaver's Robe"},
+	{"Haunted Dragon", "Unholy Bone"},
+	{"Haunted Hunter", "Crystal Crossbow"},
+	{"Haunted Hunter", "Crystalline Armor"},
+	{"Haunted Hunter", "Crystallized Death"},
+	{"Haunted Hunter", "Deadly Fangs"},
+	{"Haunted Hunter", "Toe Nails"},
+	{"Hawk Hopper", "Pressed Flower"},
+	{"Hazardous Phantom", "Glacier Robe"},
+	{"Headpecker", "Headpecker Beak"},
+	{"Headpecker", "Headpecker Feather"},
+	{"Headpecker", "Knife"},
+	{"Headpecker", "Titan Axe"},
+	{"Headwalker", "Book with an Hourglass"},
+	{"Headwalker", "Torn Page"},
+	{"Hellfire Fighter", "Fire Axe"},
+	{"Hellfire Fighter", "Magma Coat"},
+	{"Hellflayer", "Flask of Demonic Blood"},
+	{"Hellflayer", "Magma Boots"},
+	{"Hellflayer", "Pair of Hellflayer Horns"},
+	{"Hellflayer", "Spellbook of a Mind Control"},
+	{"Hellflayer", "Titan Axe"},
+	{"Hellgorak", "Focus Cape"},
+	{"Hellgorak", "Knight Legs"},
+	{"Hellgorak", "Spellbook of a Mind Control"},
+	{"Hellgorak", "Vile Axe"},
+	{"Hellhound", "Flask of Demonic Blood"},
+	{"Hellhound", "Hellhound Slobber"},
+	{"Hellhound", "Knight Axe"},
+	{"Hellhound", "Magma Boots"},
+	{"Hellhound", "Magma Coat"},
+	{"Hellhound", "Magma Monocle"},
+	{"Hellhunter Inferniarch", "Demonic Matter"},
+	{"Hellhunter Inferniarch", "Mummified Demon Finger"},
+	{"Hellspawn", "Battle Shield"},
+	{"Hellspawn", "Knight Legs"},
+	{"Hemming", "Bonebreaker"},
+	{"Hemming", "Cat's Paw"},
+	{"Hemming", "Werewolf Fur"},
+	{"Herald of Fire", "Infernoid Ember"},
+	{"Herald of Fire", "Ratana"},
+	{"Hero", "Scroll of Heroic Deeds"},
+	{"Hero", "Small Notebook"},
+	{"Hide", "Knight Legs"},
+	{"Hide", "Terra Hod"},
+	{"Hideous Fungus", "Hideous Chunk"},
+	{"Hideous Fungus", "Terra Boots"},
+	{"Hideous Fungus", "Terra Mantle"},
+	{"High Voltage Elemental", "Crystal Sword"},
+	{"High Voltage Elemental", "Lightning Headband"},
+	{"High Voltage Elemental", "Lightning Robe"},
+	{"Hirintror", "Crystal Sword"},
+	{"Hirintror", "Glacier Mask"},
+	{"Hirintror", "Glacier Shoes"},
+	{"Hirintror", "Strange Helmet"},
+	{"Hive Overseer", "Compound Eye"},
+	{"Honey Elemental", "Magma Boots"},
+	{"Honour Guard", "Scimitar"},
+	{"Horadron", "Knight Legs"},
+	{"Horadron", "Spellbook of a Mind Control"},
+	{"Horadron", "Vile Axe"},
+	{"Hulking Carnisylvan", "Carnisylvan Bark"},
+	{"Hulking Carnisylvan", "Carnisylvan Finger"},
+	{"Hulking Carnisylvan", "Diamond Sceptre"},
+	{"Hulking Carnisylvan", "Human Teeth"},
+	{"Hulking Carnisylvan", "Knight Axe"},
+	{"Hulking Carnisylvan", "Lightning Headband"},
+	{"Hulking Carnisylvan", "Terra Boots"},
+	{"Hulking Carnisylvan", "Terra Hod"},
+	{"Hulking Prehemoth", "Prehemoth Claw"},
+	{"Hulking Prehemoth", "Prehemoth Horns"},
+	{"Hulking Prehemoth", "War Axe"},
+	{"Humongous Fungus", "Angelic Axe"},
+	{"Humongous Fungus", "Humongous Chunk"},
+	{"Humongous Fungus", "Terra Boots"},
+	{"Humongous Fungus", "Terra Mantle"},
+	{"Hydra", "Hydra Head"},
+	{"Ice Dragon", "Dragon Tongue"},
+	{"Ice Dragon", "Glacier Mask"},
+	{"Ice Golem", "Crystal Sword"},
+	{"Ice Golem", "Glacier Mask"},
+	{"Ice Golem", "Strange Helmet"},
+	{"Ice Horror", "Crystal Mace"},
+	{"Ice Horror", "Glacier Mask"},
+	{"Ice Overlord", "Crystalline Armor"},
+	{"Ice Witch", "Crystal Sword"},
+	{"Ice Witch", "Diamond Sceptre"},
+	{"Ice Witch", "Glacier Shoes"},
+	{"Icecold Book", "Book Page"},
+	{"Icecold Book", "Crystal Mace"},
+	{"Icecold Book", "Crystalline Armor"},
+	{"Icecold Book", "Diamond Sceptre"},
+	{"Icecold Book", "Glacier Mask"},
+	{"Icecold Book", "Glacier Robe"},
+	{"Icecold Book", "Glacier Shoes"},
+	{"Icecold Book", "Silken Bookmark"},
+	{"Icecold Book", "Strange Helmet"},
+	{"Iks Ahpututu", "Ritual Tooth"},
+	{"Iks Ahpututu", "Rotten Feather"},
+	{"Iks Aucar", "Ritual Tooth"},
+	{"Iks Aucar", "Rotten Feather"},
+	{"Iks Chuka", "Ritual Tooth"},
+	{"Iks Chuka", "Rotten Feather"},
+	{"Iks Pututu", "Ritual Tooth"},
+	{"Iks Pututu", "Rotten Feather"},
+	{"Iks Yapunac", "Colourful Feather"},
+	{"Iks Yapunac", "Ritual Tooth"},
+	{"Iks Yapunac", "Yapunac Dagger"},
+	{"Infernal Demon", "Magma Boots"},
+	{"Infernal Demon", "Mercenary Sword"},
+	{"Infernal Demon", "War Axe"},
+	{"Infernal Phantom", "Chaos Mace"},
+	{"Infernal Phantom", "Crystal Mace"},
+	{"Infernal Phantom", "Fire Axe"},
+	{"Infernal Phantom", "Glorious Axe"},
+	{"Infernal Phantom", "Infernal Heart"},
+	{"Infernal Phantom", "Infernal Robe"},
+	{"Infernal Phantom", "Titan Axe"},
+	{"Infernal Phantom", "War Axe"},
+	{"Infernalist", "Magma Boots"},
+	{"Infernalist", "Spellbook of a Mind Control"},
+	{"Infernoid Blob", "Infernoid Ember"},
+	{"Infernoid Hound", "Infernoid Ember"},
+	{"Infernoid Soul", "Infernoid Ember"},
+	{"Infernoid Spiritual", "Infernoid Ember"},
+	{"Ink Blob", "Inkwell"},
+	{"Ink Blob", "Terra Boots"},
+	{"Ink Blob", "Terra Hod"},
+	{"Ink Blob", "Terra Mantle"},
+	{"Ink Splash", "Inkwell"},
+	{"Ink Splash", "Star Ink"},
+	{"Ink Splash", "Terra Boots"},
+	{"Ink Splash", "Terra Hod"},
+	{"Ink Splash", "Terra Mantle"},
+	{"Inkwing", "Dragon Slayer"},
+	{"Insane Siren", "Dream Essence Egg"},
+	{"Insane Siren", "Fire Axe"},
+	{"Insane Siren", "Magma Coat"},
+	{"Insane Siren", "Magma Monocle"},
+	{"Insectoid Scout", "Ripper Lance"},
+	{"Insectoid Worker", "Compound Eye"},
+	{"Insectoid Worker", "Dung Ball"},
+	{"Instable Breach Brood", "Crystal Bone"},
+	{"Instable Breach Brood", "Plasma Pearls"},
+	{"Instable Sparkion", "Sparkion Claw"},
+	{"Instable Sparkion", "Sparkion Legs"},
+	{"Instable Sparkion", "Sparkion Stings"},
+	{"Instable Sparkion", "Sparkion Tail"},
+	{"Iron Servant", "Halberd"},
+	{"Iron Servant Replica", "Halberd"},
+	{"Ironblight", "Crystal Mace"},
+	{"Ironblight", "Crystalline Spikes"},
+	{"Ironblight", "Shiny Stone"},
+	{"Izcandar the Banished", "Chaos Mace"},
+	{"Juggernaut", "Flask of Demonic Blood"},
+	{"Juggernaut", "Titan Axe"},
+	{"Juggernaut", "War Axe"},
+	{"Juvenile Bashmu", "Bashmu Fang"},
+	{"Juvenile Bashmu", "Bashmu Feather"},
+	{"Juvenile Bashmu", "Bashmu Tongue"},
+	{"Juvenile Bashmu", "Chaos Mace"},
+	{"Juvenile Bashmu", "Crystal Mace"},
+	{"Juvenile Bashmu", "Diamond Sceptre"},
+	{"Juvenile Bashmu", "Lightning Boots"},
+	{"Juvenile Bashmu", "Spellweaver's Robe"},
+	{"Kalyassa", "Dragon Tongue"},
+	{"Katex Blood Tongue", "Ornate Crossbow"},
+	{"Katex Blood Tongue", "War Axe"},
+	{"Katex Blood Tongue", "Werehyaena Nose"},
+	{"Katex Blood Tongue", "Werehyaena Talisman"},
+	{"Kerberos", "Flask of Demonic Blood"},
+	{"Kerberos", "Hellhound Slobber"},
+	{"Kerberos", "Knight Axe"},
+	{"King Zelos", "Glacier Robe"},
+	{"King Zelos", "Lightning Robe"},
+	{"King Zelos", "Magma Coat"},
+	{"King Zelos", "Terra Mantle"},
+	{"Knowledge Elemental", "Book Page"},
+	{"Knowledge Elemental", "Crystal Sword"},
+	{"Knowledge Elemental", "Glowing Rune"},
+	{"Knowledge Elemental", "Guardian Shield"},
+	{"Knowledge Elemental", "Silken Bookmark"},
+	{"Knowledge Elemental", "Spellweaver's Robe"},
+	{"Kollos", "Compound Eye"},
+	{"Kongra", "Kongra's Shouldpad"},
+	{"Kusuma", "Flask of Demonic Blood"},
+	{"Kusuma", "Terra Hod"},
+	{"Lady Tenebris", "Spellweaver's Robe"},
+	{"Lamassu", "Lamassu Hoof"},
+	{"Lamassu", "Terra Hod"},
+	{"Lancer Beetle", "Lancer Beetle Shell"},
+	{"Latrivan", "Double Axe"},
+	{"Latrivan", "Fire Axe"},
+	{"Latrivan", "Golden Sickle"},
+	{"Lava Golem", "Fire Axe"},
+	{"Lava Golem", "Magma Boots"},
+	{"Lava Golem", "Magma Clump"},
+	{"Lava Golem", "Magma Coat"},
+	{"Lava Golem", "Spellbook of a Mind Control"},
+	{"Lavafungus", "Focus Cape"},
+	{"Lavafungus", "Lavafungus Head"},
+	{"Lavafungus", "Lavafungus Ring"},
+	{"Lavafungus", "Metal Spats"},
+	{"Lavaworm", "Lavaworm Spike Roots"},
+	{"Lavaworm", "Lavaworm Spikes"},
+	{"Lavaworm", "Laworm Jaws"},
+	{"Lavaworm", "Strange Helmet"},
+	{"Leaf Golem", "Dowser"},
+	{"Leaf Golem", "Fir Cone"},
+	{"Leaf Golem", "Swampling Club"},
+	{"Lersatio", "Blood Preservation"},
+	{"Lethal Lissy", "Double Axe"},
+	{"Leviathan", "Bonebreaker"},
+	{"Lich", "Lightning Boots"},
+	{"Lich", "Strange Helmet"},
+	{"Liodile", "Liodile Fang"},
+	{"Lion Hydra", "Hydra Head"},
+	{"Lion Hydra", "Sealing Wax"},
+	{"Lion Hydra", "Titan Axe"},
+	{"Lisa", "Glooth Axe"},
+	{"Lisa", "Glooth Blade"},
+	{"Lisa", "Glooth Cape"},
+	{"Lisa", "Glooth Club"},
+	{"Lisa", "Slimy Leaf Tentacle"},
+	{"Lizard Chosen", "Cursed Shoulder Spikes"},
+	{"Lizard Chosen", "Scale of Corruption"},
+	{"Lizard Chosen", "Spiked Iron Ball"},
+	{"Lizard Chosen", "Zaoan Armor"},
+	{"Lizard Chosen", "Zaoan Shoes"},
+	{"Lizard Commander", "Lizard Tail"},
+	{"Lizard Dragon Priest", "Dragon Priest's Wandtip"},
+	{"Lizard Dragon Priest", "Focus Cape"},
+	{"Lizard Dragon Priest", "Zaoan Robe"},
+	{"Lizard Dragon Priest", "Zaoan Shoes"},
+	{"Lizard Executioner", "Lizard Tail"},
+	{"Lizard Gate Guardian", "Zaoan Armor"},
+	{"Lizard Gate Guardian", "Zaoan Shoes"},
+	{"Lizard Henchman", "Lizard Tail"},
+	{"Lizard High Guard", "High Guard Flag"},
+	{"Lizard High Guard", "High Guard Shoulderplates"},
+	{"Lizard High Guard", "Zaoan Armor"},
+	{"Lizard High Guard", "Zaoan Shoes"},
+	{"Lizard High Guardian", "Spiked Iron Ball"},
+	{"Lizard Legionnaire", "Broken Halberd"},
+	{"Lizard Legionnaire", "Zaoan Armor"},
+	{"Lizard Legionnaire", "Zaoan Shoes"},
+	{"Lizard Magician", "Lizard Tail"},
+	{"Lizard Sentinel", "Halberd"},
+	{"Lizard Swordmaster", "Lizard Tail"},
+	{"Lizard Zaogun", "Lizard Zaogun"},
+	{"Lizard Zaogun", "Zaoan Armor"},
+	{"Lizard Zaogun", "Zaoan Shoes"},
+	{"Lizard Zaogun", "Zaogun Flag"},
+	{"Lloyd", "Luminous Orb"},
+	{"Lloyd", "Piece of Hell Steel"},
+	{"Lloyd", "Spellweaver's Robe"},
+	{"Lord Azaram", "Lightning Headband"},
+	{"Lord Azaram", "Piece of Hell Steel"},
+	{"Lost Basher", "Basalt Fetish"},
+	{"Lost Basher", "Basalt Figurine"},
+	{"Lost Basher", "Black Shield"},
+	{"Lost Basher", "Bone Fetish"},
+	{"Lost Basher", "Bonecarving Knife"},
+	{"Lost Basher", "Buckle"},
+	{"Lost Basher", "Chaos Mace"},
+	{"Lost Basher", "Fire Axe"},
+	{"Lost Basher", "Knight Axe"},
+	{"Lost Basher", "Knight Legs"},
+	{"Lost Basher", "Lost Basher's Spike"},
+	{"Lost Basher", "Red Hair Dye"},
+	{"Lost Basher", "Terra Boots"},
+	{"Lost Basher", "War Axe"},
+	{"Lost Basher", "Wimp Tooth Chain"},
+	{"Lost Berserker", "Black Shield"},
+	{"Lost Berserker", "Chaos Mace"},
+	{"Lost Berserker", "Fire Axe"},
+	{"Lost Berserker", "Guardian Shield"},
+	{"Lost Berserker", "Knight Axe"},
+	{"Lost Berserker", "Terra Boots"},
+	{"Lost Exile", "Basalt Fetish"},
+	{"Lost Exile", "Basalt Figurine"},
+	{"Lost Exile", "Bone Fetish"},
+	{"Lost Exile", "Bonecarving Knife"},
+	{"Lost Exile", "Buckle"},
+	{"Lost Exile", "Fire Axe"},
+	{"Lost Exile", "Guardian Shield"},
+	{"Lost Exile", "Holy Ash"},
+	{"Lost Exile", "Knight Axe"},
+	{"Lost Exile", "Red Hair Dye"},
+	{"Lost Exile", "Terra Boots"},
+	{"Lost Exile", "Wimp Tooth Chain"},
+	{"Lost Husher", "Basalt Fetish"},
+	{"Lost Husher", "Basalt Figurine"},
+	{"Lost Husher", "Bone Fetish"},
+	{"Lost Husher", "Bonecarving Knife"},
+	{"Lost Husher", "Buckle"},
+	{"Lost Husher", "Fire Axe"},
+	{"Lost Husher", "Guardian Shield"},
+	{"Lost Husher", "Holy Ash"},
+	{"Lost Husher", "Knight Axe"},
+	{"Lost Husher", "Red Hair Dye"},
+	{"Lost Husher", "Terra Boots"},
+	{"Lost Husher", "Wimp Tooth Chain"},
+	{"Lost Soul", "Titan Axe"},
+	{"Lost Soul", "Unholy Bone"},
+	{"Lost Thrower", "Basalt Fetish"},
+	{"Lost Thrower", "Basalt Figurine"},
+	{"Lost Thrower", "Broken Throwing Axe"},
+	{"Lost Thrower", "Buckle"},
+	{"Lost Thrower", "Lost Bracers"},
+	{"Lost Thrower", "Mad Froth"},
+	{"Lost Thrower", "Red Hair Dye"},
+	{"Lumbering Carnivor", "Focus Cape"},
+	{"Lumbering Carnivor", "Fur Armor"},
+	{"Lumbering Carnivor", "Glorious Axe"},
+	{"Mad Mage", "Lightning Robe"},
+	{"Mad Mage", "Luminous Orb"},
+	{"Madareth", "Crystal Sword"},
+	{"Madareth", "Mercenary Sword"},
+	{"Madareth", "Relic Sword"},
+	{"Magma Crawler", "Black Shield"},
+	{"Magma Crawler", "Magma Boots"},
+	{"Magma Crawler", "Magma Clump"},
+	{"Mahatheb", "Gauze Bandage"},
+	{"Mahrdis", "Fire Axe"},
+	{"Maior Domus", "Glorious Axe"},
+	{"Maior Domus", "Piece of Draconian Steel"},
+	{"Maior Domus", "Piece of Hell Steel"},
+	{"Maior Domus", "Titan Axe"},
+	{"Makara", "Makara Fin"},
+	{"Makara", "Makara Tongue"},
+	{"Malofur Mangrinder", "Chaos Mace"},
+	{"Malvaroth", "Brinebrute Claw"},
+	{"Malvaroth", "Demonic Matter"},
+	{"Mamma Longlegs", "Knight Legs"},
+	{"Mammoth", "Mammoth Tusk"},
+	{"Mammoth", "Mammoth Whopper"},
+	{"Man in the Cave", "Mercenary Sword"},
+	{"Manticore", "Magma Boots"},
+	{"Manticore", "Magma Coat"},
+	{"Manticore", "Magma Monocle"},
+	{"Manticore", "Manticore Ear"},
+	{"Manticore", "Manticore Tail"},
+	{"Mantosaurus", "Mantosaurus Jaw"},
+	{"Many Faces", "Apron"},
+	{"Many Faces", "Glacier Robe"},
+	{"Many Faces", "Glacier Shoes"},
+	{"Many Faces", "Head"},
+	{"Marid", "Heavy Machete"},
+	{"Marid", "Magma Monocle"},
+	{"Massive Earth Elemental", "Diamond Sceptre"},
+	{"Massive Earth Elemental", "Lump of Earth"},
+	{"Massive Fire Elemental", "Magma Boots"},
+	{"Maw", "Compound Eye"},
+	{"Mawhawk", "Frazzle Tongue"},
+	{"Mazoran", "Fire Axe"},
+	{"Mazoran", "Flask of Demonic Blood"},
+	{"Mazoran", "Magma Coat"},
+	{"Mazzinor", "Crystalline Armor"},
+	{"Mazzinor", "Frozen Lightning"},
+	{"Mazzinor", "Lightning Boots"},
+	{"Mazzinor", "Vile Axe"},
+	{"Mean Lost Soul", "Ensouled Essence"},
+	{"Mean Lost Soul", "Fire Axe"},
+	{"Mean Lost Soul", "Mercenary Sword"},
+	{"Meandering Mushroom", "Rotten Roots"},
+	{"Meandering Mushroom", "Worm Sponge"},
+	{"Medusa", "Terra Mantle"},
+	{"Medusa", "Titan Axe"},
+	{"Mega Dragon", "Mega Dragon Heart"},
+	{"Mega Dragon", "Molten Dragon Essence"},
+	{"Mega Dragon", "Nimmersatt's Seal"},
+	{"Megasylvan Yselda", "Terra Hod"},
+	{"Megasylvan Yselda", "Terra Mantle"},
+	{"Melting Frozen Horror", "Crystal Mace"},
+	{"Melting Frozen Horror", "Crystal Sword"},
+	{"Melting Frozen Horror", "Crystalline Armor"},
+	{"Melting Frozen Horror", "Crystalline Sword"},
+	{"Melting Frozen Horror", "Ornate Crossbow"},
+	{"Melting Frozen Horror", "Spark Sphere"},
+	{"Memory of a Dwarf", "Glacier Mask"},
+	{"Memory of a Mammoth", "Mammoth Whopper"},
+	{"Menacing Carnivor", "Crystal Sword"},
+	{"Menacing Carnivor", "Heavy Machete"},
+	{"Menacing Carnivor", "Knight Legs"},
+	{"Mercurial Menace", "Lightning Boots"},
+	{"Mercurial Menace", "Mercurial Wing"},
+	{"Mercurial Menace", "Terra Boots"},
+	{"Merikh the Slaughterer", "Heavy Machete"},
+	{"Merikh the Slaughterer", "Magma Monocle"},
+	{"Merikh the Slaughterer", "Shiny Stone"},
+	{"Merlkin", "Banana Sash"},
+	{"Metal Gargoyle", "Alloy Legs"},
+	{"Metal Gargoyle", "Metal Bat"},
+	{"Metal Gargoyle", "Metal jaw"},
+	{"Metal Gargoyle", "Metal Spats"},
+	{"Metal Gargoyle", "Shiny Stone"},
+	{"Michael the Stalwart", "Crystalline Armor"},
+	{"Michael the Stalwart", "Cuirass Plate"},
+	{"Michael the Stalwart", "Dark Shield"},
+	{"Michael the Stalwart", "Fur Armor"},
+	{"Michael the Stalwart", "Mercenary Sword"},
+	{"Michael the Stalwart", "Silver Poniard"},
+	{"Michael the Stalwart", "Strange Helmet"},
+	{"Midnight Asura", "Flask of Demonic Blood"},
+	{"Midnight Asura", "Skullcracker Armor"},
+	{"Midnight Asura", "Spellbook of a Mind Control"},
+	{"Mimar Haffar", "Spellbook of a Mind Control"},
+	{"Mimar Haffar", "Wooden Spellbook"},
+	{"Mindmasher", "Compound Eye"},
+	{"Mindmasher", "Dung Ball"},
+	{"Mindmasher", "Ripper Lance"},
+	{"Minishabaal", "Fire Axe"},
+	{"Minishabaal", "Guardian Shield"},
+	{"Minotaur Amazon", "Cowbell"},
+	{"Minotaur Amazon", "Mino Lance"},
+	{"Minotaur Amazon", "Mino Shield"},
+	{"Minotaur Cult Follower", "Cowbell"},
+	{"Minotaur Cult Follower", "Mino Lance"},
+	{"Minotaur Cult Follower", "Mino Shield"},
+	{"Minotaur Cult Prophet", "Cowbell"},
+	{"Minotaur Cult Zealot", "Cowbell"},
+	{"Minotaur Cult Zealot", "Taurus Mace"},
+	{"Minotaur Guard", "Double Axe"},
+	{"Minotaur Guard", "Piece of Warrior Armor"},
+	{"Minotaur Guardian", "Battle Shield"},
+	{"Minotaur Hunter", "Mino Shield"},
+	{"Minotaur Invader", "Guardian Shield"},
+	{"Minotaur Invader", "Knight Axe"},
+	{"Minotaur Invader", "Piece of Warrior Armor"},
+	{"Minotaur Invader", "Titan Axe"},
+	{"Minotaur Mage", "Taurus Mace"},
+	{"Minotaur Occultist", "Swampling Club"},
+	{"Mitmag Seer", "Wooden Spellbook"},
+	{"Mitmah Scout", "Broken Mitmah Necklace"},
+	{"Mitmah Scout", "Ornate Crossbow"},
+	{"Mitmah Vanguard", "Broken Mitmah Necklace"},
+	{"Monk's Apparition", "Glacier Mask"},
+	{"Monk's Apparition", "Wood Cape"},
+	{"Mooh'Tah Warrior", "Guardian Shield"},
+	{"Mooh'Tah Warrior", "Knight Legs"},
+	{"Moohtant", "Chaos Mace"},
+	{"Moohtant", "Giant Pacifier"},
+	{"Moohtant Wallbreaker", "Giant Pacifier"},
+	{"Moonspawn Blightspitter", "Moonspawn Headpiece"},
+	{"Moonspawn Blightspitter", "Terra Boots"},
+	{"Moonspawn Blightspitter", "Terra Mantle"},
+	{"Moonspawn Oozecrown", "Moonspawn Tentacle"},
+	{"Morgaroth", "Double Axe"},
+	{"Morgaroth", "Magma Coat"},
+	{"Morguthis", "Knight Axe"},
+	{"Mould Phantom", "Crystal Crossbow"},
+	{"Mould Phantom", "Mould Heart"},
+	{"Mould Phantom", "Mould Robe"},
+	{"Mould Phantom", "Ornate Crossbow"},
+	{"Mr. Punish", "Cat's Paw"},
+	{"Mr. Punish", "Double Axe"},
+	{"Muddy Earth Elemental", "Lump of Earth"},
+	{"Muglex Clan Footman", "Bone Club"},
+	{"Muglex Clan Scavenger", "Bone Club"},
+	{"Mummy", "Black Shield"},
+	{"Mummy", "Gauze Bandage"},
+	{"Munster", "Bone Club"},
+	{"Museum Stone Golem", "Shiny Stone"},
+	{"Museum Stone Golem", "Sulphurous Stone"},
+	{"Museum Stone Rhino", "Raw Meat"},
+	{"Mutated Bat", "Battle Shield"},
+	{"Mutated Bat", "Black Shield"},
+	{"Mutated Bat", "Mercenary Sword"},
+	{"Mutated Bat", "Mutated Bat Ear"},
+	{"Mutated Human", "Mutated Flesh"},
+	{"Mutated Rat", "Halberd"},
+	{"Mutated Rat", "Mutated Rat Tail"},
+	{"Mutated Tiger", "Angelic Axe"},
+	{"Mutated Tiger", "Glorious Axe"},
+	{"Mutated Tiger", "Guardian Shield"},
+	{"Mutated Tiger", "Striped Fur"},
+	{"Mycobiontic Beetle", "Glacier Mask"},
+	{"Mycobiontic Beetle", "Rotten Roots"},
+	{"Mycobiontic Beetle", "Rotten Vermin Ichor"},
+	{"Naga Archer", "Crystal Crossbow"},
+	{"Naga Archer", "Naga Archer Scales"},
+	{"Naga Archer", "Naga Armring"},
+	{"Naga Archer", "Naga Earring"},
+	{"Naga Archer", "Ornate Crossbow"},
+	{"Naga Warrior", "Naga Armring"},
+	{"Naga Warrior", "Naga Earring"},
+	{"Naga Warrior", "Naga Warrior Scales"},
+	{"Naga Warrior", "Relic Sword"},
+	{"Naga Warrior", "Scimitar"},
+	{"Naga Warrior", "Spiky Club"},
+	{"Necromancer", "Book of Necromantic Rituals"},
+	{"Necromancer Servant", "Book of Necromantic Rituals"},
+	{"Necropharus", "Bone Club"},
+	{"Necropharus", "Book of Necromantic Rituals"},
+	{"Neferi the Spy", "Glacier Mask"},
+	{"Neferi the Spy", "Glacier Shoes"},
+	{"Neferi the Spy", "Knight Axe"},
+	{"Neferi the Spy", "Lightning Headband"},
+	{"Neferi the Spy", "Terra Boots"},
+	{"Neferi the Spy", "Terra Hod"},
+	{"Neutral Deepling Warrior", "Heavy Trident"},
+	{"Nibblemaw", "Frazzle Tongue"},
+	{"Nibblemaw", "Lime Tart"},
+	{"Night Harpy", "Night Harpy Feathers"},
+	{"Nightfiend", "Blood Preservation"},
+	{"Nightfiend", "Tooth File"},
+	{"Nighthunter", "Crystal Sword"},
+	{"Nighthunter", "Nighthunter Wing"},
+	{"Nighthunter", "Spellbook of a Mind Control"},
+	{"Nightmare", "Essence of a Bad Dream"},
+	{"Nightmare", "Flask of Demonic Blood"},
+	{"Nightmare", "Knight Legs"},
+	{"Nightmare", "Scythe Leg"},
+	{"Nightmare", "War Axe"},
+	{"Nightmare Scion", "Diamond Sceptre"},
+	{"Nightmare Scion", "Essence of a Bad Dream"},
+	{"Nightmare Scion", "Focus Cape"},
+	{"Nightmare Scion", "Scythe Leg"},
+	{"Nightstalker", "Chaos Mace"},
+	{"Nomad", "Dirty Turban"},
+	{"Norcferatu Heartless", "Chaos Mace"},
+	{"Norcferatu Heartless", "Heart Amphora"},
+	{"Norcferatu Heartless", "Pot of Orcish Warpaint"},
+	{"Norcferatu Heartless", "Spiked Gorget"},
+	{"Norcferatu Heartless", "War Axe"},
+	{"Norcferatu Nightweaver", "Blood Hood"},
+	{"Norcferatu Nightweaver", "Piece of Frozen Night"},
+	{"Norcferatu Nightweaver", "Spiked Bracers"},
+	{"Noxious Ripptor", "Ripptor Claw"},
+	{"Noxious Ripptor", "Ripptor Scales"},
+	{"Noxious Ripptor", "Wooden Spellbook"},
+	{"Nymph", "Colourful Snail Shell"},
+	{"Nymph", "Dandelion Seeds"},
+	{"Nymph", "Hibiscus Dress"},
+	{"Nymph", "Wild Flowers"},
+	{"Ocyakao", "Mammoth Whopper"},
+	{"Ogre Brute", "Ancient Stone"},
+	{"Ogre Brute", "Bonebreaker"},
+	{"Ogre Brute", "Ogre Ear Stud"},
+	{"Ogre Brute", "Skull Fetish"},
+	{"Ogre Rowdy", "Ogre Ear Stud"},
+	{"Ogre Rowdy", "Skull Fetish"},
+	{"Ogre Ruffian", "Diamond Sceptre"},
+	{"Ogre Ruffian", "Metal Spats"},
+	{"Ogre Ruffian", "Ogre Ear Stud"},
+	{"Ogre Ruffian", "Skull Fetish"},
+	{"Ogre Sage", "Bone Fetish"},
+	{"Ogre Sage", "Ogre Ear Stud"},
+	{"Ogre Sage", "Shamanic Talisman"},
+	{"Ogre Sage", "Skull Fetish"},
+	{"Ogre Sage", "Terra Boots"},
+	{"Ogre Savage", "Ogre Ear Stud"},
+	{"Ogre Savage", "Skull Fetish"},
+	{"Ogre Shaman", "Bone Fetish"},
+	{"Ogre Shaman", "Ogre Ear Stud"},
+	{"Ogre Shaman", "Shamanic Talisman"},
+	{"Ogre Shaman", "Skull Fetish"},
+	{"Omnivora", "Terra Boots"},
+	{"Omrafir", "Lightning Boots"},
+	{"Omrafir", "Lightning Robe"},
+	{"Oozing Carcass", "Decayed Finger Bone"},
+	{"Oozing Carcass", "Rotten Roots"},
+	{"Oozing Corpus", "Rotten Roots"},
+	{"Oozing Corpus", "Terra Boots"},
+	{"Oozing Corpus", "Worm Sponge"},
+	{"Orc Berserker", "Halberd"},
+	{"Orc Berserker", "Orcish Gear"},
+	{"Orc Cult Fanatic", "Orchish Axe"},
+	{"Orc Cult Fanatic", "Plate Legs"},
+	{"Orc Cult Inquisitor", "Halberd"},
+	{"Orc Cult Inquisitor", "Orchish Axe"},
+	{"Orc Cult Inquisitor", "Orcish Gear"},
+	{"Orc Cult Minion", "Orchish Axe"},
+	{"Orc Cultist", "Orchish Axe"},
+	{"Orc Leader", "Broadsword"},
+	{"Orc Leader", "Plate Legs"},
+	{"Orc Leader", "Scimitar"},
+	{"Orc Marauder", "Orchish Axe"},
+	{"Orc Marauder", "Shaggy Tail"},
+	{"Orc Rider", "Battle Shield"},
+	{"Orc Rider", "Orchish Axe"},
+	{"Orc Warlord", "Dragon Hammer"},
+	{"Orc Warlord", "Magma Boots"},
+	{"Orc Warlord", "Orchish Axe"},
+	{"Orc Warlord", "Plate Legs"},
+	{"Orc Warlord", "Scimitar"},
+	{"Orclops Bloodbreaker", "Bloodshot Giant Eye"},
+	{"Orclops Bloodbreaker", "Bone Fibula"},
+	{"Orclops Bloodbreaker", "Bone Toothpick"},
+	{"Orclops Bloodbreaker", "Orchish Axe"},
+	{"Orclops Bloodbreaker", "Orcish Toothbrush"},
+	{"Orclops Doomhauler", "Bone Toothpick"},
+	{"Orclops Doomhauler", "Orchish Axe"},
+	{"Orclops Ravager", "Bone Toothpick"},
+	{"Orclops Ravager", "Orchish Axe"},
+	{"Orewalker", "Crystal Crossbow"},
+	{"Orewalker", "Crystalline Armor"},
+	{"Orewalker", "Glorious Axe"},
+	{"Orewalker", "Knight Legs"},
+	{"Orewalker", "Pulverized Ore"},
+	{"Orewalker", "Shiny Stone"},
+	{"Orewalker", "Sulphurous Stone"},
+	{"Orewalker", "Titan Axe"},
+	{"Orewalker", "Vein of Ore"},
+	{"Orger", "Spiky Club"},
+	{"Orshabaal", "Double Axe"},
+	{"Orshabaal", "Dragon Hammer"},
+	{"Orshabaal", "Fire Axe"},
+	{"Orshabaal", "Golden Sickle"},
+	{"Outburst", "Bonebreaker"},
+	{"Outburst", "Chaos Mace"},
+	{"Outburst", "Crystalline Sword"},
+	{"Outburst", "Energy Ball"},
+	{"Outburst", "Instable Proto Matter"},
+	{"Outburst", "Lightning Headband"},
+	{"Outburst", "Lightning Robe"},
+	{"Outburst", "War Axe"},
+	{"Overseer Osverger", "Lightning Robe"},
+	{"Overseer Osverger", "Magma Monocle"},
+	{"Overseer Osverger", "Silver Poniard"},
+	{"Overseer Osverger", "Stag Parchment"},
+	{"Overseer Osverger", "Strange Helmet"},
+	{"Overseer Osverger", "Terra Hod"},
+	{"Owin", "Fur Armor"},
+	{"Owin", "Wereboar Loincloth"},
+	{"Owin", "Wereboar Tusks"},
+	{"Paiz the Pauperizer", "Broken Draken Mail"},
+	{"Paiz the Pauperizer", "Broken Slicer"},
+	{"Paiz the Pauperizer", "Draken Wristbands"},
+	{"Paiz the Pauperizer", "Zaoan Armor"},
+	{"Paladin's Apparition", "Glacier Mask"},
+	{"Paladin's Apparition", "Wood Cape"},
+	{"Percht", "Magma Coat"},
+	{"Percht", "Magma Monocle"},
+	{"Phosphorus", "Holy Ash"},
+	{"Phosphorus", "Lightning Boots"},
+	{"Phosphorus", "Lightning Headband"},
+	{"Phosphorus", "Lightning Robe"},
+	{"Pirat Bombardier", "Lightning Boots"},
+	{"Pirat Bombardier", "Magma Boots"},
+	{"Pirat Bombardier", "Mouldy Powder"},
+	{"Pirat Bombardier", "Pirat's Tail"},
+	{"Pirat Bombardier", "Pirate Coin"},
+	{"Pirat Bombardier", "Terra Boots"},
+	{"Pirat Bombardier", "Wood Cape"},
+	{"Pirat Cutthroat", "Crystal Sword"},
+	{"Pirat Cutthroat", "Focus Cape"},
+	{"Pirat Cutthroat", "Knight Axe"},
+	{"Pirat Cutthroat", "Pirat's Tail"},
+	{"Pirat Cutthroat", "Pirate Coin"},
+	{"Pirat Cutthroat", "Shark Fins"},
+	{"Pirat Mate", "Mouldy Powder"},
+	{"Pirat Mate", "Pirat's Tail"},
+	{"Pirat Mate", "Shark Fins"},
+	{"Pirat Mate", "Small Treasure Chest"},
+	{"Pirat Scoundrel", "Grappling Hook"},
+	{"Pirat Scoundrel", "Pirat's Tail"},
+	{"Pirat Scoundrel", "Pirate Coin"},
+	{"Pirate Buccaneer", "Battle Shield"},
+	{"Pirate Cook", "Gold Tooth"},
+	{"Pirate Corsair", "Dark Shield"},
+	{"Pirate Gunner", "Gold Tooth"},
+	{"Pirate Navigator", "Gold Tooth"},
+	{"Pirate Quartermaster", "Gold Tooth"},
+	{"Pirate Skeleton", "Bone Club"},
+	{"Pixie", "Colourful Snail Shell"},
+	{"Pixie", "Dandelion Seeds"},
+	{"Pixie", "Wild Flowers"},
+	{"Pixie", "Wooden Spellbook"},
+	{"Plagirath", "Flask of Demonic Blood"},
+	{"Plagirath", "Mercenary Sword"},
+	{"Plagirath", "Terra Mantle"},
+	{"Plagueroot", "Chaos Mace"},
+	{"Plaguesmith", "Knight Legs"},
+	{"Plaguesmith", "Piece of Draconian Steel"},
+	{"Plaguesmith", "Piece of Hell Steel"},
+	{"Poisonous Carnisylvan", "Carnisylvan Bark"},
+	{"Poisonous Carnisylvan", "Carnisylvan Finger"},
+	{"Poisonous Carnisylvan", "Diamond Sceptre"},
+	{"Poisonous Carnisylvan", "Human Teeth"},
+	{"Poisonous Carnisylvan", "Knight Axe"},
+	{"Pooka", "Shimmering Beetles"},
+	{"Preceptor Lazare", "Flask of Demonic Blood"},
+	{"Preceptor Lazare", "Titan Axe"},
+	{"Preceptor Lazare", "War Axe"},
+	{"Priestess", "Black Shield"},
+	{"Priestess", "Dark Rosary"},
+	{"Priestess of the Wild Sun", "Empty Honey Glass"},
+	{"Priestess of the Wild Sun", "Fafnar Symbol"},
+	{"Priestess of the Wild Sun", "Golden Sickle"},
+	{"Priestess of the Wild Sun", "Relic Sword"},
+	{"Priestess of the Wild Sun", "War Axe"},
+	{"Prince Drazzak", "Crystalline Armor"},
+	{"Prince Drazzak", "Lightning Boots"},
+	{"Prince Drazzak", "Lightning Robe"},
+	{"Psychic Spirit Elemental", "Holy Ash"},
+	{"Putrid Mummy", "Green Bandage"},
+	{"Putrid Mummy", "Single Human Eye"},
+	{"Quara Constrictor", "Quara Tentacle"},
+	{"Quara Constrictor Scout", "Quara Tentacle"},
+	{"Quara Hydromancer", "Quara Eye"},
+	{"Quara Hydromancer Scout", "Quara Eye"},
+	{"Quara Looter", "Amber Souvenir"},
+	{"Quara Looter", "Crystal Crossbow"},
+	{"Quara Looter", "Resinous Fish Fin"},
+	{"Quara Mantassin", "Halberd"},
+	{"Quara Mantassin", "Strange Helmet"},
+	{"Quara Pincher", "Glacier Robe"},
+	{"Quara Pincher", "Halberd"},
+	{"Quara Pincher", "Quara Pincers"},
+	{"Quara Pincher Scout", "Halberd"},
+	{"Quara Pincher Scout", "Quara Pincers"},
+	{"Quara Plunderer", "Amber Souvenir"},
+	{"Quara Plunderer", "Quara Eye"},
+	{"Quara Plunderer", "Resinous Fish Fin"},
+	{"Quara Plunderer", "Spellbook of a Mind Control"},
+	{"Quara Predator", "Double Axe"},
+	{"Quara Predator", "Glacier Robe"},
+	{"Quara Predator", "Quara Bone"},
+	{"Quara Predator", "Relic Sword"},
+	{"Quara Predator Scout", "Double Axe"},
+	{"Quara Predator Scout", "Quara Bone"},
+	{"Quara Raider", "Amber Souvenir"},
+	{"Quara Raider", "Glacier Robe"},
+	{"Quara Raider", "Quara Pincers"},
+	{"Quara Raider", "Resinous Fish Fin"},
+	{"Radiant Acolyte", "Book of Faith"},
+	{"Radiant Inquisitor", "Golden Belt"},
+	{"Radiant Warden", "Tatty Robe"},
+	{"Radiant Zealot", "Loose Prayer Beads"},
+	{"Rage Squid", "Fire Axe"},
+	{"Rage Squid", "Glowing Rune"},
+	{"Rage Squid", "Inkwell"},
+	{"Ragiaz", "Bonebreaker"},
+	{"Ragiaz", "Flask of Demonic Blood"},
+	{"Raging Mage", "Focus Cape"},
+	{"Raging Mage", "Luminous Orb"},
+	{"Raging Mage", "Spellbook of a Mind Control"},
+	{"Rakesh Moonfang", "Fur Armor"},
+	{"Rakesh Moonfang", "Golden Sickle"},
+	{"Rakesh Moonfang", "Lightning Headband"},
+	{"Rakesh Moonfang", "Ripper Lance"},
+	{"Rakesh Moonfang", "Werepanther Claw"},
+	{"Ratmiral Blackwhiskers", "Pirate Coin"},
+	{"Ratmiral Blackwhiskers", "Small Treasure Chest"},
+	{"Raubritter Chastener", "Lightning Robe"},
+	{"Raubritter Chastener", "Magma Monocle"},
+	{"Raubritter Chastener", "Silver Poniard"},
+	{"Raubritter Chastener", "Stag Parchment"},
+	{"Raubritter Chastener", "Wooden Spellbook"},
+	{"Raubritter Marksman", "Cuirass Plate"},
+	{"Raubritter Marksman", "Stag Parchment"},
+	{"Raubritter Marksman", "Terra Mantle"},
+	{"Raubritter Skirmisher", "Cuirass Plate"},
+	{"Raubritter Skirmisher", "Fur Armor"},
+	{"Raubritter Skirmisher", "Mercenary Sword"},
+	{"Raubritter Skirmisher", "Silver Poniard"},
+	{"Ravenous Hunger", "Crystalline Armor"},
+	{"Ravenous Hunger", "Fig Leaf"},
+	{"Ravenous Hunger", "Luminous Orb"},
+	{"Ravenous Hunger", "Terra Boots"},
+	{"Ravenous Hunger", "Terra Mantle"},
+	{"Ravenous Hunger", "Wood Cape"},
+	{"Ravenous Hunger", "Wooden Spellbook"},
+	{"Raxias", "Shimmering Beetles"},
+	{"Raxias", "Wood Cape"},
+	{"Razzagorn", "Flask of Demonic Blood"},
+	{"Reality Reaver", "Dangerous Proto Matter"},
+	{"Reality Reaver", "Focus Cape"},
+	{"Reality Reaver", "Lightning Headband"},
+	{"Reality Reaver", "Plasma Pearls"},
+	{"Reality Reaver", "Plasmatic Lightning"},
+	{"Realityquake", "Crystalline Armor"},
+	{"Realityquake", "Lightning Headband"},
+	{"Realityquake", "Lightning Robe"},
+	{"Realityquake", "Vile Axe"},
+	{"Reflection of a Mage", "Focus Cape"},
+	{"Reflection of a Mage", "Luminous Orb"},
+	{"Reflection of a Mage", "Spellbook of a Mind Control"},
+	{"Reflection of Mawhawk", "Frazzle Tongue"},
+	{"Renegade Knight", "Scroll of Heroic Deeds"},
+	{"Renegade Knight", "Small Notebook"},
+	{"Renegade Orc", "Broadsword"},
+	{"Renegade Orc", "Plate Legs"},
+	{"Renegade Orc", "Scimitar"},
+	{"Renegade Quara Constrictor", "Quara Tentacle"},
+	{"Renegade Quara Hydromancer", "Quara Eye"},
+	{"Renegade Quara Mantassin", "Strange Helmet"},
+	{"Renegade Quara Pincher", "Glacier Robe"},
+	{"Renegade Quara Pincher", "Halberd"},
+	{"Renegade Quara Pincher", "Quara Pincers"},
+	{"Renegade Quara Predator", "Glacier Robe"},
+	{"Renegade Quara Predator", "Quara Bone"},
+	{"Renegade Quara Predator", "Relic Sword"},
+	{"Retching Horror", "Mercenary Sword"},
+	{"Retching Horror", "Pool of Chitinous Gloe"},
+	{"Rhindeer", "Rhindeer Antlers"},
+	{"Rhindeer", "Titan Axe"},
+	{"Ribstride", "Bony Tail"},
+	{"Roaming Dread", "Crystal Mace"},
+	{"Roaming Dread", "Crystalline Armor"},
+	{"Roaming Dread", "Crystallized Death"},
+	{"Roaming Dread", "Necromantic Core"},
+	{"Roaming Dread", "Toe Nails"},
+	{"Rootthing Amber Shaper", "Demon Root"},
+	{"Rootthing Amber Shaper", "Resin Parasite"},
+	{"Rootthing Amber Shaper", "Wooden Spellbook"},
+	{"Rootthing Bug Tracker", "Demon Root"},
+	{"Rootthing Bug Tracker", "Resin Parasite"},
+	{"Rootthing Bug Tracker", "Wood Cape"},
+	{"Rootthing Nutshell", "Demon Root"},
+	{"Rootthing Nutshell", "Resin Parasite"},
+	{"Rootthing Nutshell", "Terra Hod"},
+	{"Rorc", "Orchish Axe"},
+	{"Rot Elemental", "Glob of Glooth"},
+	{"Rot Elemental", "Glooth Axe"},
+	{"Rotrender Scourge of Azzilon", "Golden Sickle"},
+	{"Rotspit", "Crystal Sword"},
+	{"Rotspit", "Spitter Nose"},
+	{"Rotten Golem", "Fur Armor"},
+	{"Rotten Golem", "Mercenary Sword"},
+	{"Rotten Golem", "Rubber Cap"},
+	{"Rotten Golem", "Terra Mantle"},
+	{"Rotten Golem", "Titan Axe"},
+	{"Rotten Golem", "War Axe"},
+	{"Rotten Golem", "Wood Cape"},
+	{"Rotten Man-Maggot", "Blooded Worm"},
+	{"Rotten Man-Maggot", "Rotten Roots"},
+	{"Rotten Man-Maggot", "Wood Cape"},
+	{"Rotten Piece of Cloth", "Ghoul"},
+	{"Rupture", "Chaos Mace"},
+	{"Rupture", "Frozen Lightning"},
+	{"Rupture", "Lightning Headband"},
+	{"Rupture", "Odd Organ"},
+	{"Rupture", "Plasma Pearls"},
+	{"Rustheap Golem", "Metal Bat"},
+	{"Rustheap Golem", "Necromantic Rust"},
+	{"Sabretooth", "Magma Coat"},
+	{"Sabretooth", "Metal Spats"},
+	{"Sabretooth", "Sabretooth Fur"},
+	{"Salamander", "Scimitar"},
+	{"Salamander Trainer", "Bone Club"},
+	{"Sandcrawler", "Sandcrawler Shell"},
+	{"Sandstone Scorpion", "Black Shield"},
+	{"Scarlett Etzel", "Magma Coat"},
+	{"Scarlett Etzel", "Magma Monocle"},
+	{"Scarlett Etzel", "Terra Hod"},
+	{"Scarlett Etzel", "Terra Mantle"},
+	{"Schiach", "Glacier Robe"},
+	{"Sea Captain", "Gold Tooth"},
+	{"Sea Serpent", "Crystalline Armor"},
+	{"Sea Serpent", "Focus Cape"},
+	{"Sea Serpent", "Plate Legs"},
+	{"Seacrest Serpent", "Glacier Mask"},
+	{"Seacrest Serpent", "Glacier Shoes"},
+	{"Serpent Spawn", "Mercenary Sword"},
+	{"Serpent Spawn", "Spellbook of a Mind Control"},
+	{"Serpent Spawn", "Strange Helmet"},
+	{"Serpent Spawn", "Winged Tail"},
+	{"Shaburak Lord", "Magma Coat"},
+	{"Shaburak Prince", "Magma Coat"},
+	{"Shadow Pupil", "Book of Necromantic Rituals"},
+	{"Shadow Pupil", "Horoscope"},
+	{"Shadowpelt", "Fur Armor"},
+	{"Shadowpelt", "Relic Sword"},
+	{"Shadowstalker", "Compound Eye"},
+	{"Shaper Matriarch", "Cracked Alabaster Vase"},
+	{"Shardhead", "Crystal Sword"},
+	{"Shardhead", "Glacier Mask"},
+	{"Shark", "Eye of a Deepling"},
+	{"Sharpclaw", "Badger Boots"},
+	{"Sharpclaw", "Werebadger Claws"},
+	{"Sharpclaw", "Werebadger Skull"},
+	{"Shell Drake", "Paper Plane"},
+	{"Shiversleep", "Bowl of Terror Sweat"},
+	{"Shiversleep", "Trapped Bad Dream Monster"},
+	{"Shrieking Cry-Stal", "Terra Boots"},
+	{"Shulgrax", "Chaos Mace"},
+	{"Shulgrax", "Flask of Demonic Blood"},
+	{"Sibang", "Banana Sash"},
+	{"Sight of Surrender", "Crystal Mace"},
+	{"Silencer", "Dark Shield"},
+	{"Silencer", "Diamond Sceptre"},
+	{"Silencer", "Glorious Axe"},
+	{"Silencer", "Silencer Resonating Chamber"},
+	{"Silencer", "Terra Boots"},
+	{"Silencer", "Titan Axe"},
+	{"Silverfrost Sentinel", "Glacier Mask"},
+	{"Sineater Inferniarch", "Demonic Matter"},
+	{"Sineater Inferniarch", "Mummified Demon Finger"},
+	{"Sineater Inferniarch", "Sineater Wing"},
+	{"Sineater Inferniarch", "Wooden Spellbook"},
+	{"Sir Baeloc", "Knight Legs"},
+	{"Sir Baeloc", "Magma Monocle"},
+	{"Sir Baeloc", "Piece of Hell Steel"},
+	{"Sir Leonard", "Knight Axe"},
+	{"Sir Leonard", "Knight Legs"},
+	{"Sir Leopold", "Knight Axe"},
+	{"Sir Leopold", "Knight Legs"},
+	{"Sir Valorcrest", "Chaos Mace"},
+	{"Sister Hetai", "Focus Cape"},
+	{"Sister Hetai", "Lightning Headband"},
+	{"Sister Hetai", "Magma Boots"},
+	{"Sister Hetai", "Magma Coat"},
+	{"Sister Hetai", "Metal Spats"},
+	{"Sister Hetai", "Terra Boots"},
+	{"Sister Hetai", "Terra Hod"},
+	{"Skeleton Elite Warrior", "Bone Toothpick"},
+	{"Skeleton Elite Warrior", "Knight Axe"},
+	{"Skeleton Elite Warrior", "Mammoth Whopper"},
+	{"Skeleton Elite Warrior", "Unholy Bone"},
+	{"Sliver", "(Nenhuma Criatura Dropa)"},
+	{"Smuggler", "Combat Knife"},
+	{"Smuggler", "Knife"},
+	{"Sopping Carcass", "Decayed Finger Bone"},
+	{"Sopping Carcass", "Ripper Lance"},
+	{"Sopping Carcass", "Rotten Roots"},
+	{"Sopping Corpus", "Relic Sword"},
+	{"Sopping Corpus", "Rotten Roots"},
+	{"Sopping Corpus", "Skullcracker Armor"},
+	{"Soul of Dragonking", "Dragon Tongue"},
+	{"Soul of Dragonking Zyrtarch", "Piece of Draconian Steel"},
+	{"Soul of Dragonking Zyrtarch", "Spellbook of a Mind Control"},
+	{"Soul-Broken Harbinger", "Dream Essence Egg"},
+	{"Soul-Broken Harbinger", "Glacier Shoes"},
+	{"Soul-Broken Harbinger", "Ice Flower"},
+	{"Soul-Broken Harbinger", "Knight Legs"},
+	{"Soul-Broken Harbinger", "Spellbook of a Mind Control"},
+	{"Soul-Broken Harbinger", "Wood Cape"},
+	{"Sparkion", "Sparkion Claw"},
+	{"Sparkion", "Sparkion Legs"},
+	{"Sparkion", "Sparkion Stings"},
+	{"Sparkion", "Sparkion Tail"},
+	{"Spectre", "Relic Sword"},
+	{"Spectre", "Shiny Stone"},
+	{"Spellreaper Inferniarch", "Demonic Matter"},
+	{"Spellreaper Inferniarch", "Mummified Demon Finger"},
+	{"Spellreaper Inferniarch", "Spellbook of a Mind Control"},
+	{"Sphinx", "Lightning Headband"},
+	{"Sphinx", "Magma Boots"},
+	{"Sphinx", "Magma Monocle"},
+	{"Sphinx", "Sphinx Tiara"},
+	{"Spidris", "Compound Eye"},
+	{"Spidris", "Titan Axe"},
+	{"Spidris Elite", "Compound Eye"},
+	{"Spidris Elite", "Titan Axe"},
+	{"Spiky Carnivor", "Buckle"},
+	{"Spiky Carnivor", "Guardian Shield"},
+	{"Spiky Carnivor", "Terra Mantle"},
+	{"Spirit Overlord", "Holy Ash"},
+	{"Spitter", "Compound Eye"},
+	{"Spitter", "Crystal Sword"},
+	{"Spitter", "Spitter Nose"},
+	{"Squid Warden", "Crystal Mace"},
+	{"Squid Warden", "Crystal Sword"},
+	{"Squid Warden", "Crystalline Armor"},
+	{"Squid Warden", "Diamond Sceptre"},
+	{"Squid Warden", "Glacier Mask"},
+	{"Squid Warden", "Glacier Robe"},
+	{"Squid Warden", "Glowing Rune"},
+	{"Squid Warden", "Inkwell"},
+	{"Srezz Yellow Eyes", "Glacier Robe"},
+	{"Srezz Yellow Eyes", "War Axe"},
+	{"Srezz Yellow Eyes", "Winged Tail"},
+	{"Stabilizing Reality Reaver", "Focus Cape"},
+	{"Stabilizing Reality Reaver", "Lightning Headband"},
+	{"Stabilizing Reality Reaver", "Plasma Pearls"},
+	{"Stalking Stalk", "Magma Coat"},
+	{"Stalking Stalk", "Stalking Seeds"},
+	{"Stampor", "Stampor Talons"},
+	{"Stone Devourer", "Ancient Stone"},
+	{"Stone Devourer", "Crystal Mace"},
+	{"Stone Devourer", "Crystalline Spikes"},
+	{"Stone Devourer", "Glorious Axe"},
+	{"Stone Devourer", "War Axe"},
+	{"Stone Golem", "Ancient Stone"},
+	{"Stone Golem", "Shiny Stone"},
+	{"Stone Golem", "Sulphurous Stone"},
+	{"Stone Rhino", "Raw Meat"},
+	{"Stonecracker", "Double Axe"},
+	{"Stonecracker", "Shiny Stone"},
+	{"Stonecracker", "War Axe"},
+	{"Stonerefiner", "Glob of Acid Slime"},
+	{"Stonerefiner", "Half-Digested Stones"},
+	{"Stonerefiner", "Stonerefiner's Skull"},
+	{"Streaked Devourer", "Crystal Mace"},
+	{"Streaked Devourer", "Mercenary Sword"},
+	{"Streaked Devourer", "Ornate Crossbow"},
+	{"Streaked Devourer", "Relic Sword"},
+	{"Streaked Devourer", "Streaked Devourer Eyes"},
+	{"Streaked Devourer", "Streaked Devourer Legs"},
+	{"Streaked Devourer", "Streaked Devourer Maw"},
+	{"Streaked Devourer", "War Axe"},
+	{"Sugar Daddy", "Brigadeiro"},
+	{"Sugar Daddy", "Lime Tart"},
+	{"Sulphider", "Fire Axe"},
+	{"Sulphider", "Magma Boots"},
+	{"Sulphider", "Sulphider Shell"},
+	{"Sulphider", "Sulphur Powder"},
+	{"Sulphur Scuttler", "Lump of Earth"},
+	{"Sulphur Scuttler", "Sulphurous Stone"},
+	{"Sulphur Spouter", "Crystal Crossbow"},
+	{"Sulphur Spouter", "Knight Legs"},
+	{"Sulphur Spouter", "Sulphur Powder"},
+	{"Sun-marked Goanna", "Fur Armor"},
+	{"Sun-marked Goanna", "Goanna Meat"},
+	{"Sun-marked Goanna", "Red Goanna Scale"},
+	{"Sun-marked Goanna", "Terra Hod"},
+	{"Swampling", "Swampling Club"},
+	{"Swan Maiden", "Colourful Snail Shell"},
+	{"Swan Maiden", "Diamond Sceptre"},
+	{"Swan Maiden", "Wild Flowers"},
+	{"Swarmer", "Compound Eye"},
+	{"Swarmer", "Swarmer Antenna"},
+	{"Tamru the Black", "Crystal Mace"},
+	{"Tamru the Black", "Silver Moon Coin"},
+	{"Tarbaz", "Flask of Demonic Blood"},
+	{"Tarbaz", "Glacier Robe"},
+	{"Tarnished Spirit", "Combat Knife"},
+	{"Tazhadur", "Double Axe"},
+	{"Tazhadur", "Dragon Hammer"},
+	{"Tazhadur", "Dragon Tongue"},
+	{"Tentugly's Head", "Pirate Coin"},
+	{"Tentugly's Head", "Small Treasure Chest"},
+	{"Terofar", "Guardian Shield"},
+	{"Terofar", "Terra Boots"},
+	{"Terramite", "Terramite Legs"},
+	{"Terror Bird", "Colourful Feather"},
+	{"Terrorsleep", "Bowl of Terror Sweat"},
+	{"Terrorsleep", "Trapped Bad Dream Monster"},
+	{"Thanatursus", "Black Shield"},
+	{"Thanatursus", "Dark Shield"},
+	{"Thanatursus", "Essence of a Bad Dream"},
+	{"Thanatursus", "Halberd"},
+	{"Thanatursus", "Knight Axe"},
+	{"Thanatursus", "Mino Shield"},
+	{"Thanatursus", "Terra Boots"},
+	{"Thanatursus", "Terra Hod"},
+	{"Thanatursus", "Titan Axe"},
+	{"The Baron from Below", "Badger Boots"},
+	{"The Baron from Below", "Crystal Mace"},
+	{"The Baron from Below", "Luminous Orb"},
+	{"The Baron from Below", "Magma Coat"},
+	{"The Blazing Rose", "Flask of Demonic Blood"},
+	{"The Blazing Rose", "Magma Coat"},
+	{"The Blazing Time Guardian", "Luminous Orb"},
+	{"The Blightfather", "Lancer Beetle Shell"},
+	{"The Bloodtusk", "Mammoth Tusk"},
+	{"The Bloodweb", "Glacier Mask"},
+	{"The Bloodweb", "Knight Legs"},
+	{"The Count of the Core", "Crystalline Armor"},
+	{"The Count of the Core", "Fire Axe"},
+	{"The Count of the Core", "Luminous Orb"},
+	{"The Count of the Core", "Magma Coat"},
+	{"The Diamond Blossom", "Flask of Demonic Blood"},
+	{"The Duke of the Depths", "Fire Axe"},
+	{"The Duke of the Depths", "Luminous Orb"},
+	{"The Duke of the Depths", "Spellweaver's Robe"},
+	{"The Duke of the Depths", "Terra Mantle"},
+	{"The Enraged Thorn Knight", "Knight Axe"},
+	{"The Enraged Thorn Knight", "Trapped Bad Dream Monster"},
+	{"The Evil Eye", "Small Flask of Eyedrops"},
+	{"The Evil Eye", "Terra Mantle"},
+	{"The False God", "Mino Shield"},
+	{"The False God", "Necromantic Rust"},
+	{"The False God", "Piece of Draconian Steel"},
+	{"The False God", "Piece of Hell Steel"},
+	{"The False God", "War Axe"},
+	{"The Flaming Orchid", "Flask of Demonic Blood"},
+	{"The Flaming Orchid", "Magma Coat"},
+	{"The Freezing Time Guardian", "Luminous Orb"},
+	{"The Gravedigger", "Small Flask of Eyedrops"},
+	{"The Handmaiden", "Dark Shield"},
+	{"The Horned Fox", "Battle Shield"},
+	{"The Horned Fox", "Double Axe"},
+	{"The Horned Fox", "Piece of Warrior Armor"},
+	{"The Hungerer", "Spitter Nose"},
+	{"The Imperor", "Fire Axe"},
+	{"The Imperor", "Guardian Shield"},
+	{"The Imperor", "Magma Coat"},
+	{"The Last Lore Keeper", "Ancient Stone"},
+	{"The Lily of Night", "Flask of Demonic Blood"},
+	{"The Lord of the Lice", "Terra Mantle"},
+	{"The Manhunter", "Compound Eye"},
+	{"The Moonlight Aster", "Flask of Demonic Blood"},
+	{"The Moonlight Aster", "Skullcracker Armor"},
+	{"The Moonlight Aster", "Spellbook of a Mind Control"},
+	{"The Moonsnow Magnolia", "Flask of Demonic Blood"},
+	{"The Nightmare Beast", "Chaos Mace"},
+	{"The Noxious Spawn", "Mercenary Sword"},
+	{"The Noxious Spawn", "Spellbook of a Mind Control"},
+	{"The Noxious Spawn", "Winged Tail"},
+	{"The Old Widow", "Knight Legs"},
+	{"The Pale Count", "Chaos Mace"},
+	{"The Pale Count", "Vampire's Cape Chain"},
+	{"The Percht Queen", "Chaos Mace"},
+	{"The Sandking", "Luminous Orb"},
+	{"The Sandking", "Magma Coat"},
+	{"The Scourge of Oblivion", "Cat's Paw"},
+	{"The Scourge of Oblivion", "Chaos Mace"},
+	{"The Scourge of Oblivion", "Plasmatic Lightning"},
+	{"The Scourge of Oblivion", "Skullcracker Armor"},
+	{"The Scourge of Oblivion", "Spark Sphere"},
+	{"The Shatterer", "Chaos Mace"},
+	{"The Shatterer", "Lump of Earth"},
+	{"The Shatterer", "Shiny Stone"},
+	{"The Snapper", "Plate Legs"},
+	{"The Souldespoiler", "Curious Matter"},
+	{"The Souldespoiler", "Magma Boots"},
+	{"The Souldespoiler", "Odd Organ"},
+	{"The Souldespoiler", "Plasma Pearls"},
+	{"The Souldespoiler", "Spark Sphere"},
+	{"The Source of Corruption", "Ancient Stone"},
+	{"The Source of Corruption", "Crystalline Sword"},
+	{"The Source of Corruption", "Piece of Hell Steel"},
+	{"The Time Guardian", "Glacier Robe"},
+	{"The Time Guardian", "Luminous Orb"},
+	{"The Time Guardian", "Magma Coat"},
+	{"The Unarmored Voidborn", "Bonebreaker"},
+	{"The Unarmored Voidborn", "Metal Bat"},
+	{"The Unarmored Voidborn", "Skull Fetish"},
+	{"The Unarmored Voidborn", "Terra Hod"},
+	{"The Voice of Ruin", "Cursed Shoulder Spikes"},
+	{"The Voice of Ruin", "Spiked Iron Ball"},
+	{"The Voice of Ruin", "Zaoan Shoes"},
+	{"The Winter Bloom", "Flask of Demonic Blood"},
+	{"The Winter Bloom", "Glacier Robe"},
+	{"Thornback Tortoise", "Thorn"},
+	{"Thul", "Relic Sword"},
+	{"Tiger", "Striped Fur"},
+	{"Tormentor", "Essence of a Bad Dream"},
+	{"Tormentor", "Flask of Demonic Blood"},
+	{"Tormentor", "Knight Legs"},
+	{"Tormentor", "Scythe Leg"},
+	{"Tormentor", "War Axe"},
+	{"Tremendous Tyrant", "Focus Cape"},
+	{"Tremendous Tyrant", "Glacier Robe"},
+	{"Tremendous Tyrant", "Knight Axe"},
+	{"Tremendous Tyrant", "Tremendous Tyrant Head"},
+	{"Tremendous Tyrant", "Tremendous Tyrant Shell"},
+	{"Tremor Worm", "Glooth Cape"},
+	{"Troll-Trained Salamander", "Bone Club"},
+	{"Tromphonyte", "Stampor Talons"},
+	{"True Dawnfire Asura", "Flask of Demonic Blood"},
+	{"True Dawnfire Asura", "Focus Cape"},
+	{"True Dawnfire Asura", "Magma Coat"},
+	{"True Dawnfire Asura", "Spellbook of a Mind Control"},
+	{"True Feverbloom Asura", "Flask of Demonic Blood"},
+	{"True Feverbloom Asura", "Pyrophyte Seed Pod"},
+	{"True Feverbloom Asura", "Wild Flowers"},
+	{"True Frost Flower Asura", "Flask of Demonic Blood"},
+	{"True Frost Flower Asura", "Skullcracker Armor"},
+	{"True Frost Flower Asura", "Spellbook of a Mind Control"},
+	{"True Midnight Asura", "Flask of Demonic Blood"},
+	{"True Midnight Asura", "Skullcracker Armor"},
+	{"True Midnight Asura", "Spellbook of a Mind Control"},
+	{"Tunnel Tyrant", "Crystal Mace"},
+	{"Tunnel Tyrant", "Crystalline Armor"},
+	{"Tunnel Tyrant", "Tunnel Tyrant Head"},
+	{"Tunnel Tyrant", "Tunnel Tyrant Shell"},
+	{"Turbulent Elemental", "Crystalline Armor"},
+	{"Turbulent Elemental", "Fur Armor"},
+	{"Turbulent Elemental", "Glacier Robe"},
+	{"Turbulent Elemental", "Rubber Cap"},
+	{"Turbulent Elemental", "Wood Cape"},
+	{"Twisted Pooka", "Shimmering Beetles"},
+	{"Twisted Shaper", "Ancient Belt Buckle"},
+	{"Twisted Shaper", "Cracked Alabaster Vase"},
+	{"Twisterror", "Demonic Matter"},
+	{"Two-Headed Turtle", "Glacier Shoes"},
+	{"Two-Headed Turtle", "Hydrophytes"},
+	{"Two-Headed Turtle", "Knight Legs"},
+	{"Two-Headed Turtle", "Lightning Headband"},
+	{"Two-Headed Turtle", "Small Tropical Fish"},
+	{"Two-Headed Turtle", "Two-Headed Turtle Heads"},
+	{"Tyrn", "Guardian Shield"},
+	{"Tyrn", "Lightning Headband"},
+	{"Tyrn", "Lightning Robe"},
+	{"Unaz the Mean", "Mercenary Sword"},
+	{"Undead Dragon", "Dragon Slayer"},
+	{"Undead Dragon", "Skullcracker Armor"},
+	{"Undead Dragon", "Spellweaver's Robe"},
+	{"Undead Dragon", "Unholy Bone"},
+	{"Undead Dragon", "War Axe"},
+	{"Undead Elite Gladiator", "Broken Gladiator Shield"},
+	{"Undead Elite Gladiator", "Knight Axe"},
+	{"Undead Elite Gladiator", "Plate Legs"},
+	{"Undead Elite Gladiator", "Relic Sword"},
+	{"Undead Elite Gladiator", "Scimitar"},
+	{"Undead Gladiator", "Broken Gladiator Shield"},
+	{"Undead Gladiator", "Knight Axe"},
+	{"Undead Gladiator", "Plate Legs"},
+	{"Undead Gladiator", "Scimitar"},
+	{"Undead Minion", "Guardian Shield"},
+	{"Undead Prospector", "Knife"},
+	{"Undertaker", "Relic Sword"},
+	{"Undertaker", "Terra Boots"},
+	{"Undertaker", "Undertaker Fangs"},
+	{"Urmahlullu the Weakened", "Magma Coat"},
+	{"Urmahlullu the Weakened", "Magma Monocle"},
+	{"Ushuriel", "Dragon Slayer"},
+	{"Ushuriel", "Scimitar"},
+	{"Ushuriel", "Strange Helmet"},
+	{"Usurper Archer", "Glacier Shoes"},
+	{"Usurper Archer", "Knife"},
+	{"Usurper Archer", "Lion Cloak Patch"},
+	{"Usurper Archer", "Lion Crest"},
+	{"Usurper Archer", "Mino Shield"},
+	{"Usurper Archer", "Ornate Crossbow"},
+	{"Usurper Archer", "Wood Cape"},
+	{"Usurper Commander", "Lion Cloak Patch"},
+	{"Usurper Commander", "Lion Crest"},
+	{"Usurper Knight", "Knight Legs"},
+	{"Usurper Knight", "Lion Cloak Patch"},
+	{"Usurper Knight", "Lion Crest"},
+	{"Usurper Warlock", "Knight Legs"},
+	{"Usurper Warlock", "Lightning Headband"},
+	{"Usurper Warlock", "Lion Cloak Patch"},
+	{"Usurper Warlock", "Lion Crest"},
+	{"Usurper Warlock", "Magma Monocle"},
+	{"Usurper Warlock", "Terra Hod"},
+	{"Utua Stone Sting", "Chaos Mace"},
+	{"Utua Stone Sting", "Crystal Mace"},
+	{"Utua Stone Sting", "Glacier Robe"},
+	{"Utua Stone Sting", "Mercenary Sword"},
+	{"Utua Stone Sting", "Spellweaver's Robe"},
+	{"Valkyrie", "Double Axe"},
+	{"Valkyrie", "Girlish Hair Decoration"},
+	{"Vampire", "Blood Preservation"},
+	{"Vampire", "Strange Helmet"},
+	{"Vampire Bride", "Blood Preservation"},
+	{"Vampire Bride", "Hibiscus Dress"},
+	{"Vampire Viscount", "Blood Preservation"},
+	{"Vampire Viscount", "Tooth File"},
+	{"Vampire Viscount", "Vampire's Cape Chain"},
+	{"Varg", "Ritual Bone Knife"},
+	{"Varnished Diremaw", "Diamond Sceptre"},
+	{"Varnished Diremaw", "Fur Armor"},
+	{"Varnished Diremaw", "Glacier Shoes"},
+	{"Varnished Diremaw", "Varnished Diremaw Brainpan"},
+	{"Varnished Diremaw", "Varnished Diremaw Legs"},
+	{"Varnished Diremaw", "Wood Cape"},
+	{"Vashresamun", "Crystal Mace"},
+	{"Venerable Foam Stalker", "Floatsam"},
+	{"Venerable Foam Stalker", "Glacier Shoes"},
+	{"Venerable Foam Stalker", "Halberd"},
+	{"Venerable Foam Stalker", "Knight Legs"},
+	{"Venerable Foam Stalker", "Mercenary Sword"},
+	{"Venerable Foam Stalker", "Terra Boots"},
+	{"Venerable Girtablilu", "Old Girtablilu Carapace"},
+	{"Venerable Girtablilu", "Scorpion Charm"},
+	{"Venerable Girtablilu", "Wood Cape"},
+	{"Vexclaw", "Fire Axe"},
+	{"Vibrant Phantom", "Vibrant Heart"},
+	{"Vibrant Phantom", "Vibrant Robe"},
+	{"Vicious Manbat", "Blood Preservation"},
+	{"Vicious Manbat", "Tooth File"},
+	{"Vicious Squire", "Guardian Shield"},
+	{"Vicious Squire", "Halberd"},
+	{"Vicious Squire", "Knight Legs"},
+	{"Vile Grandmaster", "Scroll of Heroic Deeds"},
+	{"Vile Grandmaster", "Small Notebook"},
+	{"Vladrukh", "Orchish Axe"},
+	{"Vok the Freakish", "Crystal Crossbow"},
+	{"Vok the Freakish", "Ornate Crossbow"},
+	{"Vulcongra", "Magma Clump"},
+	{"Vulcongra", "Magma Coat"},
+	{"Wailing Widow", "Halberd"},
+	{"Wailing Widow", "Widow's Mandibles"},
+	{"Walker", "Crystal Mace"},
+	{"Walker", "Metal Spats"},
+	{"Walking Dread", "Crystallized Death"},
+	{"Walking Dread", "Necromantic Core"},
+	{"Walking Dread", "Toe Nails"},
+	{"Walking Pillar", "Darklight Basalt Chunk"},
+	{"Walking Pillar", "Magma Clump"},
+	{"Walking Pillar", "Strange Helmet"},
+	{"Wandering Pillar", "Basalt Core"},
+	{"Wandering Pillar", "Basalt Crumbs"},
+	{"Wandering Pillar", "Magma Boots"},
+	{"Wandering Pillar", "Magma Clump"},
+	{"Wandering Pillar", "Magma Coat"},
+	{"Wandering Pillar", "Sulphurous Stone"},
+	{"War Golem", "Battle Shield"},
+	{"War Golem", "Bonebreaker"},
+	{"War Golem", "Lightning Boots"},
+	{"Wardragon", "Dragon Tongue"},
+	{"Wardragon", "Nimmersatt's Seal"},
+	{"Wardragon", "Wardragon Claw"},
+	{"Wardragon", "Wardragon Tooth"},
+	{"Warlock", "Lightning Robe"},
+	{"Warlock", "Luminous Orb"},
+	{"Warlord Ruzad", "Magma Boots"},
+	{"Warlord Ruzad", "Orchish Axe"},
+	{"Warlord Ruzad", "Plate Legs"},
+	{"Warlord Ruzad", "Scimitar"},
+	{"Waspoid", "Compound Eye"},
+	{"Waspoid", "Waspoid Claw"},
+	{"Weakened Frazzlemaw", "Frazzle Tongue"},
+	{"Weakened Shlorg", "Boggy Dreads"},
+	{"Weakened Shlorg", "Glorious Axe"},
+	{"Weeper", "Eye of a Weeper"},
+	{"Weeper", "Fire Axe"},
+	{"Weeper", "Magma Clump"},
+	{"Weeper", "Magma Coat"},
+	{"Werebadger", "Badger Boots"},
+	{"Werebadger", "Werebadger Claws"},
+	{"Werebadger", "Werebadger Skull"},
+	{"Werebear", "Fur Armor"},
+	{"Werebear", "Relic Sword"},
+	{"Wereboar", "Fur Armor"},
+	{"Wereboar", "Wereboar Loincloth"},
+	{"Wereboar", "Wereboar Tusks"},
+	{"Werecrocodile", "Bonebreaker"},
+	{"Werecrocodile", "Fur Armor"},
+	{"Werecrocodile", "Glorious Axe"},
+	{"Werecrocodile", "Golden Sun Coin"},
+	{"Werecrocodile", "Werecrocodile Tongue"},
+	{"Werefox", "Fox Paw"},
+	{"Werefox", "Werefox Tail"},
+	{"Werehyaena", "Combat Knife"},
+	{"Werehyaena", "Halberd"},
+	{"Werehyaena", "Knife"},
+	{"Werehyaena", "Ratana"},
+	{"Werehyaena", "Werehyaena Nose"},
+	{"Werehyaena", "Werehyaena Talisman"},
+	{"Werehyaena Shaman", "Black Shield"},
+	{"Werehyaena Shaman", "Werehyaena Nose"},
+	{"Werehyaena Shaman", "Werehyaena Talisman"},
+	{"Werelion", "Crystal Sword"},
+	{"Werelion", "Dark Shield"},
+	{"Werelion", "Glorious Axe"},
+	{"Werelion", "Ivory Carving"},
+	{"Werelion", "Titan Axe"},
+	{"Werelioness", "Crystal Sword"},
+	{"Werelioness", "Ivory Carving"},
+	{"Werelioness", "Lightning Headband"},
+	{"Werepanther", "Fur Armor"},
+	{"Werepanther", "Golden Sickle"},
+	{"Werepanther", "Magma Monocle"},
+	{"Werepanther", "Ripper Lance"},
+	{"Werepanther", "Werepanther Claw"},
+	{"Weretiger", "Angelic Axe"},
+	{"Weretiger", "Silver Moon Coin"},
+	{"Werewolf", "Bonebreaker"},
+	{"Werewolf", "Halberd"},
+	{"Werewolf", "Relic Sword"},
+	{"Werewolf", "Werewolf Fur"},
+	{"White Lion", "Terra Boots"},
+	{"White Tiger", "Striped Fur"},
+	{"White Weretiger", "Silver Moon Coin"},
+	{"Wiggler", "Black Shield"},
+	{"Wilting Leaf Golem", "Dowser"},
+	{"Wilting Leaf Golem", "Fir Cone"},
+	{"Wilting Leaf Golem", "Swampling Club"},
+	{"Winged Jaracal", "Fur Armor"},
+	{"Winged Jaracal", "Skullcracker Armor"},
+	{"Witch", "Witch Broom"},
+	{"Worker Golem", "Bonebreaker"},
+	{"World Devourer", "Lightning Headband"},
+	{"Worm Priestess", "Taurus Mace"},
+	{"Wrathful Archivist", "Spellbook of a Mind Control"},
+	{"Wrathful Archivist", "Spellweaver's Robe"},
+	{"Wyrm", "Focus Cape"},
+	{"Wyrm", "Hibiscus Dress"},
+	{"Yaga the Crone", "Spellbook of a Mind Control"},
+	{"Yakchal", "Crystal Mace"},
+	{"Yakchal", "Crystal Sword"},
+	{"Yakchal", "Glacier Robe"},
+	{"Yirkas Blue Scales", "Alloy Legs"},
+	{"Yirkas Blue Scales", "Blue Goanna Scale"},
+	{"Yirkas Blue Scales", "Ornate Crossbow"},
+	{"Yirkas Blue Scales", "Spellbook of a Mind Control"},
+	{"Yirkas Blue Scales", "Spellweaver's Robe"},
+	{"Yirkas Blue Scales", "War Axe"},
+	{"Young Goanna", "Blue Goanna Scale"},
+	{"Young Goanna", "Fur Armor"},
+	{"Young Goanna", "Goanna Claw"},
+	{"Young Goanna", "Goanna Meat"},
+	{"Young Goanna", "Terra Hod"},
+	{"Young Goanna", "Wooden Spellbook"},
+	{"Zamulosh", "Crystal Crossbow"},
+	{"Zamulosh", "Crystal Mace"},
+	{"Zamulosh", "Flask of Demonic Blood"},
+	{"Zamulosh", "Spellweaver's Robe"},
+	{"Zanakeph", "Unholy Bone"},
+	{"Zarabustor", "Lightning Robe"},
+	{"Zarabustor", "Spellbook of a Mind Control"},
+	{"Zavarash", "Bonebreaker"},
+	{"Zavarash", "Diamond Sceptre"},
+	{"Zavarash", "Guardian Shield"},
+	{"Zavarash", "Skullcracker Armor"},
+	{"Zomba", "Guardian Shield"},
+	{"Zombie", "Halberd"},
+	{"Zombie", "Half-Eaten Brain"},
+	{"Zorvorax", "Dragon Tongue"},
+	{"Zorvorax", "Unholy Bone"},
+	{"Zulazza the Corruptor", "Guardian Shield"},
+	{"Zushuka", "Glacier Mask"},
+	{"Zushuka", "Glacier Robe"},
+	{"Zushuka", "Glacier Shoes"},
+	{"Zushuka (Mortal)", "Crystal Mace"},
+	{"Zushuka (Mortal)", "Crystal Sword"},
+	{"Zyrtach", "Dragon Tongue"},
+}
+
+// InserirDadosTibia grava todos os drops de dropsIniciais no banco.
+//
+// Tudo acontece dentro de uma TRANSAÇÃO: ou todos os drops entram, ou nenhum.
+// Se o 1.500º falhar, o banco não fica com dados pela metade.
+// Como as funções de cadastro não duplicam nada, rodar de novo é seguro.
+//
+// ATENÇÃO: esta função só ACRESCENTA. Ela nunca apaga o que já está no banco,
+// então um nome corrigido no arquivo cria um registro novo e deixa o antigo
+// (errado) para trás. Para o banco ficar IGUAL ao arquivo, use RecriarDadosTibia.
+func InserirDadosTibia(ctx context.Context, db *sql.DB) error {
+	return gravarDrops(ctx, db, false)
+}
+
+// RecriarDadosTibia deixa o banco EXATAMENTE igual ao populate.go: apaga tudo
+// e grava a lista de novo, na mesma transação. Se qualquer passo falhar, nada
+// muda (o Rollback devolve o banco ao estado anterior).
+// É o que se usa depois de corrigir um nome no arquivo.
+func RecriarDadosTibia(ctx context.Context, db *sql.DB) error {
+	return gravarDrops(ctx, db, true)
+}
+
+// gravarDrops é o miolo das duas funções acima.
+func gravarDrops(ctx context.Context, db *sql.DB, apagarAntes bool) error {
+	// Antes de tocar no banco, confere a lista: nome vazio, espaço sobrando,
+	// criatura/item trocados, erro de digitação... Se tiver problema, não grava nada.
+	if problemas := ValidarDrops(dropsIniciais); len(problemas) > 0 {
+		return fmt.Errorf("o populate.go tem %d problema(s) e NADA foi gravado:\n  - %s",
+			len(problemas), strings.Join(problemas, "\n  - "))
+	}
+
+	tx, err := db.BeginTx(ctx, nil)
+	if err != nil {
+		return fmt.Errorf("iniciando a transação: %w", err)
+	}
+	// Se sairmos por erro antes do Commit, o Rollback desfaz tudo.
+	// Depois de um Commit bem-sucedido, o Rollback não faz nada (e seu erro,
+	// sql.ErrTxDone, pode ser ignorado com segurança).
+	defer tx.Rollback()
+
+	if apagarAntes {
+		// A ordem importa por causa das chaves estrangeiras: primeiro as ligações.
+		for _, tabela := range []string{"creature_drops", "creatures", "weekly_items"} {
+			if _, err := tx.ExecContext(ctx, "DELETE FROM "+tabela); err != nil {
+				return fmt.Errorf("limpando a tabela %s: %w", tabela, err)
+			}
+		}
+	}
+
+	for i, d := range dropsIniciais {
+		if err := CadastrarCriaturaComDrop(ctx, tx, d.Criatura, d.Item); err != nil {
+			return fmt.Errorf("drop %d de %d (%s -> %s): %w", i+1, len(dropsIniciais), d.Criatura, d.Item, err)
+		}
+	}
+
+	if err := tx.Commit(); err != nil {
+		return fmt.Errorf("confirmando a transação (commit): %w", err)
+	}
+	return nil
 }
