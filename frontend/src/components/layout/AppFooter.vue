@@ -11,8 +11,9 @@ const year = __ANO_DO_BUILD__
       <p>© {{ year }} {{ SITE.name }}. Projeto de fãs, sem vínculo com a CipSoft GmbH.</p>
       <p class="mt-1">Tibia é marca registrada da CipSoft GmbH.</p>
       <p class="mt-1">
-        O botão "{{ PARTNER.label }}" é um link de afiliado do {{ PARTNER.name }}: se você comprar por ele,
-        o site pode receber uma comissão, sem custo extra para você.
+        O botão "{{ PARTNER.label }}" leva ao {{ PARTNER.name }}, parceiro do site. Se você usar o cupom
+        <strong class="text-text">{{ PARTNER.cupom }}</strong> no pagamento, o site pode receber uma comissão,
+        sem custo extra para você.
         <RouterLink to="/privacidade" class="underline hover:text-gold">Política de Privacidade</RouterLink>
       </p>
     </div>

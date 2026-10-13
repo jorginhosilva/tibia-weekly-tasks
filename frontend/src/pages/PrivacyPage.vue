@@ -44,12 +44,13 @@ useSeo({
         <h2 id="p-links" class="text-xl font-semibold text-text">Links de parceiros</h2>
         <p class="mt-2">
           O botão "{{ PARTNER.label }}" leva à loja <strong class="text-text">{{ PARTNER.name }}</strong>, parceira do
-          site, por meio de um link de afiliado. Se você comprar por esse link, o site
+          site, por meio de um link de afiliado. Se você usar o cupom
+          <strong class="text-text">{{ PARTNER.cupom }}</strong> no pagamento, o site
           <strong class="text-text">pode receber uma comissão, sem custo adicional para você</strong>.
         </p>
         <p class="mt-2">
-          Ao clicar, você sai do nosso site. O {{ PARTNER.name }} pode usar cookies próprios para registrar que a visita
-          veio daqui (é assim que a comissão é contabilizada) e tem a própria política de privacidade, da qual não
+          Ao clicar no botão, o cupom é copiado para a área de transferência do seu aparelho (só isso; nada é enviado
+          a ninguém) e você sai do nosso site. O {{ PARTNER.name }} tem a própria política de privacidade, da qual não
           somos responsáveis. Não enviamos a ele nenhum dado seu: o que você digita nas buscas e os logs que cola
           ficam apenas no nosso servidor.
         </p>

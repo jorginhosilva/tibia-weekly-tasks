@@ -18,11 +18,14 @@ export const SITE = {
 }
 
 /**
- * Botão de parceria exibido no cabeçalho: link de afiliado do Moedaz.
- * Para trocar de parceiro, mude a `url` (e o `label`, se quiser).
+ * Botão de parceria exibido no cabeçalho: link do Mikicoins.
+ * A comissão só conta se o cliente usar o `cupom` no pagamento. Por isso, clicar no
+ * botão copia o cupom e avisa para colá-lo no checkout (veja AppHeader.vue).
+ * Para trocar de parceiro, mude os campos abaixo.
  */
 export const PARTNER = {
-  name: 'Moedaz',
+  name: 'Mikicoins',
   label: 'Comprar Tibia Coins',
-  url: 'https://www.moedaz.com/?ref=2RAH2ZQDT227KTPO',
+  url: 'https://mikicoins.com/',
+  cupom: 'TIBIATASK', // código de afiliado que o cliente cola no pagamento
 }
