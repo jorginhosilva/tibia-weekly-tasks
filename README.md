@@ -138,6 +138,18 @@ O projeto nasceu como um programa em Go (leitura do log e banco de dados). O **C
 
 ## Dados e marcas
 
-> **A preencher:** origem dos dados de criaturas e itens (fonte e licença). Os dados descrevem conteúdo do jogo Tibia.
+Os nomes das criaturas e dos itens, e a relação de quais criaturas dropam cada item da Weekly Task, foram reunidos
+manualmente a partir de consultas a estas fontes:
 
-Tibia é marca registrada da **CipSoft GmbH**. Este é um projeto de fãs, sem vínculo com a empresa.
+- **[Tibia Wiki](https://www.tibiawiki.com.br)** (tibiawiki.com.br)
+- **[Tibiopedia.pl](https://tibiopedia.pl)**
+
+O projeto guarda apenas **nomes e relações** (fatos do jogo). **Nenhum texto, imagem ou arte** dessas wikis é copiado
+ou exibido. Os dados são conteúdo do jogo Tibia e as wikis são trabalho de suas comunidades: este site é apenas uma
+ferramenta de consulta e não substitui as fontes originais. Para informações completas sobre criaturas e itens,
+consulte as próprias wikis.
+
+> Se você mantém alguma dessas fontes e quer ajustar o crédito ou pedir a remoção de algo, abra uma *issue* neste
+> repositório.
+
+Tibia é marca registrada da **CipSoft GmbH**. Este é um projeto de fãs, sem vínculo com a empresa nem com as wikis acima.
