@@ -2399,10 +2399,10 @@ func gravarDrops(ctx context.Context, db *sql.DB, apagarAntes bool) error {
 		}
 	}
 
-	for i, d := range dropsIniciais {
-		if err := CadastrarCriaturaComDrop(ctx, tx, d.Criatura, d.Item); err != nil {
-			return fmt.Errorf("drop %d de %d (%s -> %s): %w", i+1, len(dropsIniciais), d.Criatura, d.Item, err)
-		}
+	// Grava tudo em lotes (veja carga.go): poucas viagens ao banco, o que faz
+	// diferença quando ele está na nuvem.
+	if err := gravarEmLotes(ctx, tx, dropsIniciais); err != nil {
+		return err
 	}
 
 	if err := tx.Commit(); err != nil {
