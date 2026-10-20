@@ -10,7 +10,7 @@ import { suggest } from '@/services/tasksApi'
  *   ↓ / ↑  navega pela lista     Enter  escolhe a opção destacada
  *   Esc    fecha a lista         (sem opção destacada, Enter faz a busca normal)
  *
- * Props:  v-model (texto digitado) e `tipo` ('criatura' | 'item')
+ * Props:  v-model (texto digitado) e `tipo` ('criatura' | 'item' | 'npc')
  * Evento: `select` — disparado quando o usuário ESCOLHE uma sugestão
  */
 const props = defineProps({
@@ -72,7 +72,7 @@ watch(texto, () => {
   agendar()
 })
 
-// Trocou o tipo de busca (criatura/item)? As sugestões antigas não valem mais.
+// Trocou o tipo de busca (criatura/item/NPC)? As sugestões antigas não valem mais.
 watch(
   () => props.tipo,
   () => {

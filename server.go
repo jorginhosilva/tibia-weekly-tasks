@@ -149,9 +149,27 @@ func (s *servidor) saude(w http.ResponseWriter, r *http.Request) {
 
 // resultadoBusca é o formato que o front-end espera: um nome e a lista
 // de nomes relacionados (itens, se buscou criatura; criaturas, se buscou item).
+//
+// Precos: na busca por NPC, os itens e quanto ele paga por cada; na busca por
+// item, os NPCs que compram o item e por quanto. Some do JSON quando vazio.
 type resultadoBusca struct {
-	Nome         string   `json:"nome"`
-	Relacionados []string `json:"relacionados"`
+	Nome         string      `json:"nome"`
+	Relacionados []string    `json:"relacionados"`
+	Precos       []precoJSON `json:"precos,omitempty"`
+}
+
+type precoJSON struct {
+	Nome  string `json:"nome"`
+	Preco int    `json:"preco"`
+}
+
+// paraPrecosJSON converte os preços da busca para o formato do JSON.
+func paraPrecosJSON(precos []PrecoNoNpc) []precoJSON {
+	var lista []precoJSON
+	for _, p := range precos {
+		lista = append(lista, precoJSON(p)) // os dois têm os mesmos campos
+	}
+	return lista
 }
 
 type itemLog struct {
@@ -159,7 +177,7 @@ type itemLog struct {
 	Quantidade int    `json:"quantidade"`
 }
 
-// GET /api/buscar?tipo=criatura|item&q=texto
+// GET /api/buscar?tipo=criatura|item|npc&q=texto
 func (s *servidor) apiBuscar(w http.ResponseWriter, r *http.Request) {
 	ctx, cancelar := context.WithTimeout(r.Context(), tempoMaxRequest)
 	defer cancelar()
@@ -173,14 +191,36 @@ func (s *servidor) apiBuscar(w http.ResponseWriter, r *http.Request) {
 		var achados []CriaturaComItens
 		if achados, err = BuscarPorCriatura(ctx, s.db, termo); err == nil {
 			for _, c := range achados {
-				resultado = append(resultado, resultadoBusca{c.Criatura, c.Itens})
+				resultado = append(resultado, resultadoBusca{Nome: c.Criatura, Relacionados: c.Itens})
 			}
 		}
 	case "item":
 		var achados []ItemComCriaturas
-		if achados, err = BuscarPorItem(ctx, s.db, termo); err == nil {
+		if achados, err = BuscarPorItem(ctx, s.db, termo); err == nil && len(achados) > 0 {
+			// Os preços dos NPCs são um complemento: se a consulta falhar (por
+			// exemplo, as tabelas de NPC ainda não existem no banco), a busca por
+			// item continua funcionando, só que sem os preços.
+			precos, errPrecos := PrecosPorItem(ctx, s.db, termo)
+			if errPrecos != nil {
+				log.Printf("busca por item sem preços dos NPCs: %v", errPrecos)
+			}
 			for _, i := range achados {
-				resultado = append(resultado, resultadoBusca{i.Item, i.Criaturas})
+				resultado = append(resultado, resultadoBusca{
+					Nome:         i.Item,
+					Relacionados: i.Criaturas,
+					Precos:       paraPrecosJSON(precos[strings.ToLower(i.Item)]),
+				})
+			}
+		}
+	case "npc":
+		var achados []NpcComPrecos
+		if achados, err = BuscarPorNpc(ctx, s.db, termo); err == nil {
+			for _, n := range achados {
+				resultado = append(resultado, resultadoBusca{
+					Nome:         n.Npc,
+					Relacionados: []string{},
+					Precos:       paraPrecosJSON(n.Itens),
+				})
 			}
 		}
 	default:
@@ -194,7 +234,7 @@ func (s *servidor) apiBuscar(w http.ResponseWriter, r *http.Request) {
 	escreverJSON(w, http.StatusOK, resultado)
 }
 
-// GET /api/sugestoes?tipo=criatura|item&q=texto  (autocomplete)
+// GET /api/sugestoes?tipo=criatura|item|npc&q=texto  (autocomplete)
 func (s *servidor) apiSugestoes(w http.ResponseWriter, r *http.Request) {
 	ctx, cancelar := context.WithTimeout(r.Context(), tempoMaxRequest)
 	defer cancelar()
@@ -208,6 +248,8 @@ func (s *servidor) apiSugestoes(w http.ResponseWriter, r *http.Request) {
 		nomes, err = SugerirCriaturas(ctx, s.db, termo)
 	case "item":
 		nomes, err = SugerirItens(ctx, s.db, termo)
+	case "npc":
+		nomes, err = SugerirNpcs(ctx, s.db, termo)
 	default:
 		escreverErro(w, http.StatusBadRequest, "tipo de busca inválido")
 		return

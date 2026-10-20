@@ -35,6 +35,24 @@ type ItemComCriaturas struct {
 	Criaturas []string
 }
 
+// PrecoNoNpc é um nome com um preço. Na busca por NPC, o nome é o do ITEM;
+// nos preços de um item, o nome é o do NPC que o compra.
+type PrecoNoNpc struct {
+	Nome  string
+	Preco int
+}
+
+// NpcComPrecos é o resultado de buscar por NPC:
+// um NPC e quanto ele paga por cada item.
+type NpcComPrecos struct {
+	Npc   string
+	Itens []PrecoNoNpc
+}
+
+// limitePrecos é o teto de linhas da busca por NPC. É maior que limiteDrops
+// porque um NPC sozinho já pode ter centenas de itens (o Yasir tem mais de 300).
+const limitePrecos = 2000
+
 // As duas consultas ficam como constantes: o texto do SQL nunca é montado
 // juntando o que o usuário digitou. O termo entra só pelo "?" (parâmetro),
 // e é isso que protege contra SQL injection, ainda mais num site público.
@@ -55,6 +73,24 @@ const (
 		JOIN weekly_items i ON cd.item_id = i.id
 		WHERE i.name LIKE ?
 		ORDER BY i.name, c.name
+		LIMIT ?`
+
+	sqlBuscaPorNpc = `
+		SELECT n.name, p.item_name, p.price
+		FROM npc_prices p
+		JOIN npcs n ON p.npc_id = n.id
+		WHERE n.name LIKE ?
+		ORDER BY n.name, p.item_name
+		LIMIT ?`
+
+	// Preços dos itens cujo nome contém o termo: usada junto da busca por item,
+	// para mostrar quanto cada NPC paga. O mais caro aparece primeiro.
+	sqlPrecosPorItem = `
+		SELECT p.item_name, n.name, p.price
+		FROM npc_prices p
+		JOIN npcs n ON p.npc_id = n.id
+		WHERE p.item_name LIKE ?
+		ORDER BY p.item_name, p.price DESC, n.name
 		LIMIT ?`
 )
 
@@ -91,6 +127,64 @@ func BuscarPorItem(ctx context.Context, db *sql.DB, termo string) ([]ItemComCria
 	return agruparPorItem(drops), nil
 }
 
+// BuscarPorNpc procura NPCs cujo nome CONTÉM o termo digitado e devolve,
+// para cada um, os itens e quanto ele paga por cada.
+func BuscarPorNpc(ctx context.Context, db *sql.DB, termo string) ([]NpcComPrecos, error) {
+	padrao, err := prepararTermo(termo)
+	if err != nil {
+		return nil, err
+	}
+
+	linhas, err := consultarPrecos(ctx, db, sqlBuscaPorNpc, padrao)
+	if err != nil {
+		return nil, fmt.Errorf("buscando o NPC %q: %w", termo, err)
+	}
+
+	return agruparPorNpc(linhas), nil
+}
+
+// PrecosPorItem devolve, para cada item cujo nome contém o termo, os NPCs que
+// o compram e por quanto. A chave do mapa é o nome do item em minúsculas, para
+// casar com o resultado de BuscarPorItem mesmo com maiúsculas diferentes.
+func PrecosPorItem(ctx context.Context, db *sql.DB, termo string) (map[string][]PrecoNoNpc, error) {
+	padrao, err := prepararTermo(termo)
+	if err != nil {
+		return nil, err
+	}
+
+	linhas, err := consultarPrecos(ctx, db, sqlPrecosPorItem, padrao)
+	if err != nil {
+		return nil, fmt.Errorf("buscando os preços do item %q: %w", termo, err)
+	}
+
+	return precosPorNomeDoItem(linhas), nil
+}
+
+// linhaPreco é uma linha das consultas de preço: o nome que agrupa (NPC ou
+// item), o outro nome e o preço.
+type linhaPreco struct {
+	grupo, nome string
+	preco       int
+}
+
+func consultarPrecos(ctx context.Context, db *sql.DB, consulta, padrao string) ([]linhaPreco, error) {
+	linhas, err := db.QueryContext(ctx, consulta, padrao, limitePrecos)
+	if err != nil {
+		return nil, err
+	}
+	defer linhas.Close()
+
+	var resultado []linhaPreco
+	for linhas.Next() {
+		var l linhaPreco
+		if err := linhas.Scan(&l.grupo, &l.nome, &l.preco); err != nil {
+			return nil, fmt.Errorf("lendo um preço: %w", err)
+		}
+		resultado = append(resultado, l)
+	}
+	return resultado, linhas.Err()
+}
+
 // limiteSugestoes é quantos nomes o autocomplete devolve (poucos, para a lista caber na tela).
 const limiteSugestoes = 12
 
@@ -109,6 +203,12 @@ const (
 		WHERE name LIKE ?
 		ORDER BY (name LIKE ?) DESC, name
 		LIMIT ?`
+
+	sqlSugestoesNpc = `
+		SELECT name FROM npcs
+		WHERE name LIKE ?
+		ORDER BY (name LIKE ?) DESC, name
+		LIMIT ?`
 )
 
 // SugerirCriaturas devolve nomes de criaturas para o autocomplete.
@@ -119,6 +219,11 @@ func SugerirCriaturas(ctx context.Context, db *sql.DB, termo string) ([]string, 
 // SugerirItens devolve nomes de itens de weekly task para o autocomplete.
 func SugerirItens(ctx context.Context, db *sql.DB, termo string) ([]string, error) {
 	return sugerir(ctx, db, sqlSugestoesItem, termo)
+}
+
+// SugerirNpcs devolve nomes de NPCs para o autocomplete.
+func SugerirNpcs(ctx context.Context, db *sql.DB, termo string) ([]string, error) {
+	return sugerir(ctx, db, sqlSugestoesNpc, termo)
 }
 
 func sugerir(ctx context.Context, db *sql.DB, consulta, termo string) ([]string, error) {
@@ -192,6 +297,36 @@ func agruparPorCriatura(drops []TaskDrop) []CriaturaComItens {
 	}
 
 	return resultado
+}
+
+// agruparPorNpc junta as linhas (NPC, item, preço) numa lista de NPCs, cada um
+// com os seus itens e preços. A ordem de chegada é mantida.
+func agruparPorNpc(linhas []linhaPreco) []NpcComPrecos {
+	var resultado []NpcComPrecos
+	posicao := make(map[string]int) // nome do NPC -> posição em "resultado"
+
+	for _, l := range linhas {
+		i, existe := posicao[l.grupo]
+		if !existe {
+			i = len(resultado)
+			posicao[l.grupo] = i
+			resultado = append(resultado, NpcComPrecos{Npc: l.grupo})
+		}
+		resultado[i].Itens = append(resultado[i].Itens, PrecoNoNpc{Nome: l.nome, Preco: l.preco})
+	}
+
+	return resultado
+}
+
+// precosPorNomeDoItem junta as linhas (item, NPC, preço) num mapa
+// "item em minúsculas" -> NPCs que o compram e por quanto.
+func precosPorNomeDoItem(linhas []linhaPreco) map[string][]PrecoNoNpc {
+	precos := make(map[string][]PrecoNoNpc)
+	for _, l := range linhas {
+		chave := strings.ToLower(l.grupo)
+		precos[chave] = append(precos[chave], PrecoNoNpc{Nome: l.nome, Preco: l.preco})
+	}
+	return precos
 }
 
 // agruparPorItem faz o mesmo, mas agrupando por item.

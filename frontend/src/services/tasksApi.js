@@ -1,12 +1,15 @@
-import { MOCK_DROPS } from '@/data/mockData'
+import { MOCK_DROPS, MOCK_NPC_PRECOS } from '@/data/mockData'
 
 /**
  * Camada de acesso a dados. As páginas NUNCA chamam `fetch` diretamente:
  * só usam estas funções. Assim, trocar a origem dos dados exige mexer em UM arquivo.
  *
  * Endpoints do servidor Go (server.go):
- *   GET  /api/buscar?tipo=criatura|item&q=texto     -> [{ nome, relacionados: [string] }]
- *   GET  /api/sugestoes?tipo=criatura|item&q=texto  -> [string]   (autocomplete)
+ *   GET  /api/buscar?tipo=criatura|item|npc&q=texto
+ *        -> [{ nome, relacionados: [string], precos?: [{ nome, preco }] }]
+ *        precos: na busca por NPC, os itens e quanto ele paga; na busca por
+ *        item, os NPCs que compram o item. Fica de fora quando não há.
+ *   GET  /api/sugestoes?tipo=criatura|item|npc&q=texto  -> [string]   (autocomplete)
  *   POST /api/log   { log: "texto" }                -> [{ nome, quantidade }]
  *   Erros: status 4xx/5xx com { erro: "mensagem amigável" }
  *
@@ -45,16 +48,38 @@ function group(drops, by, other) {
 
 // --- Funções públicas --------------------------------------------------------
 
-/** Busca por criatura (retorna itens) ou por item (retorna criaturas). */
+/** NPCs (do exemplo) que compram o item, no formato [{ nome, preco }]. */
+function mockPrecosDoItem(item) {
+  const precos = []
+  for (const [npc, itens] of Object.entries(MOCK_NPC_PRECOS)) {
+    const achado = itens.find((p) => norm(p.nome) === norm(item))
+    if (achado) precos.push({ nome: npc, preco: achado.preco })
+  }
+  return precos.sort((a, b) => b.preco - a.preco)
+}
+
+/** Busca por criatura (retorna itens), por item (retorna criaturas e preços) ou por NPC (retorna preços). */
 export async function search(tipo, termo) {
   if (!USE_MOCK) {
     const qs = new URLSearchParams({ tipo, q: termo })
     return callApi(`/api/buscar?${qs}`)
   }
   await wait(200)
+  if (tipo === 'npc') {
+    return Object.entries(MOCK_NPC_PRECOS)
+      .filter(([npc]) => norm(npc).includes(norm(termo)))
+      .map(([nome, precos]) => ({ nome, relacionados: [], precos }))
+  }
   const by = campo(tipo)
   const other = by === 'criatura' ? 'item' : 'criatura'
-  return group(MOCK_DROPS.filter((d) => norm(d[by]).includes(norm(termo))), by, other)
+  const resultado = group(MOCK_DROPS.filter((d) => norm(d[by]).includes(norm(termo))), by, other)
+  if (tipo === 'item') {
+    for (const r of resultado) {
+      const precos = mockPrecosDoItem(r.nome)
+      if (precos.length) r.precos = precos
+    }
+  }
+  return resultado
 }
 
 /**
@@ -66,8 +91,8 @@ export async function suggest(tipo, termo, signal) {
     const qs = new URLSearchParams({ tipo, q: termo })
     return callApi(`/api/sugestoes?${qs}`, { signal })
   }
-  const by = campo(tipo)
-  const nomes = [...new Set(MOCK_DROPS.map((d) => d[by]))]
+  const nomes =
+    tipo === 'npc' ? Object.keys(MOCK_NPC_PRECOS) : [...new Set(MOCK_DROPS.map((d) => d[campo(tipo)]))]
   const t = norm(termo)
   return nomes
     .filter((n) => norm(n).includes(t))

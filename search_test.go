@@ -86,3 +86,35 @@ func TestAgruparPorItem(t *testing.T) {
 		t.Errorf("obtido %v, esperado %v", obtido, esperado)
 	}
 }
+
+func TestAgruparPorNpc(t *testing.T) {
+	linhas := []linhaPreco{
+		{"Rashid", "Chaos Mace", 9000},
+		{"Rashid", "Crystal Mace", 12000},
+		{"Yasir", "Bashmu Fang", 500},
+	}
+
+	obtido := agruparPorNpc(linhas)
+	esperado := []NpcComPrecos{
+		{"Rashid", []PrecoNoNpc{{"Chaos Mace", 9000}, {"Crystal Mace", 12000}}},
+		{"Yasir", []PrecoNoNpc{{"Bashmu Fang", 500}}},
+	}
+	if !reflect.DeepEqual(obtido, esperado) {
+		t.Errorf("obtido %v, esperado %v", obtido, esperado)
+	}
+}
+
+func TestPrecosPorNomeDoItemIgnoraMaiusculas(t *testing.T) {
+	linhas := []linhaPreco{
+		{"Chaos Mace", "Rashid", 9000},
+		{"chaos mace", "Yasir", 8000},
+	}
+
+	obtido := precosPorNomeDoItem(linhas)
+	esperado := map[string][]PrecoNoNpc{
+		"chaos mace": {{"Rashid", 9000}, {"Yasir", 8000}},
+	}
+	if !reflect.DeepEqual(obtido, esperado) {
+		t.Errorf("obtido %v, esperado %v", obtido, esperado)
+	}
+}

@@ -13,6 +13,20 @@ export const MOCK_DROPS = [
   { criatura: 'Hydra', item: 'Hydra Head' },
 ]
 
+/** Exemplo de quanto cada NPC paga por item (em gold). */
+export const MOCK_NPC_PRECOS = {
+  Rashid: [
+    { nome: 'Chaos Mace', preco: 9000 },
+    { nome: 'Crystal Mace', preco: 12000 },
+  ],
+  Yasir: [
+    { nome: 'Bashmu Fang', preco: 600 },
+    { nome: 'Bashmu Feather', preco: 350 },
+    { nome: 'Bashmu Tongue', preco: 400 },
+    { nome: 'Hydra Head', preco: 600 },
+  ],
+}
+
 /** Exemplo exibido no botão "Usar exemplo" do analisador de log. */
 export const MOCK_LOG = `Session data: From 2026-09-24, 22:37:41 to 2026-09-24, 22:52:05
 Session: 00:14h

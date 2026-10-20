@@ -79,6 +79,9 @@ const textoUso = `Uso:
   go run . web                  sobe o site em http://127.0.0.1:8080
   go run . recriar --confirmo   APAGA as tabelas e recarrega tudo do populate.go
   go run . ajuda                mostra esta mensagem
+
+Os preços dos NPCs (pasta dados/npcs) são recarregados por "go run ." e por
+"recriar": o banco fica igual aos arquivos da pasta.
 `
 
 // modoExecucao é o que o programa vai fazer, escolhido pelo argumento.
@@ -144,8 +147,8 @@ func run() error {
 	// O recriar APAGA dados: antes de qualquer conexão, mostramos o alvo e
 	// exigimos --confirmo, para ninguém apagar o banco errado por engano.
 	if modo == modoRecriar && !confirmado {
-		return fmt.Errorf("o modo recriar APAGA todos os dados do banco %q em %s e os recarrega do populate.go.\n"+
-			"Se é isso mesmo, rode:  go run . recriar --confirmo", cfg.DBName, cfg.Addr)
+		return fmt.Errorf("o modo recriar APAGA todos os dados do banco %q em %s e os recarrega do populate.go e de %s.\n"+
+			"Se é isso mesmo, rode:  go run . recriar --confirmo", cfg.DBName, cfg.Addr, pastaNpcs)
 	}
 
 	// O contexto dá um limite de tempo para tudo que fala com o banco.
@@ -176,6 +179,9 @@ func run() error {
 		if err := RecriarDadosTibia(ctx, db); err != nil {
 			return err
 		}
+		if err := carregarNpcs(ctx, db); err != nil {
+			return err
+		}
 		return imprimirContagens(ctx, db)
 	}
 
@@ -183,6 +189,10 @@ func run() error {
 		return err
 	}
 	fmt.Printf("%d drops cadastrados/conferidos.\n", len(dropsIniciais))
+
+	if err := carregarNpcs(ctx, db); err != nil {
+		return err
+	}
 
 	itens, err := ProcessarLogHunt(ctx, db, logDeTeste)
 	switch {
@@ -328,6 +338,27 @@ func carregarConfigBanco() (*mysql.Config, error) {
 	cfg.AllowNativePasswords = true
 
 	return cfg, nil
+}
+
+// carregarNpcs grava os preços da pasta dados/npcs e mostra o resultado e os
+// avisos (nomes que não estão na lista da weekly) no terminal.
+func carregarNpcs(ctx context.Context, db *sql.DB) error {
+	res, err := CarregarPrecosNpc(ctx, db, pastaNpcs)
+	if err != nil {
+		return err
+	}
+	if res.SemArquivos {
+		fmt.Printf("Nenhum arquivo .csv em %s: os preços dos NPCs não foram alterados.\n", pastaNpcs)
+		return nil
+	}
+	fmt.Printf("Preços dos NPCs gravados: %d NPC(s), %d preço(s).\n", res.Npcs, res.Precos)
+	if len(res.Avisos) > 0 {
+		fmt.Printf("⚠️  %d aviso(s) nos arquivos de NPC (foram gravados mesmo assim):\n", len(res.Avisos))
+		for _, a := range res.Avisos {
+			fmt.Println("  - " + a)
+		}
+	}
+	return nil
 }
 
 // imprimirContagens mostra quantas linhas o banco tem agora, para conferir

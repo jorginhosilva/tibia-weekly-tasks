@@ -48,9 +48,9 @@ Para desenvolver o front-end com recarregamento automático, deixe `go run . web
 
 | Comando | O que faz |
 |---|---|
-| `go run .` | Carrega os dados (**só acrescenta**) e mostra uma demonstração |
+| `go run .` | Carrega os dados (**só acrescenta**), recarrega os preços dos NPCs e mostra uma demonstração |
 | `go run . web` | Sobe o site em `http://127.0.0.1:8080` |
-| `go run . recriar --confirmo` | **Apaga** as tabelas e recarrega tudo do `populate.go` (atômico: se falhar, nada muda) |
+| `go run . recriar --confirmo` | **Apaga** as tabelas e recarrega tudo do `populate.go` e de `dados/npcs` (atômico: se falhar, nada muda) |
 | `go run . ajuda` | Mostra o uso |
 
 Sem `--confirmo`, o `recriar` só mostra qual banco seria apagado e para.
@@ -65,14 +65,30 @@ Todos os dados ficam em [populate.go](populate.go), uma linha por ligação: `{"
 
 A carga também aplica essa validação: dados com erro nunca chegam ao banco.
 
+### Preços dos NPCs
+
+Os preços ficam em [dados/npcs](dados/npcs), **um arquivo por NPC**. O nome do arquivo vira o nome do NPC (`rashid.csv` → Rashid, `esrik_pompan.csv` → Esrik Pompan):
+
+```
+item;preco
+Chaos Mace;9000
+```
+
+- Preço só com números, sem ponto nem vírgula. Um erro de **formato** (preço inválido, linha sem `;`, item repetido) trava a carga e nada é gravado.
+- O nome do item é guardado como texto. Um nome que não está na lista da weekly **é gravado mesmo assim** e aparece como aviso no terminal, para ser corrigido depois.
+- `go run .` e `go run . recriar --confirmo` deixam os preços do banco **iguais** aos arquivos da pasta. Se a pasta não existir ou estiver vazia, os preços do banco não são alterados.
+- `go test ./...` confere o formato dos arquivos reais.
+
 ## API
 
 | Método e caminho | Resposta |
 |---|---|
-| `GET /api/buscar?tipo=criatura\|item&q=texto` | `[{ "nome": "...", "relacionados": ["..."] }]` |
-| `GET /api/sugestoes?tipo=criatura\|item&q=texto` | `["nome", ...]` (até 12) |
+| `GET /api/buscar?tipo=criatura\|item\|npc&q=texto` | `[{ "nome": "...", "relacionados": ["..."], "precos": [{ "nome": "...", "preco": 9000 }] }]` |
+| `GET /api/sugestoes?tipo=criatura\|item\|npc&q=texto` | `["nome", ...]` (até 12) |
 | `POST /api/log` com `{ "log": "texto" }` | `[{ "nome": "...", "quantidade": 3 }]` |
 | `GET /healthz` | `{ "status": "ok" }` quando o banco responde |
+
+`precos` só aparece quando há preços: na busca por NPC, são os itens e quanto ele paga; na busca por item, os NPCs que compram o item.
 
 Erros voltam com status 4xx/5xx e `{ "erro": "mensagem amigável" }`.
 
@@ -89,6 +105,8 @@ Erros voltam com status 4xx/5xx e `{ "erro": "mensagem amigável" }`.
 ├── database.go      criação das tabelas
 ├── populate.go      os dados (criatura → item)
 ├── validacao.go     conferência dos dados antes de gravar
+├── npcs.go          leitura e carga dos preços dos NPCs
+├── dados/npcs/      preços dos NPCs, um .csv por NPC (preenchidos à mão)
 ├── *_test.go        testes automáticos
 ├── Dockerfile       imagem de produção
 └── frontend/        site em Vue (veja frontend/README.md)
