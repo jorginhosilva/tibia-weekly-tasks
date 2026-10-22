@@ -16,7 +16,9 @@ const gold = new Intl.NumberFormat('pt-BR') // 9000 -> "9.000"
     <header class="flex items-center justify-between gap-3">
       <!-- h2: logo abaixo do h1 da página, sem pular nível (importante para leitores de tela). -->
       <h2 class="text-lg font-semibold text-gold">{{ nome }}</h2>
-      <span class="rounded-full border border-line px-3 py-1 text-xs text-muted">{{ precos.length }} itens</span>
+      <span class="rounded-full border border-line px-3 py-1 text-xs text-muted">
+        {{ precos.length }} {{ precos.length === 1 ? 'item' : 'itens' }}
+      </span>
     </header>
     <p class="mt-1 text-xs uppercase tracking-wide text-muted">Quanto paga por item</p>
     <ul class="mt-3 grid gap-px overflow-hidden rounded-lg border border-line bg-line sm:grid-cols-2">

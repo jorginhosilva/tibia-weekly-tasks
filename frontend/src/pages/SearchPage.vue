@@ -18,7 +18,7 @@ useSeo({
 const tipos = [
   { v: 'criatura', t: 'Por criatura', exemplo: 'ex.: deepworm' },
   { v: 'item', t: 'Por item', exemplo: 'ex.: bashmu fang' },
-  { v: 'npc', t: 'Por NPC', exemplo: 'ex.: rashid' },
+  { v: 'npc', t: 'Por NPC', exemplo: 'ex.: rashid ou banana sash' },
 ]
 const tipo = ref('criatura') // 'criatura' | 'item' | 'npc'
 const placeholder = computed(() => tipos.find((o) => o.v === tipo.value)?.exemplo ?? '')

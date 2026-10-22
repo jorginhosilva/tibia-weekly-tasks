@@ -75,11 +75,13 @@ const (
 		ORDER BY i.name, c.name
 		LIMIT ?`
 
+	// O termo vale para o nome do NPC OU do item: "rashid" traz todos os itens
+	// do Rashid; "banana sash" traz só esse item, no NPC que o compra.
 	sqlBuscaPorNpc = `
 		SELECT n.name, p.item_name, p.price
 		FROM npc_prices p
 		JOIN npcs n ON p.npc_id = n.id
-		WHERE n.name LIKE ?
+		WHERE n.name LIKE ? OR p.item_name LIKE ?
 		ORDER BY n.name, p.item_name
 		LIMIT ?`
 
@@ -127,15 +129,17 @@ func BuscarPorItem(ctx context.Context, db *sql.DB, termo string) ([]ItemComCria
 	return agruparPorItem(drops), nil
 }
 
-// BuscarPorNpc procura NPCs cujo nome CONTÉM o termo digitado e devolve,
-// para cada um, os itens e quanto ele paga por cada.
+// BuscarPorNpc procura pelo nome do NPC ou do item e devolve os NPCs com os
+// itens e quanto pagam por cada:
+//   - o NPC cujo NOME contém o termo aparece com TODOS os seus itens;
+//   - os outros NPCs aparecem só com os itens cujo nome contém o termo.
 func BuscarPorNpc(ctx context.Context, db *sql.DB, termo string) ([]NpcComPrecos, error) {
 	padrao, err := prepararTermo(termo)
 	if err != nil {
 		return nil, err
 	}
 
-	linhas, err := consultarPrecos(ctx, db, sqlBuscaPorNpc, padrao)
+	linhas, err := consultarPrecos(ctx, db, sqlBuscaPorNpc, padrao, padrao)
 	if err != nil {
 		return nil, fmt.Errorf("buscando o NPC %q: %w", termo, err)
 	}
@@ -167,8 +171,16 @@ type linhaPreco struct {
 	preco       int
 }
 
-func consultarPrecos(ctx context.Context, db *sql.DB, consulta, padrao string) ([]linhaPreco, error) {
-	linhas, err := db.QueryContext(ctx, consulta, padrao, limitePrecos)
+// consultarPrecos roda uma das consultas de preço. "padroes" são os valores dos
+// "?" do WHERE (um por "?"); o limite de linhas é sempre o último "?".
+func consultarPrecos(ctx context.Context, db *sql.DB, consulta string, padroes ...string) ([]linhaPreco, error) {
+	args := make([]any, 0, len(padroes)+1)
+	for _, p := range padroes {
+		args = append(args, p)
+	}
+	args = append(args, limitePrecos)
+
+	linhas, err := db.QueryContext(ctx, consulta, args...)
 	if err != nil {
 		return nil, err
 	}
@@ -204,8 +216,14 @@ const (
 		ORDER BY (name LIKE ?) DESC, name
 		LIMIT ?`
 
+	// Na aba de NPC, as sugestões trazem nomes de NPC E de itens que os NPCs
+	// compram (o UNION já tira os repetidos).
 	sqlSugestoesNpc = `
-		SELECT name FROM npcs
+		SELECT name FROM (
+			SELECT name FROM npcs
+			UNION
+			SELECT item_name FROM npc_prices
+		) AS nomes
 		WHERE name LIKE ?
 		ORDER BY (name LIKE ?) DESC, name
 		LIMIT ?`
@@ -221,7 +239,7 @@ func SugerirItens(ctx context.Context, db *sql.DB, termo string) ([]string, erro
 	return sugerir(ctx, db, sqlSugestoesItem, termo)
 }
 
-// SugerirNpcs devolve nomes de NPCs para o autocomplete.
+// SugerirNpcs devolve nomes de NPCs e de itens que eles compram para o autocomplete.
 func SugerirNpcs(ctx context.Context, db *sql.DB, termo string) ([]string, error) {
 	return sugerir(ctx, db, sqlSugestoesNpc, termo)
 }

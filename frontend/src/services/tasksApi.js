@@ -9,6 +9,8 @@ import { MOCK_DROPS, MOCK_NPC_PRECOS } from '@/data/mockData'
  *        -> [{ nome, relacionados: [string], precos?: [{ nome, preco }] }]
  *        precos: na busca por NPC, os itens e quanto ele paga; na busca por
  *        item, os NPCs que compram o item. Fica de fora quando não há.
+ *        tipo=npc aceita o nome do NPC (traz todos os itens dele) ou de um item
+ *        (traz só os itens que batem, em cada NPC que os compra).
  *   GET  /api/sugestoes?tipo=criatura|item|npc&q=texto  -> [string]   (autocomplete)
  *   POST /api/log   { log: "texto" }                -> [{ nome, quantidade }]
  *   Erros: status 4xx/5xx com { erro: "mensagem amigável" }
@@ -66,9 +68,15 @@ export async function search(tipo, termo) {
   }
   await wait(200)
   if (tipo === 'npc') {
+    // Mesma regra do servidor: NPC cujo nome bate traz tudo; os outros, só os itens que batem.
+    const t = norm(termo)
     return Object.entries(MOCK_NPC_PRECOS)
-      .filter(([npc]) => norm(npc).includes(norm(termo)))
-      .map(([nome, precos]) => ({ nome, relacionados: [], precos }))
+      .map(([nome, precos]) => ({
+        nome,
+        relacionados: [],
+        precos: norm(nome).includes(t) ? precos : precos.filter((p) => norm(p.nome).includes(t)),
+      }))
+      .filter((r) => r.precos.length)
   }
   const by = campo(tipo)
   const other = by === 'criatura' ? 'item' : 'criatura'
@@ -92,7 +100,9 @@ export async function suggest(tipo, termo, signal) {
     return callApi(`/api/sugestoes?${qs}`, { signal })
   }
   const nomes =
-    tipo === 'npc' ? Object.keys(MOCK_NPC_PRECOS) : [...new Set(MOCK_DROPS.map((d) => d[campo(tipo)]))]
+    tipo === 'npc'
+      ? [...new Set([...Object.keys(MOCK_NPC_PRECOS), ...Object.values(MOCK_NPC_PRECOS).flat().map((p) => p.nome)])]
+      : [...new Set(MOCK_DROPS.map((d) => d[campo(tipo)]))]
   const t = norm(termo)
   return nomes
     .filter((n) => norm(n).includes(t))

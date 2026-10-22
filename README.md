@@ -90,6 +90,8 @@ Chaos Mace;9000
 
 `precos` só aparece quando há preços: na busca por NPC, são os itens e quanto ele paga; na busca por item, os NPCs que compram o item.
 
+A busca `tipo=npc` aceita o nome do NPC **ou** de um item: o NPC cujo nome contém o termo vem com todos os itens; os outros vêm só com os itens que contêm o termo (ex.: `banana sash` traz só esse item, no NPC que o compra). As sugestões desse tipo trazem nomes de NPC e de itens.
+
 Erros voltam com status 4xx/5xx e `{ "erro": "mensagem amigável" }`.
 
 ## Estrutura
