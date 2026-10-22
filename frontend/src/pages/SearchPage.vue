@@ -3,6 +3,7 @@ import { ref, computed } from 'vue'
 import AutocompleteInput from '@/components/search/AutocompleteInput.vue'
 import ResultCard from '@/components/search/ResultCard.vue'
 import NpcPriceCard from '@/components/search/NpcPriceCard.vue'
+import PartnerBanner from '@/components/layout/PartnerBanner.vue'
 import StatusMessage from '@/components/search/StatusMessage.vue'
 import { useSeo } from '@/composables/useSeo'
 import { useAsyncAction } from '@/composables/useAsyncAction'
@@ -85,5 +86,8 @@ async function onSubmit() {
         />
       </template>
     </div>
+
+    <!-- Sempre visível, abaixo dos resultados (ou do campo de busca, antes de buscar). -->
+    <PartnerBanner class="mt-8" />
   </div>
 </template>

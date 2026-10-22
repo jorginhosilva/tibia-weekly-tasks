@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import StatusMessage from '@/components/search/StatusMessage.vue'
+import PartnerBanner from '@/components/layout/PartnerBanner.vue'
 import { useSeo } from '@/composables/useSeo'
 import { useAsyncAction } from '@/composables/useAsyncAction'
 import { analyzeLog } from '@/services/tasksApi'
@@ -57,5 +58,8 @@ async function onSubmit() {
         </ul>
       </section>
     </div>
+
+    <!-- Sempre visível, abaixo dos resultados (ou do formulário, antes de analisar). -->
+    <PartnerBanner class="mt-8" />
   </div>
 </template>

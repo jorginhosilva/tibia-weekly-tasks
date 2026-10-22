@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { SITE, PARTNER } from '@/config'
+import { useCupomParceiro } from '@/composables/useCupomParceiro'
 
 // Links do menu. Adicionar uma página = adicionar uma linha aqui.
 const links = [
@@ -10,25 +11,9 @@ const links = [
 ]
 const open = ref(false) // menu mobile aberto?
 
-// Aviso "cupom copiado", mostrado depois do clique no botão de parceria.
-const copiado = ref(false)
-let timer
-
-/**
- * Copia o cupom ao clicar no botão de parceria. O link abre normalmente (não usamos
- * preventDefault); a cópia só ajuda o cliente a colar o cupom no pagamento.
- * Se o navegador negar a cópia, o aviso aparece do mesmo jeito, com o cupom escrito.
- */
-async function copiarCupom() {
-  try {
-    await navigator.clipboard.writeText(PARTNER.cupom)
-  } catch {
-    // sem permissão para copiar: o cliente vê o cupom no aviso e digita
-  }
-  copiado.value = true
-  clearTimeout(timer)
-  timer = setTimeout(() => (copiado.value = false), 8000)
-}
+// Copia o cupom ao clicar no botão de parceria e mostra o aviso "cupom copiado"
+// embaixo do cabeçalho (o mesmo aviso vale para a imagem do parceiro).
+const { copiado, copiarCupom } = useCupomParceiro()
 </script>
 
 <template>
