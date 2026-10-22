@@ -164,8 +164,9 @@ manualmente a partir de consultas a estas fontes:
 - **[Tibia Wiki](https://www.tibiawiki.com.br)** (tibiawiki.com.br)
 - **[Tibiopedia.pl](https://tibiopedia.pl)**
 
-O projeto guarda apenas **nomes e relações** (fatos do jogo). **Nenhum texto, imagem ou arte** dessas wikis é copiado
-ou exibido. Os dados são conteúdo do jogo Tibia e as wikis são trabalho de suas comunidades: este site é apenas uma
+O projeto guarda apenas **nomes e relações** (fatos do jogo). **Nenhum texto** dessas wikis é copiado ou exibido.
+A única exceção são as **imagens dos itens** mostradas na busca "Por NPC" (em `frontend/src/assets/itens`), que vêm
+da **[Tibia Wiki](https://www.tibiawiki.com.br)**; são arte do jogo, da CipSoft GmbH. O crédito aparece no rodapé do site. Os dados são conteúdo do jogo Tibia e as wikis são trabalho de suas comunidades: este site é apenas uma
 ferramenta de consulta e não substitui as fontes originais. Para informações completas sobre criaturas e itens,
 consulte as próprias wikis.
 

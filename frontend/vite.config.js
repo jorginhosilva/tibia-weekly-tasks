@@ -8,6 +8,12 @@ export default defineConfig({
   plugins: [vue(), tailwindcss()],
   // Valor fixado na hora do build e usado no rodapé (veja AppFooter.vue).
   define: { __ANO_DO_BUILD__: JSON.stringify(new Date().getFullYear()) },
+  // As imagens dos itens (src/assets/itens) viram arquivos separados, com cache
+  // longo, em vez de serem embutidas no JavaScript: são centenas, e embutidas
+  // deixariam o site mais pesado para todo mundo.
+  build: {
+    assetsInlineLimit: (arquivo) => (/[\\/]assets[\\/]itens[\\/]/.test(arquivo) ? false : undefined),
+  },
   resolve: {
     // Permite importar com "@/components/..." em vez de "../../components/..."
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },

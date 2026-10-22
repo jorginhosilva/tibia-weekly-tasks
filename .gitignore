@@ -1,2 +1,5 @@
 .env
 *.exe
+
+# Imagens brutas baixadas da wiki (só as organizadas em frontend/src/assets/itens entram no git)
+imagens-baixadas/
