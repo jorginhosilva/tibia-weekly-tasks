@@ -79,6 +79,9 @@ func TestNomeDoNpc(t *testing.T) {
 		"yasir.csv":        "Yasir",
 		"esrik_pompan.csv": "Esrik Pompan",
 		"black-bert.csv":   "Black Bert",
+		"nah'bob.csv":      "Nah'bob", // tudo em minúsculas: só a primeira letra sobe
+		"Nah'Bob.csv":      "Nah'Bob", // maiúscula escrita no arquivo é respeitada
+		"Esrik_Pompan.csv": "Esrik Pompan",
 	}
 	for arquivo, esperado := range casos {
 		if got := nomeDoNpc(arquivo); got != esperado {

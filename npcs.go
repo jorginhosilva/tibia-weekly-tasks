@@ -250,12 +250,18 @@ func lerPreco(texto string) (int, bool) {
 
 // nomeDoNpc transforma o nome do arquivo no nome do NPC:
 // "rashid.csv" -> "Rashid"; "esrik_pompan.csv" -> "Esrik Pompan".
+//
+// Palavra que já tem alguma letra maiúscula é mantida como está, para nomes com
+// maiúscula no meio: "Nah'Bob.csv" -> "Nah'Bob". Em "nah'bob.csv" só a primeira
+// letra viraria maiúscula ("Nah'bob").
 func nomeDoNpc(arquivo string) string {
 	base := strings.TrimSuffix(arquivo, filepath.Ext(arquivo))
 	palavras := strings.FieldsFunc(base, func(c rune) bool { return c == '_' || c == '-' || c == ' ' })
 	for i, p := range palavras {
-		r, tamanho := utf8.DecodeRuneInString(p)
-		palavras[i] = string(unicode.ToUpper(r)) + p[tamanho:]
+		if p == strings.ToLower(p) { // toda em minúsculas: capitaliza a primeira letra
+			r, tamanho := utf8.DecodeRuneInString(p)
+			palavras[i] = string(unicode.ToUpper(r)) + p[tamanho:]
+		}
 	}
 	return strings.Join(palavras, " ")
 }
